@@ -135,8 +135,8 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(28px, 3.4vw, 48px) clamp(20px, 2.4vw, 32px);
 }
-@media (max-width: 1024px) { .wcat__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px)  { .wcat__grid { grid-template-columns: 1fr; } }
+@media (max-width: 1200px) { .wcat__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .wcat__grid { grid-template-columns: 1fr; } }
 
 /* Reuse .card from index; but we redefine subtle changes here for work index */
 .wcat .card__media {
@@ -292,7 +292,6 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
     <div class="work-index-hero__stat">
       <span><b>2022 — 2026</b></span>
       <span><b>13</b> Projects</span>
-      <span><b>6</b> Awards</span>
     </div>
   </div>
 </header>
@@ -304,19 +303,36 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
     <button type="button" data-filter="product">Product</button>
     <button type="button" data-filter="ux">UX</button>
   </div>
-  <span class="work-filter__count" data-count>Showing 13 projects</span>
 </div>
 
 <!-- PRODUCT DESIGN ------------------------------------- -->
 <section class="wcat" id="product" data-cat="product">
   <header class="wcat__head">
-    <h2 class="wcat__title">Product Design.<span class="idx">P/01 — P/07</span></h2>
-    <span class="wcat__meta">Product · Industrial · Robotics</span>
+    <h2 class="wcat__title">Product Design.</h2>
   </header>
 
   <div class="wcat__grid">
-    <!-- Real projects with detail pages -->
-    <a class="card reveal" href="work/wade.html">
+    <!-- Sorted newest → oldest -->
+
+    <!-- 2026 -->
+    <a class="card reveal" href="work/threespin.html">
+      <div class="card__media">
+        <img src="assets/works/260728_TS450_img_1.png" alt="Threespin Slim TS450 · Slim rotary home care appliance">
+        <span class="card__badge">iF Gold · Red Dot</span>
+        <span class="card__laurel"><img src="assets/awards/if-gold.png" alt="iF Gold"></span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">Threespin Slim</h3>
+          <p class="card__sub">Slim Rotary Home Care Appliance</p>
+        </div>
+        <span class="card__year">2026</span>
+      </div>
+    </a>
+
+    <!-- 2023 -->
+    <a class="card reveal delay-1" href="work/wade.html">
       <div class="card__media">
         <img src="assets/works/wade_cover.jpg" alt="WADE — Autonomous water-drawing robot">
         <span class="card__badge">HCI Korea · Grand Prize</span>
@@ -332,7 +348,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
       </div>
     </a>
 
-    <a class="card reveal delay-1" href="work/mobilink.html">
+    <a class="card reveal delay-2" href="work/mobilink.html">
       <div class="card__media">
         <img src="assets/works/mobilink_cover.jpg" alt="MobiLink — Hooogh Unit for PBV">
         <span class="card__badge">IDEA · SPARK Finalist</span>
@@ -348,7 +364,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
       </div>
     </a>
 
-    <a class="card reveal delay-2" href="work/flever.html">
+    <a class="card reveal" href="work/flever.html">
       <div class="card__media">
         <img src="assets/works/flever_cover.jpg" alt="Flever — Ambient video-call companion">
         <span class="card__badge">Concept · 2023</span>
@@ -360,29 +376,6 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
           <p class="card__sub">Ambient Video-Call Companion</p>
         </div>
         <span class="card__year">2023</span>
-      </div>
-    </a>
-
-    <!-- Extended projects: typographic covers (detail pages coming) -->
-    <a class="card reveal card--wip" href="#" aria-disabled="true">
-      <div class="card__media">
-        <div class="tp-cover tp-cover--amber">
-          <div class="tp-cover__inner">
-            <span class="tp-cover__kicker">Home Appliance</span>
-            <span class="tp-cover__name">TS450<br>Slim</span>
-            <span class="tp-cover__sub">쓰리스핀 슬림</span>
-          </div>
-        </div>
-        <span class="card__badge">iF Gold · Red Dot</span>
-        <span class="card__laurel"><img src="assets/awards/if-gold.png" alt="iF Gold"></span>
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">Threespin Slim</h3>
-          <p class="card__sub">Slim Rotary Home Care Appliance</p>
-        </div>
-        <span class="card__year">2026</span>
       </div>
     </a>
 
@@ -456,56 +449,13 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
 <!-- UX DESIGN ------------------------------------------ -->
 <section class="wcat" id="ux" data-cat="ux">
   <header class="wcat__head">
-    <h2 class="wcat__title">UX Design.<span class="idx">U/01 — U/06</span></h2>
-    <span class="wcat__meta">Mobility · Interior · Interaction</span>
+    <h2 class="wcat__title">UX Design.</h2>
   </header>
 
   <div class="wcat__grid">
-    <a class="card reveal" href="work/inclusive.html">
-      <div class="card__media">
-        <img src="assets/works/ux_inclusive.jpg" alt="Inclusive future mobility UX">
-        <span class="card__badge">Hyundai · 2023</span>
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">Inclusive Mobility</h3>
-          <p class="card__sub">Universal Interior UX for Future Cabins</p>
-        </div>
-        <span class="card__year">2023</span>
-      </div>
-    </a>
+    <!-- Sorted newest → oldest -->
 
-    <a class="card reveal delay-1" href="work/seuv.html">
-      <div class="card__media">
-        <img src="assets/works/ux_seuv.jpg" alt="Large SEUV wellness UX concept">
-        <span class="card__badge">Kia · 2023</span>
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">SEUV Wellness</h3>
-          <p class="card__sub">Cabin Space &amp; Wellness Concept</p>
-        </div>
-        <span class="card__year">2023</span>
-      </div>
-    </a>
-
-    <a class="card reveal delay-2" href="work/suv.html">
-      <div class="card__media">
-        <img src="assets/works/ux_suv.jpg" alt="Genesis premium sedan UX">
-        <span class="card__badge">Genesis · 2022</span>
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">Premium Sedan UX</h3>
-          <p class="card__sub">Interaction Concept for a Flagship Sedan</p>
-        </div>
-        <span class="card__year">2022</span>
-      </div>
-    </a>
-
+    <!-- 2024 -->
     <a class="card reveal card--wip" href="#" aria-disabled="true">
       <div class="card__media">
         <div class="tp-cover tp-cover--indigo">
@@ -527,7 +477,38 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
       </div>
     </a>
 
-    <a class="card reveal delay-1 card--wip" href="#" aria-disabled="true">
+    <!-- 2023 -->
+    <a class="card reveal delay-1" href="work/inclusive.html">
+      <div class="card__media">
+        <img src="assets/works/ux_inclusive.jpg" alt="Inclusive future mobility UX">
+        <span class="card__badge">Hyundai · 2023</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">Inclusive Mobility</h3>
+          <p class="card__sub">Universal Interior UX for Future Cabins</p>
+        </div>
+        <span class="card__year">2023</span>
+      </div>
+    </a>
+
+    <a class="card reveal delay-2" href="work/seuv.html">
+      <div class="card__media">
+        <img src="assets/works/ux_seuv.jpg" alt="Large SEUV wellness UX concept">
+        <span class="card__badge">Kia · 2023</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">SEUV Wellness</h3>
+          <p class="card__sub">Cabin Space &amp; Wellness Concept</p>
+        </div>
+        <span class="card__year">2023</span>
+      </div>
+    </a>
+
+    <a class="card reveal card--wip" href="#" aria-disabled="true">
       <div class="card__media">
         <div class="tp-cover tp-cover--sage">
           <div class="tp-cover__inner">
@@ -548,7 +529,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
       </div>
     </a>
 
-    <a class="card reveal delay-2 card--wip" href="#" aria-disabled="true">
+    <a class="card reveal delay-1 card--wip" href="#" aria-disabled="true">
       <div class="card__media">
         <div class="tp-cover tp-cover--slate">
           <div class="tp-cover__inner">
@@ -568,6 +549,22 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
         <span class="card__year">2023</span>
       </div>
     </a>
+
+    <!-- 2022 -->
+    <a class="card reveal delay-2" href="work/suv.html">
+      <div class="card__media">
+        <img src="assets/works/ux_suv.jpg" alt="Genesis premium sedan UX">
+        <span class="card__badge">Genesis · 2022</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">Premium Sedan UX</h3>
+          <p class="card__sub">Interaction Concept for a Flagship Sedan</p>
+        </div>
+        <span class="card__year">2022</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -582,19 +579,14 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
   <div class="footer__grid">
     <div>
       <h4>Contact</h4>
-      <a href="/cdn-cgi/l/email-protection#81f2f2eeecb8b9c1efe0f7e4f3afe2eeec"><span class="__cf_email__" data-cfemail="1360607c7e2a2b537d726576613d707c7e">[email&#160;protected]</span></a>
-      <a href="tel:+821056605032">+82 10 5660 5032</a>
+      <a href="mailto:ssom98@naver.com">ssom98@naver.com</a>
+      <span>+82 10 5660 5032</span>
     </div>
     <div>
       <h4>Index</h4>
       <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-    </div>
-    <div>
-      <h4>Now</h4>
-      <a href="#" style="pointer-events:none">Available for freelance</a>
-      <a href="#" style="pointer-events:none" data-clock>Seoul · —:—:—</a>
     </div>
     <div>
       <h4>CV</h4>
@@ -608,7 +600,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+<script src="js/main.js"></script>
 <script>
 // Disable WIP cards
 document.querySelectorAll('.card--wip').forEach(a => {
