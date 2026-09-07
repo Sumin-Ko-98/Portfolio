@@ -37,6 +37,20 @@ main { padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 80px)); }
   word-break: break-word;
   hyphens: auto;
 }
+
+/* Compact modifier — used on Wade / Threespin detail heroes where the
+   canonical 240px cap is too large for the composition. Previously each
+   page shipped its own inline <style> override; consolidated here. */
+.work-head--compact .work-head__title {
+  font-size: clamp(52px, 8vw, 128px);
+  line-height: 0.95;
+}
+@media (max-width: 900px) {
+  .work-head--compact .work-head__title { font-size: clamp(40px, 10vw, 72px); }
+}
+@media (max-width: 560px) {
+  .work-head--compact .work-head__title { font-size: clamp(34px, 11vw, 56px); }
+}
 .work-head__cat {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -132,7 +146,7 @@ main { padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 80px)); }
   text-wrap: pretty;
   letter-spacing: -0.01em;
 }
-.sec__body p b { color: var(--ink); font-weight: 500; }
+.sec__body p b { color: var(--ink); font-weight: 700; }
 .sec__body .lead {
   font-family: var(--f-heavy);
   font-weight: 600;
@@ -646,28 +660,450 @@ main { padding-top: calc(var(--nav-h) + clamp(40px, 6vw, 80px)); }
  * WORK v2 — Immersive, image-forward detail page               *
  * Reset spacing baseline so main can be full-bleed at the top. *
  * ------------------------------------------------------------ */
-body[data-page="work-detail-v2"] main { padding-top: 0; }
+body[data-page="work-detail-v2"] main,
+body[data-page="work-detail"]:has(.split-intro) main { padding-top: 0; }
 
-/* Floating back link over the hero */
-.v2-back {
-  position: absolute;
-  top: calc(var(--nav-h) + 16px);
-  left: var(--pad-x);
-  z-index: 20;
+/* ==============================================================
+ * SPLIT INTRO — reusable magazine-spread intro
+ *   Grid layout: editorial pane (left) + image pane (right)
+ *   Framed by top/bottom hairline rules with meta labels.
+ *   Portable — any work-detail page can adopt by dropping in
+ *   <section class="split-intro"> …editorial + <figure>… </section>.
+ * ============================================================== */
+.split-intro {
+  position: relative;
+  padding: calc(var(--nav-h) + clamp(28px, 4vw, 56px)) var(--pad-x) clamp(28px, 4vw, 56px);
+  background: var(--bg);
+  color: var(--ink);
 }
-.v2-back a {
-  display: inline-flex; align-items: center; gap: 10px;
+
+/* — Back link, editorial hairline style — */
+.split-intro__back {
+  position: absolute;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  padding: 14px var(--pad-x) 0;
+}
+.split-intro__back a {
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--f-mono);
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: #fff;
-  padding: 8px 14px;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 100px;
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,0.18);
-  transition: background .3s ease, gap .3s ease;
+  color: var(--ink);
+  opacity: 0.72;
+  transition: gap .3s ease, opacity .2s ease;
 }
-.v2-back a:hover { background: rgba(0,0,0,0.4); gap: 16px; }
+.split-intro__back a::before {
+  content: "";
+  display: inline-block;
+  width: 18px; height: 1px;
+  background: currentColor;
+  transition: width .3s ease;
+}
+.split-intro__back a:hover { opacity: 1; gap: 12px; }
+.split-intro__back a:hover::before { width: 26px; }
+
+/* — Top / bottom meta rails — */
+.split-intro__topbar,
+.split-intro__botbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--mute);
+}
+.split-intro__topbar { padding-top: 40px; padding-bottom: clamp(28px, 4vw, 56px); }
+.split-intro__botbar { padding-top: clamp(28px, 4vw, 56px); }
+.split-intro__index,
+.split-intro__stamp,
+.split-intro__scroll,
+.split-intro__signature { display: inline-block; }
+.split-intro__index { color: var(--ink); font-weight: 500; }
+.split-intro__rule {
+  height: 1px;
+  background: var(--hair);
+  display: block;
+}
+
+/* — Two-pane grid — */
+.split-intro__grid {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  column-gap: clamp(32px, 4vw, 72px);
+  align-items: stretch;
+}
+
+/* — LEFT · editorial pane — */
+.split-intro__pane {
+  display: flex; flex-direction: column;
+  gap: clamp(20px, 2.4vw, 32px);
+  padding-block: clamp(8px, 1vw, 16px);
+}
+.split-intro__cat {
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--mute);
+}
+.split-intro__title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(64px, 9vw, 168px);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.split-intro__lede {
+  font-family: var(--f-kr);
+  font-size: clamp(16px, 1.15vw, 20px);
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin: 0;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.split-intro__lede b { font-weight: 600; }
+
+/* Award pill — hairline card, hover-emphasis */
+.split-intro__award {
+  display: inline-grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  align-self: start;
+  max-width: fit-content;
+  transition: background .3s ease, color .3s ease, gap .3s ease;
+}
+.split-intro__award-k {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--mute);
+}
+.split-intro__award-v {
+  font-family: var(--f-heavy);
+  font-weight: 700; font-size: 14px; letter-spacing: -0.005em;
+}
+.split-intro__award-arrow {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  transition: transform .3s ease;
+}
+.split-intro__award:hover {
+  background: var(--ink); color: var(--bg);
+}
+.split-intro__award:hover .split-intro__award-k { color: rgba(246,245,242,0.6); }
+.split-intro__award:hover .split-intro__award-arrow { transform: translate(2px, -2px); }
+
+/* Specs — dense two-line list */
+.split-intro__specs {
+  margin: 4px 0 0;
+  padding: clamp(20px, 2.4vw, 28px) 0 0;
+  border-top: 1px solid var(--hair);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: clamp(20px, 2.4vw, 40px);
+  row-gap: 18px;
+}
+.split-intro__specs > div {
+  display: flex; flex-direction: column; gap: 6px;
+  min-width: 0;
+}
+.split-intro__specs dt {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--mute);
+}
+.split-intro__specs dd {
+  margin: 0;
+  font-family: var(--f-heavy);
+  font-weight: 600; font-size: 14px; line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+/* — RIGHT · image pane — */
+.split-intro__figure {
+  margin: 0;
+  display: flex; flex-direction: column;
+}
+.split-intro__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--bg-alt);
+  overflow: hidden;
+}
+.split-intro__frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.split-intro__caption {
+  margin-top: 14px;
+  display: flex; align-items: baseline; gap: 12px;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mute);
+}
+.split-intro__caption-k { color: var(--ink); font-weight: 500; }
+
+/* — Follow-on spacing (any next section) — */
+.split-intro + * { margin-top: clamp(48px, 6vw, 96px); }
+
+/* — Responsive — */
+@media (max-width: 900px) {
+  .split-intro__grid {
+    grid-template-columns: 1fr;
+    row-gap: clamp(28px, 4vw, 48px);
+  }
+  .split-intro__figure { order: -1; }
+  .split-intro__frame { aspect-ratio: 4 / 3; }
+  .split-intro__title { font-size: clamp(56px, 14vw, 120px); }
+}
+@media (max-width: 560px) {
+  .split-intro {
+    padding-top: calc(var(--nav-h) + 44px);
+  }
+  .split-intro__topbar { padding-top: 28px; padding-bottom: 24px; }
+  .split-intro__botbar { padding-top: 24px; grid-template-columns: 1fr; gap: 10px; }
+  .split-intro__botbar .split-intro__rule { display: none; }
+  .split-intro__frame { aspect-ratio: 5 / 4; }
+  .split-intro__title { font-size: clamp(52px, 15vw, 84px); }
+  .split-intro__specs { grid-template-columns: 1fr; row-gap: 14px; }
+  .split-intro__award { padding: 12px 14px; gap: 12px; }
+}
+
+/* ==============================================================
+ * (legacy) WADE intro — kept dormant but no longer used
+ * ============================================================== */
+.wade-intro {
+  position: relative;
+  background: #0b0b0f;
+  color: #f6f5f2;
+  padding: calc(var(--nav-h) + clamp(64px, 10vw, 140px)) var(--pad-x) 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.wade-intro::before {
+  /* soft radial to lift the type off the flat black */
+  content: "";
+  position: absolute; inset: -20%;
+  background:
+    radial-gradient(60% 40% at 20% 20%, rgba(109,139,255,0.14), transparent 70%),
+    radial-gradient(50% 40% at 85% 90%, rgba(123,224,211,0.08), transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+.wade-intro .v2-back {
+  position: absolute;
+  top: var(--nav-h);
+  padding: 14px var(--pad-x) 0;
+}
+.wade-intro .v2-back a { color: #f6f5f2; opacity: 0.68; }
+.wade-intro .v2-back a:hover { opacity: 1; }
+
+.wade-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(40px, 5vw, 96px);
+  row-gap: clamp(28px, 4vw, 56px);
+  align-items: end;
+  padding-bottom: clamp(48px, 7vw, 96px);
+  position: relative;
+}
+.wade-intro__cat {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 18px;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(246,245,242,0.55);
+}
+.wade-intro__cat .num { color: #f6f5f2; }
+.wade-intro__cat > span:not(:last-child)::after {
+  content: "·"; margin-left: 18px; opacity: 0.5;
+}
+.wade-intro__title {
+  grid-column: 1 / -1;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(96px, 22vw, 360px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin: 0;
+  text-transform: uppercase;
+  display: flex; align-items: baseline;
+  gap: clamp(0px, 0.6vw, 12px);
+}
+.wade-intro__title span { display: inline-block; }
+.wade-intro__title .wade-intro__dot {
+  color: #7be0d3; /* mint accent — nods to the water motif */
+  margin-left: 0.05em;
+}
+.wade-intro__lede {
+  grid-column: 1 / span 1;
+  font-family: var(--f-kr);
+  font-size: clamp(17px, 1.35vw, 22px);
+  line-height: 1.6;
+  color: rgba(246,245,242,0.82);
+  max-width: 46ch;
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(246,245,242,0.14);
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+}
+.wade-intro__lede b { color: #f6f5f2; font-weight: 600; }
+
+.wade-intro__award {
+  grid-column: 2 / span 1;
+  align-self: end;
+}
+.wade-intro__award .badge {
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 22px;
+  border: 1px solid rgba(246,245,242,0.18);
+  background: rgba(246,245,242,0.03);
+}
+.wade-intro__award .badge__mark {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #f6f5f2 0%, #b18cff 40%, #6d8bff 100%);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
+}
+.wade-intro__award .badge__body {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.wade-intro__award .badge__k {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(246,245,242,0.55);
+}
+.wade-intro__award .badge__v {
+  font-family: var(--f-heavy);
+  font-weight: 700; font-size: 17px; letter-spacing: -0.01em;
+  color: #f6f5f2;
+}
+.wade-intro__award .badge__note {
+  font-family: var(--f-text);
+  font-size: 12px; color: rgba(246,245,242,0.62);
+  margin-top: 2px;
+}
+
+.wade-intro__facts {
+  grid-column: 1 / -1;
+  list-style: none; padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 40px);
+  padding-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid rgba(246,245,242,0.14);
+}
+.wade-intro__facts li {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.wade-intro__facts .k {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(246,245,242,0.5);
+}
+.wade-intro__facts .v {
+  font-family: var(--f-heavy);
+  font-weight: 600; font-size: 14px;
+  color: #f6f5f2;
+  letter-spacing: -0.005em;
+}
+
+/* Bottom ticker — infinite scroll on the dark slab */
+.wade-intro__ticker {
+  border-top: 1px solid rgba(246,245,242,0.14);
+  padding: 18px 0;
+  overflow: hidden;
+  margin: 0 calc(var(--pad-x) * -1);
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.wade-intro__ticker-track {
+  display: flex; align-items: center; gap: 28px;
+  white-space: nowrap;
+  animation: wade-ticker 42s linear infinite;
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(246,245,242,0.55);
+}
+.wade-intro__ticker-track span { flex: 0 0 auto; }
+@keyframes wade-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wade-intro__ticker-track { animation: none; }
+}
+
+/* When the dark intro is followed by the paper-toned cover figure,
+   remove the extra top gap so they meet cleanly with a hairline. */
+body[data-page="work-detail"] .wade-intro + .work-hero {
+  padding-top: clamp(56px, 7vw, 100px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .wade-intro__grid { grid-template-columns: 1fr; row-gap: clamp(24px, 4vw, 40px); }
+  .wade-intro__lede,
+  .wade-intro__award { grid-column: 1; }
+  .wade-intro__facts { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .wade-intro {
+    padding-top: calc(var(--nav-h) + 72px);
+  }
+  .wade-intro__title { font-size: clamp(72px, 26vw, 160px); }
+  .wade-intro__cat { gap: 12px; font-size: 10px; letter-spacing: 0.14em; }
+  .wade-intro__cat > span:not(:last-child)::after { margin-left: 12px; }
+  .wade-intro__award .badge { padding: 14px 16px; gap: 14px; }
+  .wade-intro__award .badge__mark { width: 36px; height: 36px; }
+  .wade-intro__ticker { padding: 14px 0; }
+  .wade-intro__ticker-track { font-size: 10px; letter-spacing: 0.14em; gap: 20px; }
+}
+
+/* Editorial back link — floats below the nav in its own row.
+   Rectilinear hairline + mono caption, matches site's industrial vocab. */
+.v2-back {
+  position: absolute;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  padding: 14px var(--pad-x) 0;
+  z-index: 15;
+}
+.v2-back a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transition: gap .3s ease, opacity .2s ease;
+  opacity: 0.72;
+}
+.v2-back a::before {
+  content: "";
+  display: inline-block;
+  width: 18px; height: 1px;
+  background: currentColor;
+  transition: width .3s ease;
+}
+.v2-back a:hover { opacity: 1; gap: 12px; }
+.v2-back a:hover::before { width: 26px; }
+/* On dark full-bleed heros, force white */
+.v2-hero[data-nav="dark"]:not(.v2-hero--plain) .v2-back a { color: #fff; }
 
 /* Full-bleed cinematic hero */
 .v2-hero {
@@ -679,12 +1115,15 @@ body[data-page="work-detail-v2"] main { padding-top: 0; }
   background: #16161a;
   color: #fff;
 }
-/* Plain variant: hero holds ONLY the image (no overlay title/scrim). */
+/* Plain variant: hero holds ONLY the image (no overlay title/scrim).
+   Slightly shorter so the editorial head below reads on first scroll. */
 .v2-hero--plain {
   height: 82vh;
   min-height: 520px;
 }
 .v2-hero--plain .v2-hero__media img { transform: none; }
+/* When a plain hero image is immediately followed by .work-head,
+   push the editorial head down so it doesn't kiss the image edge. */
 .v2-hero--plain + .work-head {
   padding-top: clamp(60px, 8vw, 120px);
 }
@@ -692,8 +1131,36 @@ body[data-page="work-detail-v2"] main { padding-top: 0; }
   .v2-hero--plain { height: 58vh; min-height: 360px; }
 }
 @media (max-width: 560px) {
-  .v2-hero--plain { height: 48vh; min-height: 300px; }
-  .v2-hero--plain + .work-head { padding-top: clamp(40px, 10vw, 80px); }
+  /* Mobile: hero collapses to exactly nav + back + image band.
+     No leftover section height, no gap before the head. */
+  .v2-hero--plain {
+    height: auto !important;
+    aspect-ratio: auto;
+    min-height: 0 !important;
+    background: transparent;
+    padding-top: calc(var(--nav-h) + 44px);
+    box-sizing: border-box;
+    overflow: visible;
+  }
+  .v2-hero--plain .v2-hero__media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 46vh;
+    max-height: 380px;
+    min-height: 240px;
+  }
+  .v2-hero--plain .v2-hero__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    padding: 0;
+    transform: none;
+  }
+  .v2-hero--plain + .work-head { padding-top: clamp(24px, 6vw, 40px) !important; }
+}
+@media (max-width: 420px) {
+  .v2-hero--plain .v2-hero__media { height: 42vh; max-height: 320px; }
 }
 .v2-hero__media {
   position: absolute; inset: 0;
@@ -794,8 +1261,9 @@ body[data-page="work-detail-v2"] main { padding-top: 0; }
   .v2-hero__title { font-size: clamp(56px, 18vw, 96px); line-height: 0.88; }
   .v2-hero__meta-row { gap: 14px; font-size: 10px; margin-bottom: 14px; }
   .v2-hero__scroll { display: none; }
-  .v2-back { top: calc(var(--nav-h) + 8px); left: 16px; }
-  .v2-back a { padding: 6px 12px; font-size: 10px; }
+  .v2-back { padding-left: 20px; }
+  .v2-back a { font-size: 10px; letter-spacing: 0.14em; }
+  .v2-back a::before { width: 14px; }
 }
 
 /* Meta strip below hero */

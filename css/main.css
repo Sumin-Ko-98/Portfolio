@@ -11,8 +11,10 @@ img, video { display: block; max-width: 100%; }
 button { background: none; border: 0; cursor: pointer; padding: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
-/* Fonts — Archivo (Black/Heavy for display) + Inter (text) + Pretendard (KR) */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Fonts — Archivo (Black/Heavy for display) + Inter (text) + Pretendard (KR)
+   NOTE (2026.09 cleanup): Archivo 800 weight was requested but unused in the codebase;
+   dropped from the axis list. Only 400·500·600·700·900 remain for Archivo. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css');
 
 :root {
@@ -25,6 +27,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   --mute-2:    #b8b6b0;
   --hair:      rgba(11,11,15,0.12);
   --hair-soft: rgba(11,11,15,0.06);
+
+  /* Dark-panel foreground (Wade 상세 다크 섹션 및 재사용용) */
+  --ink-on-dark:  #f6f5f2;  /* cream — heading / mark on black */
+  --body-on-dark: #e8e4dc;  /* warm off-white — KR/EN primary body on black */
+  --mute-on-dark: #8a8680;  /* warm mute — secondary body on black */
 
   /* Holographic accents (from hero imagery) */
   --holo-a: #6d8bff;   /* blue */
@@ -79,6 +86,19 @@ img, video { max-width: 100%; }
   text-transform: uppercase;
   color: var(--mute);
 }
+
+/* Repeated micro-label pattern (fig frames · figure captions · project nav
+   eyebrows). Consolidated from ~8 duplicates across work.css / wade-new.css
+   and page-level <style> blocks. Add .mono-label--sm for the 10px variant. */
+.mono-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.mono-label--sm { font-size: 10px; }
+.mono-label--wide { letter-spacing: 0.22em; }
 
 .h-display {
   font-family: var(--f-display);
@@ -366,3 +386,52 @@ section { position: relative; }
   }
   .scroll-hint::after { height: 28px; }
 }
+
+/* =====================================================================
+   GLOBAL KR/EN BODY-COPY TYPOGRAPHY  (site-wide unification)
+   ---------------------------------------------------------------------
+   Scope: 본문·캡션만 (리드/메타/타이틀 제외 — 그쪽은 명시적으로 제외 클래스 지정)
+   - [lang="ko"] .body-copy 대신, 각 페이지에서 lang="ko" 를 붙인 텍스트 요소는
+     자동으로 아래 규칙을 상속받도록 함.
+   - 국문(.kr, [lang="ko"]) → 15px / #0b0b0f / Pretendard / -0.01em / 1.7
+   - 영문 보조 문단(.en, [lang="en"].secondary) → 13.5px / #6a6a6a / 동일 스택
+   ===================================================================== */
+
+/* 국문 본문·캡션 통일 */
+.kr,
+.copy-kr,
+p[lang="ko"],
+li[lang="ko"],
+span[lang="ko"],
+div[lang="ko"].body-copy {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: #0b0b0f !important;
+  font-weight: 400;
+}
+
+/* 영문 보조 문단 (국문 다음에 오는 서브텍스트) */
+.en,
+.copy-en,
+p[lang="en"].secondary,
+[lang="en"].secondary {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: #6a6a6a !important;
+  font-weight: 400;
+}
+
+/* 국문 + 영문 병기 컨테이너 (물리적 순서 KR → EN) */
+.bilingual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bilingual > .kr,
+.bilingual > [lang="ko"] { order: 0; }
+.bilingual > .en,
+.bilingual > [lang="en"] { order: 1; }
