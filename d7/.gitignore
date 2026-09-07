@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Node / build (미래 확장 대비)
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# 로그
+*.log
+npm-debug.log*
+
+# 캐시
+.cache/
+.parcel-cache/

@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WADE — Su-min Ko</title>
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/work.css">
+<link rel="stylesheet" href="../css/wade-new.css">
+<style>
+/* =================================================================
+   WADE — v6 header (threespin-parity: BACK pill + big title + hero image + meta)
+   NOTE: .work-head--compact modifier (added on the <header> below)
+   handles the compact title sizing globally in css/work.css now — no
+   local override needed here.
+   ================================================================= */
+
+/* Meta strip values — Pretendard, medium weight for KR readability */
+.meta__item .v {
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-family: var(--f-kr);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* --- 01 · BACK pill band ------------------------------------------ */
+/* Neutralize main's own top padding (set by css/work.css line 3 as
+   nav-h + clamp(40,6vw,80)). We manage the nav gap ourselves so the
+   BACK pill sits close under the fixed nav — matching the reference. */
+body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
+  padding-top: 0 !important;
+}
+.v2-hero.v2-hero--backonly {
+  height: auto !important;
+  min-height: 0 !important;
+  background: transparent;
+  color: inherit;
+  /* nav is fixed → we need room for it + a small breathing gap */
+  padding-top: calc(var(--nav-h, 64px) + 28px);
+  padding-bottom: 0;
+  overflow: visible;
+}
+.v2-hero.v2-hero--backonly + .work-head {
+  padding-top: clamp(36px, 5vw, 56px) !important;
+  margin-bottom: clamp(20px, 3vw, 40px);
+}
+@media (max-width: 720px) {
+  .v2-hero.v2-hero--backonly { padding-top: calc(var(--nav-h, 64px) + 20px); }
+  .v2-hero.v2-hero--backonly + .work-head { padding-top: 40px !important; }
+}
+.v2-hero--backonly .v2-back { padding-top: 0; }
+.v2-hero--backonly .v2-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--mute);
+  font-family: var(--f-text);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 1;
+  border: 0;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.v2-hero--backonly .v2-back a::before { display: none; content: none; }
+.v2-hero--backonly .v2-back a:hover {
+  background: var(--ink);
+  color: var(--bg);
+  gap: 8px;
+}
+.v2-hero--backonly .v2-back a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  .v2-hero--backonly .v2-back a {
+    padding: 9px 18px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+}
+
+/* --- 03 · Hero image sitting AFTER the work-head ------------------ */
+.v2-hero.v2-hero--after-head {
+  margin-top: clamp(8px, 1.25vw, 18px);
+  margin-bottom: 0;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9;
+  background: var(--bg);
+  color: inherit;
+}
+.v2-hero.v2-hero--after-head + .meta {
+  margin-top: 0;
+  border-top: 0;
+}
+.v2-hero.v2-hero--after-head .v2-hero__media.reveal,
+.v2-hero.v2-hero--after-head .v2-hero__media.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+@media (max-width: 560px) {
+  .v2-hero.v2-hero--after-head {
+    padding-top: 0;
+    margin-top: clamp(20px, 5vw, 32px);
+    aspect-ratio: auto;
+  }
+}
+
+/* =================================================================
+   WADE — v5 body layout (unchanged)
+   ================================================================= */
+
+:root {
+  --wd-cream: #f6f5f2;
+  --wd-grey: #d9d9d9;
+  --wd-grey-mid: #b8b8b8;
+  --wd-dark-grey: #6a6a6a;
+  --wd-ink: #0b0b0f;  /* aligned to site-wide --ink from css/main.css */
+}
+
+/* ---------- BACK pill  (matches threespin v2-back pill) ---------- */
+.wd-back {
+  padding: calc(var(--nav-h, 64px) + 22px) var(--pad-x) 0;
+}
+.wd-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--bg-alt, #efece7);
+  color: var(--mute, #7a7a80);
+  font-family: var(--f-text);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.wd-back a:hover {
+  background: var(--ink, #0b0b0f);
+  color: var(--bg, #f6f5f2);
+}
+@media (max-width: 560px) {
+  .wd-back a { padding: 8px 16px; font-size: 10px; letter-spacing: 0.12em; }
+}
+
+/* ---------- WORK HEAD -------------------------------------------- */
+.wd-head {
+  padding: clamp(36px, 4vw, 56px) var(--pad-x) clamp(24px, 3vw, 36px);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: end;
+  gap: clamp(24px, 4vw, 72px);
+}
+.wd-head__cat {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 18px;
+  display: inline-flex;
+  gap: 10px;
+}
+.wd-head__cat .num { color: var(--wd-ink); font-weight: 700; }
+.wd-head__title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(56px, 10.5vw, 156px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--wd-ink);
+  margin: 0;
+  text-transform: uppercase;
+}
+.wd-head__lede {
+  font-family: var(--f-kr);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 36ch;
+  margin: 0 0 14px;
+}
+.wd-head__lede b { color: var(--wd-ink); font-weight: 700; }
+@media (max-width: 900px) {
+  .wd-head { grid-template-columns: 1fr; align-items: start; gap: 20px; }
+  .wd-head__title { font-size: clamp(48px, 14vw, 84px); }
+}
+
+/* ---------- HERO IMAGE (padded) ---------------------------------- */
+.wd-hero {
+  padding: 0 var(--pad-x);
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.wd-hero__frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #e8e6e0;
+  overflow: hidden;
+}
+.wd-hero__frame::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #9a958b;
+}
+
+/* ---------- META STRIP ------------------------------------------- */
+.wd-meta {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: clamp(28px, 3.5vw, 48px) var(--pad-x);
+  border-bottom: 1px solid var(--hair);
+  margin-bottom: clamp(60px, 7vw, 100px);
+}
+.wd-meta__item { display: flex; flex-direction: column; gap: 10px; }
+.wd-meta__k {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--mute);
+}
+.wd-meta__v {
+  font-family: var(--f-kr); font-size: clamp(14px, 1.05vw, 16px);
+  font-weight: 700; color: var(--wd-ink); letter-spacing: -0.01em;
+}
+@media (max-width: 720px) {
+  .wd-meta { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+}
+
+/* ---------- WORDMARK + BILINGUAL INTRO --------------------------- */
+.wd-intro {
+  display: grid;
+  grid-template-columns: 0.9fr 1.7fr;
+  padding: 0 var(--pad-x) clamp(80px, 10vw, 160px);
+  gap: clamp(24px, 5vw, 96px);
+  align-items: start;
+}
+.wd-intro__mark-wrap { position: relative; padding-top: 12px; }
+.wd-intro__mark {
+  font-family: var(--f-heavy);
+  font-weight: 300;
+  font-size: clamp(72px, 9vw, 152px);
+  line-height: 0.9; letter-spacing: -0.04em;
+  color: var(--wd-ink); display: inline-block; position: relative;
+}
+.wd-intro__mark sup {
+  position: absolute; top: 0.15em; right: -0.55em;
+  font-size: 0.14em; font-weight: 400; color: var(--mute);
+  border: 1px solid var(--mute-2); border-radius: 50%;
+  width: 1.6em; height: 1.6em;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.wd-intro__tag {
+  display: block; margin-top: 8px;
+  font-family: var(--f-kr); font-size: clamp(13px, 1vw, 16px);
+  font-weight: 400; color: var(--ink-2); letter-spacing: -0.005em;
+}
+.wd-intro__body { display: flex; flex-direction: column; gap: 32px; padding-top: 18px; }
+.wd-intro__h {
+  /* Korean sentence heading — keep Pretendard, but align size/weight to
+     the .wd-textrow__label scale so both headings read as one system. */
+  font-family: var(--f-kr);
+  font-weight: 700;
+  font-size: clamp(18px, 1.6vw, 22px);
+  letter-spacing: -0.01em;
+  color: var(--wd-ink);
+  line-height: 1.4;
+  margin: 0 0 14px;
+}
+.wd-intro__kor {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink) !important;
+  font-weight: 400;
+  margin: 0;
+}
+.wd-intro__kor b { color: var(--ink); font-weight: 700; }
+.wd-intro__eng {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--mute) !important;
+  font-weight: 400;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .wd-intro { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* =================================================================
+   DARK PANEL  (PADDED — inner blocks respect side margin)
+   ================================================================= */
+.wd-dark {
+  background: #000;
+  color: var(--ink-on-dark);
+  padding: clamp(64px, 8vw, 112px) var(--pad-x);
+}
+.wd-dark + .wd-dark { padding-top: 0; }
+/* When a fade bridge follows the dark panel, drop the panel's own
+   bottom padding so the fade starts at true black and reads as a
+   continuation, not a stacked band. */
+.wd-dark:has(+ .wd-fade) { padding-bottom: clamp(28px, 4vw, 56px); }
+
+/* wide 16:9 grey image inside dark — padded (not full-bleed) */
+.wd-dark-img {
+  width: 100%; aspect-ratio: 16 / 9;
+  background: var(--wd-dark-grey);
+  position: relative; overflow: hidden;
+  margin-bottom: clamp(44px, 5vw, 72px);
+}
+.wd-dark-img::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+}
+/* When a real photo is present, suppress the placeholder label */
+.wd-dark-img:has(img)::after { content: none; }
+.wd-dark-img:has(img) { background: transparent; }
+
+.wd-dark-row {
+  display: grid;
+  /* 라벨은 항상 좁게(120px), 본문은 남은 공간 전체 — 큰 화면에서도 조기 개행 방지 */
+  grid-template-columns: 120px 1fr;
+  gap: clamp(16px, 2vw, 32px);
+  margin-bottom: clamp(60px, 7vw, 96px);
+  align-items: start;
+}
+/* Aligned with `.wd-textrow__label` (Contact `.avail__card h3` spec).
+   Only the color differs — dark-panel needs cream ink for contrast. */
+.wd-dark-row__mark {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--ink-on-dark);
+  text-transform: uppercase;
+}
+/* Dark panel body: ENG first (primary, brighter), KOR beneath (muted, smaller).
+   Font sizes tuned to match the reference — same scale as Contact-page copy,
+   just re-colored for a dark surface. */
+.wd-dark-row__body {
+  display: flex; flex-direction: column;
+  gap: 12px;
+  /* 그리드 셀 폭 전체 사용 — 큰 화면에서 텍스트 박스가 절반만 차지하는
+     오류(120ch 캡으로 900px 부근에서 조기 종료) 수정.
+     min-width: 0 은 그리드 자식이 콘텐츠 크기로 눌려 좁아지는 것을 방지. */
+  max-width: 100%;
+  min-width: 0;
+}
+/* Dark-panel bilingual pair — unified metrics; readable colors on black.
+   NOTE: 국문 color 은 통일 규칙(#0b0b0f)이 아닌 다크 배경용 밝은 톤 유지 */
+/* 다크 배경 할레이션 보정 + 사이트 웜톤 팔레트 준수:
+   - color: 사이트 표준 토큰(--body-on-dark / --mute-on-dark) 사용
+   - weight 400 → 350 로 낮춰 흰 글자가 굵어 보이는 착시 완화 */
+.wd-dark-row__kor {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink-on-dark) !important;    /* #f6f5f2 — WADE 라벨과 동일 톤 */
+  font-weight: 350;
+  margin: 0;
+}
+.wd-dark-row__eng {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--mute-on-dark) !important;   /* #8a8680 */
+  font-weight: 350;
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .wd-dark-row { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.wd-dots {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(32px, 4vw, 64px);
+  margin: 0 0 clamp(48px, 6vw, 80px);
+  padding: clamp(20px, 3vw, 48px) clamp(20px, 5vw, 88px) 0;
+}
+/* 원형 이미지 슬롯 — 이미지가 있으면 표시, 없으면 placeholder 라벨 노출 */
+.wd-dot {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--wd-dark-grey);
+  position: relative;
+  overflow: hidden;
+}
+.wd-dot img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* 피사체가 중앙 정사각형 안에 있어야 원형 크롭 후에도 잘리지 않음 */
+}
+.wd-dot:not(:has(img))::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+  text-align: center;
+  padding: 0 12px;
+}
+@media (max-width: 720px) {
+  .wd-dots { grid-template-columns: 1fr; gap: 24px; padding: 0; }
+  .wd-dot { max-width: 240px; margin: 0 auto; width: 100%; }
+}
+
+/* Cream sketch strip — sits inside the dark panel (padded to side margins) */
+.wd-sketchstrip {
+  width: 100%; aspect-ratio: 16 / 7;
+  background: var(--wd-cream);
+  position: relative; overflow: hidden;
+}
+.wd-sketchstrip::after {
+  content: attr(data-label);
+  position: absolute; top: 20px; left: 24px;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #b5b0a5;
+}
+.wd-sketchstrip__grid {
+  position: absolute; inset: 50px 40px 30px;
+  display: grid; grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: 1fr; gap: 6px;
+}
+.wd-sketchstrip__grid > div { background: #e6e2d8; border: 1px solid #dad5c8; }
+
+/* =================================================================
+   FULL-BLEED IMAGE UTILITY
+   Used for: overhang, duo (grip+display), tall close-up,
+             big grip macro, strap tall, related object, final lifestyle
+   ================================================================= */
+.wd-bleed { padding: 0; }
+.wd-bleed__frame {
+  position: relative; width: 100%; overflow: hidden;
+  background: var(--wd-grey);
+}
+.wd-bleed__frame::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #7a7a7a;
+}
+/* When a real photo is present, suppress the label pseudo-element */
+.wd-bleed__frame--photo::after { content: none; display: none; }
+.wd-bleed__frame--photo { background: transparent; }
+.wd-bleed__frame--photo img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Overhang wide 16:9 with soft bottom shadow overlap into next block */
+.wd-bleed--overhang .wd-bleed__frame { aspect-ratio: 16 / 9; }
+.wd-bleed--overhang .wd-bleed__frame::before {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 22%;
+  background: linear-gradient(to bottom, rgba(217,217,217,0) 0%, rgba(140,140,140,0.35) 100%);
+  pointer-events: none; z-index: 1;
+}
+/* When the overhang holds a real photo, don't wash it with a grey overlay */
+.wd-bleed--overhang .wd-bleed__frame--photo::before { display: none; }
+
+/* ================================================================
+   DARK → LIGHT FADE bridge
+   Sits between the dark statement panel and the full-bleed product
+   scene. Fades from pure black at the top into the cream page bg,
+   so the transition feels cinematic rather than a hard cut.
+   ================================================================ */
+.wd-fade {
+  height: clamp(120px, 16vw, 220px);
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.75) 22%,
+    rgba(0, 0, 0, 0.35) 55%,
+    rgba(0, 0, 0, 0) 100%
+  ), var(--bg, #f6f5f2);
+  margin-bottom: clamp(24px, 4vw, 56px);
+}
+
+/* ================================================================
+   Grip + Display duo — PADDED (side margins), small gap,
+   top-aligned (short square on left, taller portrait on right).
+   Matches reference Fig. 07a/07b layout.
+   ================================================================ */
+.wd-bleed-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Fig. 07a / 07b — 두 이미지 사이 여백 제거(딱 붙게) */
+  gap: 0;
+  padding: 0 var(--pad-x);
+  align-items: start;
+}
+.wd-bleed-duo > div {
+  position: relative;
+  background: var(--wd-grey);
+  overflow: hidden;
+}
+.wd-bleed-duo > div::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #7a7a7a;
+}
+/* Both cells share Fig.07b's 3/4 portrait ratio for a matched pair. */
+.wd-bleed-duo--sq-tall > div:nth-child(1),
+.wd-bleed-duo--sq-tall > div:nth-child(2) { aspect-ratio: 3 / 4; }
+@media (max-width: 720px) {
+  .wd-bleed-duo { grid-template-columns: 1fr; padding: 0 var(--pad-x); }
+  .wd-bleed-duo--sq-tall > div { aspect-ratio: 4 / 3; }
+}
+
+/* Full-bleed close-up variants */
+.wd-bleed--tall .wd-bleed__frame { aspect-ratio: 1000 / 1080; } /* Fig. 08 · 요청 비율 */
+.wd-bleed--macro .wd-bleed__frame { aspect-ratio: 16 / 9; background: #eef1f4; }
+.wd-bleed--strap .wd-bleed__frame { aspect-ratio: 1.5 / 1; background: #f2eee8; } /* Fig. 12 · 요청 비율 */
+.wd-bleed--related .wd-bleed__frame { aspect-ratio: 4 / 3; background: #d0cbc2; }
+.wd-bleed--final .wd-bleed__frame { aspect-ratio: 4 / 3; }
+
+/* =================================================================
+   PADDED IMAGE BLOCKS
+   ================================================================= */
+
+/* Text row (padded) —
+   라벨은 항상 좁게(120px), 본문은 남은 공간 전체 사용. */
+.wd-textrow {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: clamp(16px, 2vw, 32px);
+  padding: clamp(28px, 3.5vw, 44px) var(--pad-x) clamp(48px, 6vw, 88px);
+  align-items: start;
+}
+/* Aligned with Contact page (`.avail__card`) type system:
+   label = display heading (Archivo Black uppercase), eng = --f-text 13px,
+   kor = --f-kr 14px --ink lh 1.65 */
+.wd-textrow__label {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--wd-ink);
+  text-transform: uppercase;
+}
+/* Order: KOR first (primary, darker) then ENG (secondary, muted & smaller).
+   Using column-reverse keeps DOM order (eng before kor) unchanged. */
+.wd-textrow__body {
+  display: flex; flex-direction: column;
+  gap: 10px;
+  /* 그리드 셀 폭 전체 사용 — 큰 화면에서 텍스트 박스가 절반만 차지하는
+     현상 방지(과거 120ch 캡 → 900px 부근에서 조기 종료). */
+  max-width: 100%;
+  min-width: 0;
+}
+/* Unified KR body copy — site-wide rule */
+.wd-textrow__kor {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink) !important;
+  font-weight: 400;
+  margin: 0;
+}
+/* Unified EN secondary copy */
+.wd-textrow__eng {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--mute) !important;
+  font-weight: 400;
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .wd-textrow { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* Big square (padded, 1:1) */
+.wd-bigsquare { padding: 0 var(--pad-x); }
+.wd-bigsquare__frame {
+  position: relative; aspect-ratio: 1 / 1;
+  background: var(--wd-dark-grey); overflow: hidden;
+}
+.wd-bigsquare__frame::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+}
+
+/* ================================================================
+   FULL-BLEED SCENE with dark fade overlay on top.
+   Reference behavior: the product hero image spans the full viewport
+   width, and the top ~20-30% is veiled by a black-to-transparent
+   gradient so it reads as a continuation of the dark panel above
+   (no separate .wd-fade band underneath).
+   ================================================================ */
+.wd-scene-bleed { position: relative; padding: 0; }
+.wd-scene-bleed__frame {
+  position: relative; width: 100%; overflow: hidden;
+  /* Fig. 04 · Product Scene — 요청 비율 1000:1080 */
+  aspect-ratio: 1000 / 1080;
+  background: var(--wd-grey);
+}
+.wd-scene-bleed__frame img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+.wd-scene-bleed__frame::before {
+  content: "";
+  position: absolute; inset: 0 0 auto 0;
+  /* Fig. 04 상단 검정 그라데이션 — 세로 길이 1/2로 축소 (22% → 11%) */
+  height: 11%;
+  background: linear-gradient(
+    to bottom,
+    #000 0%,
+    rgba(0, 0, 0, 0.85) 20%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+/* Placeholder label (only shown when the frame has no <img>) */
+.wd-scene-bleed__frame:not(:has(img))::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #7a7a7a;
+  z-index: 1;
+}
+
+/* 3-column square grid — full-bleed (no side padding) */
+.wd-trirow {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(5px, 0.7vw, 10px);
+  padding: clamp(40px, 4.8vw, 64px) 0 0;
+}
+.wd-trirow__cell {
+  position: relative; aspect-ratio: 1 / 1;
+  background: var(--wd-dark-grey); overflow: hidden;
+}
+.wd-trirow__cell::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+}
+@media (max-width: 720px) {
+  .wd-trirow { grid-template-columns: 1fr; }
+  .wd-trirow__cell { aspect-ratio: 4 / 3; }
+}
+
+/* Two-hand scenario (padded, square) */
+.wd-scenario { padding: clamp(40px, 5vw, 72px) var(--pad-x) 0; }
+/* When a caption row sits directly above, its bottom padding already
+   supplies the vertical gap — kill the scenario's own top padding to
+   avoid a doubled space. */
+.wd-textrow + .wd-scenario { padding-top: 0; }
+.wd-scenario__frame {
+  position: relative; aspect-ratio: 1 / 1;
+  background: #ececec; overflow: hidden;
+}
+.wd-scenario__frame::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #7a7a7a;
+}
+
+/* Camera / USB duo (padded, 3:4) */
+.wd-detailduo {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 24px);
+  padding: clamp(24px, 3vw, 40px) var(--pad-x) 0;
+}
+.wd-detailduo > div {
+  position: relative; aspect-ratio: 3 / 4;
+  background: var(--wd-grey); overflow: hidden;
+}
+.wd-detailduo > div::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #7a7a7a;
+}
+@media (max-width: 720px) {
+  .wd-detailduo { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   Split caption row for Camera / USB — aligned to the image duo above.
+   Layout matches the reference: label + copy sit UNDER their own image
+   column (2× 1fr, same gap as .wd-detailduo). Left column left-aligned,
+   right column right-aligned. Label is smaller / not uppercase so it
+   reads as a caption, not a section marker.
+   ================================================================ */
+.wd-textrow--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 24px); /* match .wd-detailduo gap */
+  /* Unified vertical rhythm — same top/bottom padding as .wd-textrow
+     so every caption block on this page reads with identical spacing. */
+  padding: clamp(28px, 3.5vw, 44px) var(--pad-x) clamp(48px, 6vw, 88px);
+  align-items: start;
+}
+.wd-textrow--split .wd-textrow__col {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.wd-textrow--split .wd-textrow__col--right {
+  text-align: right;
+  align-items: flex-end;
+}
+/* Unified caption label — matches .wd-textrow__label / .wd-dark-row__mark
+   so every caption heading on this page reads as one system:
+   Archivo Black · 900 · uppercase · same clamp size · letter-spacing 0. */
+.wd-textrow--split .wd-textrow__caplabel {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--wd-ink);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.wd-textrow--split .wd-textrow__eng {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--mute) !important;
+  font-weight: 400;
+  margin: 0;
+  max-width: 42ch;
+}
+.wd-textrow--split .wd-textrow__col--right .wd-textrow__eng { margin-left: auto; }
+.wd-textrow--split .wd-textrow__kor {
+  font-family: 'Pretendard', 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink) !important;
+  font-weight: 400;
+  margin: 0;
+  max-width: 42ch;
+}
+.wd-textrow--split .wd-textrow__col--right .wd-textrow__kor { margin-left: auto; }
+@media (max-width: 720px) {
+  .wd-textrow--split { grid-template-columns: 1fr; gap: 24px; }
+  .wd-textrow--split .wd-textrow__col--right { text-align: left; align-items: flex-start; }
+  .wd-textrow--split .wd-textrow__col--right .wd-textrow__eng,
+  .wd-textrow--split .wd-textrow__col--right .wd-textrow__kor { margin-left: 0; }
+}
+
+/* ================================================================
+   Dark prototype grid — 2 rows, matches reference layout:
+     Unified 6-image gallery — 3 columns × 2 rows, all 4:3
+     foam mockups (top) → resin prints (bottom), same lighting rhythm
+   ================================================================ */
+.wd-protogrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+.wd-protogrid > div {
+  background: #2f2f2f;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.wd-protogrid > div::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+}
+.wd-protogrid > div:has(img)::after { content: none; }
+@media (max-width: 720px) {
+  .wd-protogrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ================================================================
+   BW people mosaic — 2×2, asymmetric widths:
+     row 1 → [1/3 square]  [2/3 wide]
+     row 2 → [2/3 wide]    [1/3 square]
+   ================================================================ */
+.wd-mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: clamp(36px, 4vw, 56px);
+}
+.wd-mosaic__row {
+  display: grid;
+  gap: 6px;
+}
+.wd-mosaic__row--a { grid-template-columns: 1fr 2fr; }
+.wd-mosaic__row--b { grid-template-columns: 2fr 1fr; }
+.wd-mosaic > div > div {
+  background: #4a4a4a;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  position: relative;
+}
+.wd-mosaic > div > div::after {
+  content: attr(data-label);
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #c0c0c0;
+}
+.wd-mosaic > div > div:has(img)::after { content: none; }
+.wd-mosaic__row--a > div:nth-child(2),
+.wd-mosaic__row--b > div:nth-child(1) { aspect-ratio: 2 / 1; }
+@media (max-width: 720px) {
+  .wd-mosaic__row--a,
+  .wd-mosaic__row--b { grid-template-columns: 1fr; }
+  .wd-mosaic > div > div { aspect-ratio: 4 / 3 !important; }
+}
+
+/* Thin black band before pager */
+.wd-band { height: clamp(56px, 7vw, 96px); background: #000; }
+
+/* Pager sits directly under the black band — kill the default top margin/border
+   from work.css so there's no awkward gap between the band and the pager. */
+.wd-band + .pager {
+  margin-top: 0;
+  border-top: 0;
+}
+
+/* Big pager */
+.wd-pager {
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: clamp(52px, 7vw, 96px) var(--pad-x) clamp(56px, 8vw, 112px);
+  gap: 24px; align-items: end;
+}
+.wd-pager a {
+  text-decoration: none; color: var(--wd-ink);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform .2s ease;
+}
+.wd-pager a:hover { transform: translateY(-2px); }
+.wd-pager .r { text-align: right; align-items: flex-end; }
+.wd-pager__lbl {
+  font-family: var(--f-mono);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--mute);
+}
+.wd-pager__title {
+  font-family: var(--f-display);
+  font-weight: 900; font-size: clamp(32px, 4.2vw, 68px);
+  line-height: 1; letter-spacing: -0.02em; text-transform: uppercase;
+}
+</style>
+</head>
+<body data-page="work-detail">
+
+<nav class="nav" aria-label="Primary">
+  <a class="nav__brand" href="../index.html">
+    <span class="dot" aria-hidden="true"></span>
+    <span>Su-min Ko</span>
+  </a>
+  <ul class="nav__menu">
+    <li><a href="../work.html" aria-current="page">Work</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main data-screen-label="Wade Detail Page">
+
+<!-- ================================================================ -->
+<!-- 01 · BACK LINK (threespin pattern) — pill in its own thin band     -->
+<!-- ================================================================ -->
+<section class="v2-hero v2-hero--plain v2-hero--backonly">
+  <div class="v2-back"><a href="../work.html#product">← Back</a></div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 02 · WORK HEAD — year · category · title · lede (editorial)       -->
+<!-- ================================================================ -->
+<header class="work-head work-head--compact" data-screen-label="Wade · Head">
+  <div class="reveal">
+    <div class="work-head__cat"><span class="num">2023</span>service robot</div>
+    <h1 class="work-head__title">Wade.</h1>
+  </div>
+  <p class="work-head__lede reveal delay-1" style="font-size: 15px; color: rgb(11, 11, 15); letter-spacing: 0px">
+    거리 위에서 <b>물로 그림을 그리는</b> 자율주행 서비스 로봇.
+    이 자리에는 프로젝트 한 줄 설명이 들어갑니다 — <b>더미 카피</b> 자리.
+  </p>
+</header>
+
+<!-- ================================================================ -->
+<!-- 03 · CINEMATIC HERO — full-bleed main image (threespin pattern)   -->
+<!-- ================================================================ -->
+<section class="v2-hero v2-hero--plain v2-hero--after-head">
+  <div class="v2-hero__media" aria-label="Wade · product hero">
+    <img src="../assets/works/wade_cover.jpg" alt="Wade · product hero">
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 04 · META STRIP — 5-column key facts                              -->
+<!-- ================================================================ -->
+<section class="meta">
+  <div class="meta__item"><span class="k">Year</span><span class="v">2023 — 2024</span></div>
+  <div class="meta__item"><span class="k">Client</span><span class="v">더미 클라이언트</span></div>
+  <div class="meta__item"><span class="k">Role</span><span class="v">Product Design Lead</span></div>
+  <div class="meta__item"><span class="k">Category</span><span class="v">Service Robot</span></div>
+  <div class="meta__item"><span class="k">Award</span><span class="v">Dummy Award 2024</span></div>
+</section>
+
+<!-- 05 · WORDMARK + BILINGUAL INTRO -->
+<section class="wd-intro">
+  <div class="wd-intro__mark-wrap reveal">
+    <div class="wd-intro__mark">wade<sup>c</sup></div>
+    <span class="wd-intro__tag">a water-drawing service robot</span>
+  </div>
+  <div class="wd-intro__body reveal delay-1">
+    <div>
+      <h2 class="wd-intro__h">거리와 사람 사이, 부드럽게 스며드는 로봇</h2>
+      <p class="wd-intro__kor">
+        여기에는 프로젝트의 문제 정의와 접근 방식이 한 문단으로 들어갑니다.
+        <b>더미 텍스트</b>이며 실제 카피가 확정되면 이 블록에 치환됩니다.
+        본문 강조 키워드는 <b>굵게</b> 표기해 리듬을 만듭니다. 본 레이아웃은
+        원고 도착 전 톤·비율·정렬을 검증하기 위한 프리뷰입니다.
+      </p>
+    </div>
+    <p class="wd-intro__eng">
+      Placeholder English body. This paragraph carries the English translation of the
+      Korean summary above in a lighter grey tone, sitting as a secondary read.
+      The two-language treatment mirrors the reference layout — Korean as primary
+      voice, English underneath as editorial subtext.
+    </p>
+  </div>
+</section>
+
+<!-- 06 · DARK PANEL #1 -->
+<section class="wd-dark" data-screen-label="Wade · Statement">
+  <div class="wd-dark-img reveal" data-label="Fig. 01 · Overview Scene"></div>
+
+  <div class="wd-dark-row reveal">
+    <div class="wd-dark-row__mark">WADE</div>
+    <div class="wd-dark-row__body">
+      <p style="color: rgb(246, 245, 242)" class="wd-dark-row__kor">
+        더미 국문 본문. 공공 공간에 도입된 로봇들은 정갈하고 중요한 공감대를
+        형성하기 어려웠으며, 이용자에게 부담감을 주기도 했습니다. 효율성만을
+        우선시한 설계는 기능 중심의 투박한 결과물을 낳았고, 그 결과 공공장소에
+        어울리지 않는 분위기가 된 것으로 파악됩니다. 로봇이 지나는 동선마다
+        발생하는 소음, 사용자의 시야를 가리는 부피, 그리고 사람과의 거리를
+        고려하지 않은 접근 방식은 일상적인 공간 경험을 오히려 방해하는
+        요소로 작동했습니다. 우리는 이 지점에서 로봇의 존재감이 어떻게
+        완화될 수 있는지, 그리고 공공 공간의 리듬을 해치지 않는 형태와
+        스케일이 무엇인지에 대한 질문에서 프로젝트를 시작했습니다.
+      </p>
+      <p class="wd-dark-row__eng">
+        The robotic cleaners previously installed in public spaces were ill-suited to
+        the environment, and often made users feel uncomfortable — designs that
+        prioritized efficiency ended up in clunky, function-first products. The noise
+        generated along their routes, the volume that obstructed users' sightlines,
+        and the approach that failed to account for interpersonal distance all
+        interfered with everyday spatial experience. This project began from a
+        question: how can a robot's presence be softened, and what form and scale
+        would refuse to disrupt the rhythm of a public space.
+      </p>
+    </div>
+  </div>
+
+  <!-- 원형 이미지 슬롯 3개 — <img>를 안에 넣으면 자동으로 원형 크롭됨.
+       비어 있을 때는 data-label 이 placeholder 로 표시됨. -->
+  <div class="wd-dots reveal delay-1">
+    <div class="wd-dot" data-label="Fig. 02"></div>
+    <div class="wd-dot" data-label="Fig. 03"></div>
+    <div class="wd-dot" data-label="Fig. 04"></div>
+  </div>
+
+  <div class="wd-dark-row reveal">
+    <div class="wd-dark-row__mark">WADE</div>
+    <div class="wd-dark-row__body">
+      <p style="color: rgb(246, 245, 242)" class="wd-dark-row__kor">
+        기존 공중화장실에 도입된 로봇청소기들은 청결함과 프라이버시가 중요한
+        공공화장실 환경과는 어울리지 않으며, 이용자에게 위압감을 주기도 했습니다.
+        효율성을 우선시한 설계는 기능 중심의 투박한 결과물을 낳았고, 그 결과
+        공공장소 특유의 쾌적하고 편안한 분위기와는 거리가 먼 존재가 되었습니다.
+        특히 좁은 통로에서 마주치는 순간의 어색함, 예상치 못한 방향 전환의
+        불안감, 그리고 방문자와의 물리적 근접성에 대한 배려가 부족한 동선은
+        휴식의 공간이어야 할 화장실을 오히려 긴장의 공간으로 바꿔놓기도
+        했습니다. 이러한 관찰을 바탕으로 우리는 청소 로봇이 갖춰야 할 형태
+        언어를 사용자 중심에서 다시 정의하고자 했습니다.
+      </p>
+      <p class="wd-dark-row__eng">
+        The robotic cleaners previously installed in public restrooms were ill-suited
+        to the public restroom environment, where cleanliness and privacy are
+        paramount, and often made users feel uncomfortable. Designs that prioritized
+        efficiency resulted in clunky, function-first products, which ultimately
+        failed to contribute to the pleasant and comfortable atmosphere typical of
+        public spaces. The awkwardness of an encounter in a narrow corridor, the
+        anxiety of an unexpected turn, and the lack of consideration for physical
+        proximity to visitors all turned what should be a restful space into a
+        tense one. From these observations, we set out to redefine the formal
+        language of a cleaning robot from the user's perspective.
+      </p>
+    </div>
+  </div>
+
+  <!-- Wide grey image box sitting INSIDE the dark panel (per reference) -->
+  <div class="wd-dark-img reveal" data-label="Fig. 05 · Context Scene" style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"></div>
+
+</section>
+
+<!-- 06.5 · FULL-BLEED PRODUCT SCENE with dark-gradient veil on top.
+     The gradient continues the dark panel's ink down into the image
+     so the transition reads as one piece (matches reference). -->
+<section data-om-id="731addee:om-section-6" data-om-id="b0b8def1:om-section-6" class="wd-scene-bleed">
+  <div data-om-id="731addee:om-div-26" data-om-id="b0b8def1:om-div-26" class="wd-scene-bleed__frame" data-label="Fig. 06 · Product Scene"></div>
+</section>
+
+<section data-om-id="731addee:om-section-7" data-om-id="b0b8def1:om-section-7" class="wd-textrow">
+  <div data-om-id="731addee:om-div-27" data-om-text-id="txt:work/wade.html:33058:33076" data-om-id="b0b8def1:om-div-27" data-om-text-id="txt:work/wade.html:32844:32862" class="wd-textrow__label">Wade's Hand Device</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. WADE는 직장인들에게 자연스러운 몰입해제를 도와주는 핸드
+      디바이스입니다. 러닝이나 산책을 하는 동안 핸드 디바이스를 사용해 신체적
+      게이미피케이션 퀘스트를 수행할 수 있습니다. 손목이 아닌 손바닥에 안기는
+      형태를 택해, 시선을 화면에서 떼고 몸의 리듬에 다시 주의를 두게 만드는
+      것이 이 제품의 핵심 목적입니다. 알림은 진동과 짧은 라이트 패턴으로만
+      전달되며, 하루의 일정 시간이 지나면 자동으로 다음 세션을 제안합니다.
+    </p>
+    <p class="wd-textrow__eng">
+      WADE proposes a hand device as a solution that helps users naturally disconnect
+      from work. While running or walking, users can engage in physically gamified
+      quests through the device. Shaped to nest in the palm rather than wrap around
+      the wrist, it lifts the user's gaze off the screen and returns attention to
+      the body's own rhythm. Notifications arrive only as short vibrations and
+      light patterns, and after a set span of the day the device quietly suggests
+      the next session.
+    </p>
+  </div>
+</section>
+
+<!-- 08 · BIG SQUARE (padded, near-1:1) -->
+<section class="wd-bigsquare">
+  <div class="wd-bigsquare__frame reveal" data-label="Fig. 07 · Product Portrait"></div>
+</section>
+
+<!-- 09 · 3-COLUMN GRID (padded) -->
+<section class="wd-trirow">
+  <div class="wd-trirow__cell reveal" data-label="Fig. 08"></div>
+  <div class="wd-trirow__cell reveal delay-1" data-label="Fig. 09"></div>
+  <div class="wd-trirow__cell reveal delay-2" data-label="Fig. 10"></div>
+</section>
+
+<section class="wd-textrow">
+  <div class="wd-textrow__label">Wade's Hand Device</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. WADE는 직장인들에게 자연스러운 몰입해제를 도와주는 핸드
+      디바이스입니다. 러닝이나 산책을 하는 동안 핸드 디바이스를 사용해 신체적
+      게이미피케이션 퀘스트를 수행할 수 있습니다. 걸음 수, 심박, 이동 반경을
+      가벼운 목표로 환산해 짧은 구간마다 성취감을 만들어 주고, 사용자는 그
+      과정에서 스마트폰 알림에서 조금씩 멀어지게 됩니다. 하나의 세션이
+      끝나면 오늘의 몸 상태와 감정 상태를 한 화면으로 요약해 보여줍니다.
+    </p>
+    <p class="wd-textrow__eng">
+      WADE proposes a hand device as a solution that helps users naturally disconnect
+      from work. While running or walking, users can engage in physically gamified
+      quests through the device. Steps, heart rate, and range of motion are turned
+      into light goals that build a small sense of accomplishment over short
+      intervals, and the user gradually drifts away from phone notifications.
+      When a session ends, the device sums up the day's physical and emotional
+      state on a single screen.
+    </p>
+  </div>
+</section>
+
+<!-- 10 · ASYMMETRIC DUO (grip + display) — FULL-BLEED -->
+<section class="wd-bleed-duo wd-bleed-duo--sq-tall">
+  <div class="reveal" data-label="Fig. 11 · Grip in Hand"></div>
+  <div class="reveal delay-1" data-label="Fig. 12 · Display"></div>
+</section>
+
+<section class="wd-textrow">
+  <div class="wd-textrow__label">Wade's Hand Device</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. 한 손에 잡히는 스케일에서 출발한 그립 스터디와 상단
+      디스플레이의 위치를 짧게 설명합니다. 엄지가 자연스럽게 걸리는 각도를
+      기준으로 상단 곡률을 다듬었고, 검지와 중지가 만나는 지점에는 미세한
+      리세스를 두어 오랜 시간 쥐어도 손가락 마디에 자국이 남지 않도록
+      배려했습니다. 디스플레이는 시선을 정면으로 들어올릴 필요가 없도록
+      본체보다 약 12도 안쪽으로 기울어져 있으며, 이 각도는 걷는 자세와
+      뛰는 자세 모두에서 정보 확인 시간을 최소한으로 줄여줍니다.
+    </p>
+    <p class="wd-textrow__eng">
+      WADE proposes a hand device as a solution that helps users naturally disconnect
+      from work. While running or walking, users can engage in physically gamified
+      quests through the device. The upper curvature was tuned along the angle the
+      thumb naturally rests at, and a subtle recess where the index and middle
+      finger meet keeps the joints from marking after long sessions. The display
+      tilts roughly 12° inward from the body so the user never has to lift their
+      gaze — a geometry that shortens glance time in both walking and running
+      postures.
+    </p>
+  </div>
+</section>
+
+<!-- 11 · TALL CLOSE-UP — FULL-BLEED -->
+<section class="wd-bleed wd-bleed--tall">
+  <div class="wd-bleed__frame reveal" data-label="Fig. 13 · Product Close-up"></div>
+</section>
+
+<!-- 11b · CAPTION under Fig. 08 — Material & Finish (distinct topic) -->
+<section class="wd-textrow">
+  <div class="wd-textrow__label">Material &amp; Finish</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. 매트한 폴리카보네이트 바디에 미세한 소프트터치 코팅을
+      더해 손에 오래 쥐어도 미끄러지지 않도록 마감했습니다. 반사가 적은
+      표면은 야외 조도 아래에서도 로봇의 실루엣이 도드라지지 않게 합니다.
+      색상은 콘크리트, 아스팔트, 잔디와 같은 도시 환경의 톤에 자연스럽게
+      녹아들 수 있도록 저채도 계열로 구성했으며, 손의 온도로 표면 색이
+      아주 옅게 변하는 감온 필름을 부분 적용해 사용자가 자신의 상태를
+      촉각과 시각으로 동시에 느낄 수 있도록 설계했습니다.
+    </p>
+    <p class="wd-textrow__eng">
+      A matte polycarbonate shell with a fine soft-touch coating keeps the device
+      steady in hand over long sessions, while the low-reflection surface prevents
+      the silhouette from standing out under bright outdoor light. The palette is
+      built from low-chroma tones that settle into the city's own — concrete,
+      asphalt, and grass — and a thermochromic film is applied in patches so the
+      surface shifts subtly with the warmth of the hand, letting the user read
+      their own state through both touch and sight.
+    </p>
+  </div>
+</section>
+
+<!-- 12 · TWO-HAND SCENARIO (padded, square) -->
+<section class="wd-scenario">
+  <div class="wd-scenario__frame reveal" data-label="Fig. 14 · Two-hand Scenario"></div>
+</section>
+
+<!-- 13 · LARGE GRIP MACRO — FULL-BLEED -->
+<!-- Fig.09 ↔ Fig.10 사이 여백 2배 (clamp 24/3vw/40 → 48/6vw/80) -->
+<section class="wd-bleed wd-bleed--macro" style="margin-top: clamp(48px, 6vw, 80px);">
+  <div class="wd-bleed__frame reveal" data-label="Fig. 15 · Grip Macro"></div>
+</section>
+
+<!-- 13b · CAPTION under Fig. 10 — Grip & Ergonomics -->
+<section class="wd-textrow">
+  <div class="wd-textrow__label">Grip &amp; Ergonomics</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. 손바닥의 아치를 따라 완만하게 휘어지는 상단 곡면은
+      엄지의 자연스러운 접힘 각을 그대로 받아냅니다. 검지와 중지가 놓이는
+      측면에는 얕은 리세스를 두어 별도의 힘을 주지 않아도 디바이스가
+      제자리에 안착하도록 설계했으며, 러닝 중 반복되는 미세 진동에도
+      쥐는 힘을 다시 줄 필요가 없도록 마찰 계수가 다른 두 소재를
+      영역별로 분리 배치했습니다. 오랜 사용에도 손의 특정 부위에
+      압점이 생기지 않는 것을 목표로 그립 각도와 무게 중심을
+      수십 차례 재조정했습니다.
+    </p>
+    <p class="wd-textrow__eng">
+      The upper curvature bends softly along the palm's arch and follows the
+      thumb's natural fold without forcing it. Shallow recesses on the sides
+      seat the index and middle fingers without conscious effort, and two
+      materials with different friction coefficients are laid in zones so
+      the hand never has to re-grip through the small, repeated vibrations
+      of a run. Grip angle and center of mass were re-tuned dozens of times
+      with a single goal: no pressure point on any part of the hand,
+      even after prolonged sessions.
+    </p>
+  </div>
+</section>
+
+<!-- 14 · CAMERA / USB DUO (padded, even 4:5) -->
+<section class="wd-detailduo">
+  <div class="reveal" data-label="Fig. 16 · Camera"></div>
+  <div class="reveal delay-1" data-label="Fig. 17 · USB-C"></div>
+</section>
+
+<section class="wd-textrow wd-textrow--split">
+  <div class="wd-textrow__col wd-textrow__col--left">
+    <h3 class="wd-textrow__caplabel">Camera</h3>
+    <p class="wd-textrow__kor">러닝이나 산책 중의 경험을 디바이스에 내장된 카메라로 기록할 수 있습니다.</p>
+    <p class="wd-textrow__eng">
+      The built-in camera allows users to document moments from their runs or walks.
+    </p>
+  </div>
+  <div class="wd-textrow__col wd-textrow__col--right">
+    <h3 class="wd-textrow__caplabel">USB Type-C</h3>
+    <p class="wd-textrow__kor">USB Type-C 단자로 디바이스를 간단하고 편리하게 충전합니다.</p>
+    <p class="wd-textrow__eng">
+      A USB Type-C port enables simple and convenient charging.
+    </p>
+  </div>
+</section>
+
+<!-- 15 · STRAP TALL — FULL-BLEED -->
+<section class="wd-bleed wd-bleed--strap">
+  <div class="wd-bleed__frame reveal" data-label="Fig. 18 · Strap Detail"></div>
+</section>
+
+<section class="wd-textrow">
+  <div class="wd-textrow__label">Wade's Hand Device</div>
+  <div class="wd-textrow__body">
+    <p class="wd-textrow__kor">
+      더미 국문 캡션. 스트랩 디테일이 하드웨어와 악세서리의 경계에서 어떻게
+      전체 시스템의 컬러 앵커가 되는지 설명합니다. 나일론 웨빙과 실리콘
+      바인딩을 결합해 인체 온도에서도 형태가 처지지 않도록 했으며, 락 버클은
+      한 손 조작만으로 길이를 조정할 수 있도록 원터치 구조로 설계했습니다.
+      스트랩은 본체와 동일한 저채도 팔레트를 공유하되, 안쪽 면에만 브랜드
+      시그니처 컬러를 얇게 노출시켜 착용 순간에만 사용자에게 존재감을
+      드러내는 절제된 표현 방식을 선택했습니다.
+    </p>
+    <p class="wd-textrow__eng">
+      WADE proposes a hand device as a solution that helps users naturally disconnect
+      from work. While running or walking, users can engage in physically gamified
+      quests through the device. Nylon webbing bonded to a silicone binding keeps
+      the strap from sagging at body temperature, and the buckle locks and adjusts
+      with a single hand through a one-touch mechanism. The strap shares the body's
+      low-chroma palette but exposes a thin line of the brand signature color on
+      the inner face, so the accent only appears in the moment of wearing — a
+      restrained gesture reserved for the user alone.
+    </p>
+  </div>
+</section>
+
+<!-- 16 · RELATED OBJECT — FULL-BLEED -->
+<section class="wd-bleed wd-bleed--related">
+  <div class="wd-bleed__frame reveal" data-label="Fig. 19 · Related Object"></div>
+</section>
+
+<!-- 17 · DARK PANEL #2 -->
+<!-- Fig.13 바로 아래 붙도록 흰색 상단 여백 제거 -->
+<section class="wd-dark" data-screen-label="Wade · Process">
+  <!-- Prototype gallery: unified 6-image grid (3 × 2, all 4:3) —
+       foam mockups → resin prints under the same lighting -->
+  <div class="wd-protogrid reveal" aria-label="Prototype Process">
+    <div data-label="Fig. 20"></div><div data-label="Fig. 21"></div><div data-label="Fig. 22"></div>
+    <div data-label="Fig. 23"></div><div data-label="Fig. 24"></div><div data-label="Fig. 25"></div>
+  </div>
+
+  <div class="wd-dark-row reveal">
+    <div class="wd-dark-row__mark">WADE</div>
+    <div class="wd-dark-row__body">
+      <p class="wd-dark-row__kor">
+        더미 국문 본문. 폼 목업부터 최종에 가까운 레진 프린트까지, 동일한 조명 하에서
+        형태 연속성을 비교한 프로세스 컷들을 보여줍니다. 초기 폼 목업은 손 안에
+        들어오는 부피와 무게 중심을 빠르게 확인하기 위한 용도로 제작되었으며,
+        이후 CNC로 다듬은 하드 폼과 3D 프린트 파트를 병행하며 그립 각도와
+        디스플레이 위치를 반복적으로 조정했습니다. 마지막 단계의 레진 프린트는
+        표면 마감과 컬러 코팅의 후보를 실제 사용 조건에서 검증하기 위한 것이며,
+        여기서 파생된 데이터가 최종 양산 사양의 기준이 되었습니다.
+      </p>
+      <p class="wd-dark-row__eng">
+        WADE proposes a hand device as a solution that helps office workers naturally
+        disconnect from work. While running or walking, users can engage in physically
+        gamified quests through the device. Early foam mockups let us verify volume
+        and center of mass in the hand quickly, and later stages combined CNC-milled
+        hard foam with 3D-printed parts to iterate on grip angle and display
+        position. The final resin prints tested finish and color coating candidates
+        under real-use conditions, and the data pulled from that phase became the
+        reference for the production spec.
+      </p>
+    </div>
+  </div>
+
+  <!-- BW people mosaic: 2×2 asymmetric (small+wide / wide+small) -->
+  <div class="wd-mosaic reveal delay-1" aria-label="User Scenarios">
+    <div class="wd-mosaic__row wd-mosaic__row--a">
+      <div data-label="Fig. 26"></div><div data-label="Fig. 27"></div>
+    </div>
+    <div class="wd-mosaic__row wd-mosaic__row--b">
+      <div data-label="Fig. 28"></div><div data-label="Fig. 29"></div>
+    </div>
+  </div>
+
+  <div class="wd-dark-row reveal">
+    <div class="wd-dark-row__mark">WADE</div>
+    <div class="wd-dark-row__body">
+      <p class="wd-dark-row__kor">
+        더미 국문 본문. 서로 다른 체형·그립 습관을 가진 사용자 세 명을 통해
+        제품이 몸에 어떻게 적응하는지 검증한 시나리오 촬영입니다. 손이 작은
+        사용자는 스트랩 최소 길이에서도 안정적인 파지가 가능한지, 손이 큰
+        사용자는 반대로 최대 길이에서 손목 회전이 자유로운지를 각각 확인했고,
+        평소 왼손잡이 사용자를 별도로 초대해 좌우 대칭 조작의 편의성도
+        점검했습니다. 시나리오는 정적인 착용 상태뿐 아니라 계단, 지하철,
+        도심 산책로와 같이 실제 사용이 예상되는 상황에서 촬영되었으며,
+        각 장면은 최종 형태의 방향을 결정하는 근거가 되었습니다.
+      </p>
+      <p class="wd-dark-row__eng">
+        WADE proposes a hand device as a solution that helps office workers naturally
+        disconnect from work. While running or walking, users can engage in physically
+        gamified quests through the device. We invited three users with different
+        hand sizes and grip habits: small-handed users confirmed a stable hold at
+        the strap's minimum length, larger-handed users checked that the maximum
+        length still allowed free wrist rotation, and a left-handed user was
+        brought in separately to verify symmetric operation. Scenarios were shot
+        not only in static wearing states but on stairs, subway rides, and urban
+        walking routes — settings that became the ground for the final form.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 18 · FINAL LIFESTYLE — FULL-BLEED -->
+<section class="wd-bleed wd-bleed--final">
+  <div class="wd-bleed__frame reveal" data-label="Fig. 30 · Final Lifestyle"></div>
+</section>
+
+<!-- Thin black band -->
+<div class="wd-band" style="height: 100px;"></div>
+
+<!-- 19 · PAGER (threespin 상세페이지와 동일 스타일) -->
+<nav class="pager" aria-label="Project navigation">
+  <a href="../work.html" class="left">
+    <span class="pager__label">All Works</span>
+    <span class="pager__title">← Index</span>
+  </a>
+  <a href="#" class="right">
+    <span class="pager__label">Next Project</span>
+    <span class="pager__title">Threespin →</span>
+  </a>
+</nav>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <h4>Contact</h4>
+      <a href="/cdn-cgi/l/email-protection#0d65686161624d7e78606463236e62"><span class="__cf_email__" data-cfemail="e68e838a8a89a695938b8f88c88589">[email&#160;protected]</span></a>
+      <span>+82 10 5660 5032</span>
+    </div>
+    <div>
+      <h4>Index</h4>
+      <a href="../work.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>CV</h4>
+      <a href="../about.html#resume">View resume</a>
+    </div>
+  </div>
+  <div class="footer__meta">
+    <span>© 2026 Su-min Ko. All rights reserved.</span>
+    <span>Portfolio v. 2026.09 — Industrial Design</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/main.js"></script>
+<script>
+(function () {
+  var ticking = false;
+  var stopAt = 0;
+  function sweep() {
+    ticking = false;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var remaining = 0;
+    document.querySelectorAll('.reveal, .reveal-lines').forEach(function (el) {
+      if (el.classList.contains('is-in')) return;
+      remaining++;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) {
+        el.classList.add('is-in');
+        remaining--;
+      }
+    });
+    if (remaining === 0 || performance.now() > stopAt) {
+      window.removeEventListener('scroll', schedule, { passive: true });
+      window.removeEventListener('resize', schedule);
+    }
+  }
+  function schedule() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(sweep);
+  }
+  function start() {
+    stopAt = performance.now() + 30000;
+    setTimeout(function () {
+      schedule();
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule);
+    }, 1200);
+  }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start);
+})();
+</script>
+</body>
+</html>
