@@ -19,3 +19,6 @@ npm-debug.log*
 # 캐시
 .cache/
 .parcel-cache/
+
+# Genspark Designer sidecar (자동 생성, 배포에 불필요)
+*.srcmap.json
