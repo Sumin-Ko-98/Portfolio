@@ -890,6 +890,68 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   font-weight: 900; font-size: clamp(32px, 4.2vw, 68px);
   line-height: 1; letter-spacing: -0.02em; text-transform: uppercase;
 }
+
+/* =================================================================
+   MOBILE IMAGE OPTIMISATION  (≤ 720px)
+   PC 규칙은 그대로. 모바일에서만 이미지가 화면 폭을 최대한 쓰도록
+   좌우 여백을 줄이고, 작게 쪼개지는 그리드를 풀어 크게 보여준다.
+   ================================================================= */
+@media (max-width: 720px) {
+  /* 모바일에서 페이지 좌우 여백을 살짝 좁혀 이미지 폭 확보 */
+  .wd-dark { padding-left: 16px; padding-right: 16px; }
+  .wd-dark:has(+ .wd-fade) { padding-bottom: 24px; }
+
+  /* 다크 패널 내부 와이드 이미지 — 좌우 여백을 뚫어 풀블리드로 */
+  .wd-dark-img {
+    width: calc(100% + 32px); margin-left: -16px; margin-right: -16px;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 36px;
+  }
+
+  /* 원형 3개 — 240px 제한 해제, 2열 그리드로 크게 */
+  .wd-dots { grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0; margin-bottom: 40px; }
+  .wd-dot { max-width: none; width: 100%; margin: 0; }
+  .wd-dot:nth-child(3) { grid-column: 1 / -1; max-width: calc(50% - 8px); margin: 0 auto; }
+
+  /* 패딩형 이미지 블록 → 풀블리드 */
+  .wd-bigsquare,
+  .wd-scenario,
+  .wd-detailduo,
+  .wd-bleed-duo { padding-left: 0; padding-right: 0; }
+  .wd-bigsquare__frame,
+  .wd-scenario__frame { aspect-ratio: 4 / 5; }
+
+  /* 2장 나란히 → 세로로 1장씩, 3:4 세로 비율 유지 */
+  .wd-bleed-duo { gap: 6px; }
+  .wd-bleed-duo--sq-tall > div { aspect-ratio: 3 / 4; }
+  .wd-detailduo { grid-template-columns: 1fr; gap: 6px; }
+  .wd-detailduo > div { aspect-ratio: 4 / 5; }
+
+  /* 3열 정사각 → 1열 4:3 (기존) 유지하되 간격만 조정 */
+  .wd-trirow { gap: 6px; padding-top: 32px; }
+
+  /* 풀블리드 이미지들 — 너무 긴 세로 비율은 모바일에서 4:5로 */
+  .wd-bleed--tall .wd-bleed__frame,
+  .wd-scene-bleed__frame { aspect-ratio: 4 / 5; }
+  .wd-bleed--macro .wd-bleed__frame { aspect-ratio: 4 / 3; }
+  .wd-bleed--strap .wd-bleed__frame { aspect-ratio: 4 / 3; }
+  .wd-bleed--related .wd-bleed__frame,
+  .wd-bleed--final .wd-bleed__frame { aspect-ratio: 4 / 3; }
+
+  /* 프로토타입 6장 — 2열 → 1열 크게 */
+  .wd-protogrid {
+    grid-template-columns: 1fr; gap: 6px;
+    width: calc(100% + 32px); margin-left: -16px; margin-right: -16px;
+  }
+
+  /* 인물 모자이크 — 풀블리드 1열 */
+  .wd-mosaic { width: calc(100% + 32px); margin-left: -16px; margin-right: -16px; }
+  .wd-mosaic > div > div { aspect-ratio: 4 / 3 !important; }
+
+  /* 텍스트 블록 상하 여백을 조금 줄여 이미지 사이 리듬 유지 */
+  .wd-textrow { padding-top: 28px; padding-bottom: 28px; }
+  .wd-band { height: 40px; }
+}
 </style>
 </head>
 <body data-page="work-detail">
