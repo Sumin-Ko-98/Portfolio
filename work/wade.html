@@ -249,19 +249,19 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 }
 .wd-intro__mark-wrap { position: relative; padding-top: 6px; }
 /* Award marks (max 3) — mirrors the home "Recognitions" list so both read as one system */
-.wd-awards {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
+.wd-awards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+.wd-award {
+  display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: center;
 }
-.wd-award { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; min-width: 0; }
 .wd-award__symbol {
-  width: 88px; height: 88px; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+  width: 56px; height: 56px; border-radius: 8px; overflow: hidden; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center; background: transparent;
 }
 .wd-award__symbol img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.wd-award__body { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+.wd-award__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .wd-award__year { font-family: var(--f-mono); font-size: 11px; color: var(--mute); letter-spacing: 0.08em; }
-.wd-award__name { font-family: var(--f-kr); font-size: 15px; font-weight: 700; color: var(--wd-ink); letter-spacing: -0.01em; line-height: 1.3; word-break: keep-all; }
+.wd-award__name { font-family: var(--f-kr); font-size: 15px; font-weight: 700; color: var(--wd-ink); letter-spacing: -0.01em; line-height: 1.3; }
+.wd-award__note { font-family: var(--f-kr); font-size: 13px; color: var(--ink-2); letter-spacing: -0.005em; line-height: 1.45; }
 .wd-intro__body { display: flex; flex-direction: column; gap: 32px; padding-top: 18px; }
 .wd-intro__h {
   /* Korean sentence heading — keep Pretendard, but align size/weight to
@@ -305,8 +305,9 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 }
 @media (max-width: 900px) {
   .wd-intro { grid-template-columns: 1fr; gap: 32px; }
-  .wd-awards { gap: 16px; }
-  .wd-award__symbol { width: 64px; height: 64px; }
+  .wd-awards { flex-direction: row; flex-wrap: wrap; gap: 20px 28px; }
+  .wd-award { grid-template-columns: 48px 1fr; gap: 12px; }
+  .wd-award__symbol { width: 48px; height: 48px; }
 }
 
 /* =================================================================
@@ -957,21 +958,24 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
         <span class="wd-award__body">
           <span class="wd-award__year">2024.01</span>
           <span class="wd-award__name">HCI Korea</span>
+          <span class="wd-award__note">Creative Award, Grand Prize</span>
         </span>
       </li>
       <!-- ▼ 레이아웃 검증용 더미 2건 (실제 수상 아님 — 확정 후 삭제/교체) -->
       <li class="wd-award">
         <span class="wd-award__symbol"><img src="../assets/awards/idea.png" alt="IDEA International Design Excellence Awards"></span>
         <span class="wd-award__body">
-          <span class="wd-award__year">2024.04</span>
+          <span class="wd-award__year">2024</span>
           <span class="wd-award__name">IDEA International</span>
+          <span class="wd-award__note">Design Excellence Awards — Finalist</span>
         </span>
       </li>
       <li class="wd-award">
         <span class="wd-award__symbol"><img src="../assets/awards/reddot.png" alt="Red Dot Design Award"></span>
         <span class="wd-award__body">
-          <span class="wd-award__year">2024.06</span>
+          <span class="wd-award__year">2024</span>
           <span class="wd-award__name">Red Dot Design Award</span>
+          <span class="wd-award__note">Winner — Design Concept</span>
         </span>
       </li>
     </ul>
