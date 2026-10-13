@@ -1017,3 +1017,9 @@ img.st-contain { box-sizing: border-box; }
 @media (max-width: 800px) {
   .wd-dark-row, .wd-textrow { grid-template-columns: 1fr; }
 }
+
+/* 2칸 캡션은 라벨이 본문 위에 오는 원래 구조 유지: 200px 라벨 열 규칙에서 제외 (리뷰 회귀 수정) */
+.wd-textrow.wd-textrow--split { grid-template-columns: 1fr 1fr; column-gap: clamp(12px, 1.6vw, 24px); }
+@media (max-width: 720px) { .wd-textrow.wd-textrow--split { grid-template-columns: 1fr; } }
+
+.wd-bleed__frame video { display: block; width: 100%; height: 100%; object-fit: cover; }

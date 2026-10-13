@@ -108,7 +108,7 @@ SOURCES = {
     },
     # 옛 포트폴리오 PDF 14–21쪽 (MobiLink) / 30–35쪽 (Flever). crop = 쪽 안 비율 좌표
     "mobilink": {
-        "hero2.jpg": OLDP(14, (0.38, 0.14, 1.0, 0.80)),  # 왼쪽 아래 PDF 글자 제외
+        "hero3.jpg": OLDP(14, (0.38, 0.19, 1.0, 0.80)),  # 왼쪽 아래 PDF 글자 · 오른쪽 위 Spark 로고 제외
         "render_sq.jpg": {**OLDP(15, (0.42, 0.10, 1.0, 0.98)), "square": True},
         "connect2.jpg": OLDP(16, (0.0, 0.0, 1.0, 0.67)),  # Mobility·Home 라벨 포함
         "mobility.jpg": OLDP(17, (0.0, 0.06, 0.5, 0.49)),
@@ -124,22 +124,25 @@ SOURCES = {
         "lifestyle.jpg": OLDP(21, (0.0, 0.0, 1.0, 0.79)),
     },
     "flever": {
-        # Behance 본인 프로젝트 원본 (behance.net/gallery/145103341/flever, 사용자 승인 후 다운로드)
-        "bh_hero.jpg": J(BEHANCE, "b1.png"),
-        "bh_hinge.jpg": J(BEHANCE, "b2.png"),
-        "bh_hinge_side.jpg": J(BEHANCE, "b3.png"),
-        "bh_usbc.jpg": J(BEHANCE, "b4.png"),
-        "bh_speaker.jpg": J(BEHANCE, "b5.png"),
-        "hero.jpg": OLDP(30, (0.36, 0.03, 1.0, 0.98)),
-        "pair.jpg": OLDP(31, (0.33, 0.12, 1.0, 0.97)),
-        "scene.jpg": OLDP(32, (0.0, 0.0, 1.0, 0.53)),
-        "shelf.jpg": OLDP(33, (0.0, 0.0, 0.5, 0.60)),
-        "close.jpg": OLDP(33, (0.5, 0.0, 1.0, 0.60)),
-        "hello.jpg": OLDP(34, (0.0, 0.10, 0.37, 0.97)),
-        "exploded.jpg": OLDP(34, (0.37, 0.10, 0.97, 0.80)),
-        "speaker.jpg": OLDP(35, (0.0, 0.33, 0.395, 1.0)),
-        "magnet.jpg": OLDP(35, (0.70, 0.33, 1.0, 0.66)),
-        "usbc.jpg": OLDP(35, (0.70, 0.66, 1.0, 1.0)),
+        # Behance 본인 프로젝트 원본 19장 (behance.net/gallery/145103341/flever, 사용자 승인 후 source 해상도 다운로드)
+        # m01~m19 = Behance 페이지 순서. m07·m10 GIF 는 ffmpeg 로 anim_screen.mp4 · anim_hinge.mp4 (레포에 직접 저장)
+        "bh_hero.jpg": J(BEHANCE, "m01.png"),
+        "bh_set.jpg": J(BEHANCE, "m02.png"),
+        "bh_pair.jpg": J(BEHANCE, "m03.png"),
+        "bh_ui.jpg": J(BEHANCE, "m04.png"),
+        "bh_magnet.jpg": J(BEHANCE, "m05.png"),
+        "bh_wall.jpg": J(BEHANCE, "m06.jpg"),
+        "bh_green.jpg": J(BEHANCE, "m08.png"),
+        "bh_grey.jpg": J(BEHANCE, "m09.png"),
+        "bh_hinge.jpg": J(BEHANCE, "m11.png"),
+        "bh_hinge_side.jpg": J(BEHANCE, "m12.png"),
+        "bh_exploded.jpg": J(BEHANCE, "m13.png"),
+        "bh_usbc.jpg": J(BEHANCE, "m14.png"),
+        "bh_speaker.jpg": J(BEHANCE, "m15.png"),
+        "bh_cable.jpg": J(BEHANCE, "m16.png"),
+        "bh_call.jpg": J(BEHANCE, "m17.png"),
+        "bh_ideation.jpg": J(BEHANCE, "m18.png"),
+        "bh_sketch.jpg": J(BEHANCE, "m19.png"),
     },
     "inclusive": {
         "door_test_crop.jpg": {"src": J(LS, "_시안", "assets", "ux", "inclusive", "door_wheelchair_test.jpg"),
@@ -595,7 +598,7 @@ PAGES["mobilink"] = dict(
     desc="MobiLink — 모빌리티와 주거 공간을 오가는 이동형 모바일 콘솔 (공모전 참여작, IDEA · Spark Finalist)",
     lede="모빌리티와 주거 공간 사이를 자유롭게 오가는 <b>이동형 모바일 콘솔</b>입니다. 모빌리티 안에서는 주행 경험을, "
          "집에서는 스마트 홈 제어를 돕습니다.",
-    hero="hero2.jpg",
+    hero="hero3.jpg",
     meta=[("Term", "2022.09 — 2022.12"), ("Type", "공모전 참여작 · HIDE Lab"), ("Team", "3인 (기여도 60%)"),
           ("Process", "생성형 AI · Midjourney · Vizcom"), ("Award", "IDEA · Spark Finalist")],
     intro=([("idea", "2024.04", "IDEA", "International Design Excellence Awards · Finalist"),
@@ -706,26 +709,35 @@ PAGES["flever"] = dict(
            "generation in the family."),
     sections=[
         ("dark", [
-            ("img", {"f": "scene.jpg", "r": "natural"}),
+            ("img", {"f": "bh_wall.jpg", "r": "natural"}),
             ("row", "PAINPOINT",
              "가족 안에서 서로 존중하고 함께 대화하려는 노력이 이뤄지고 있다는 사실에, 젊은 층은 부모 세대보다 덜 공감합니다. 부모 세대와 "
              "자녀 세대가 느끼는 가족 간 친밀감에는 차이가 있고, 이 차이를 극복해야 더 깊은 유대감을 기대할 수 있습니다.",
              "Younger family members feel less than their parents that the family is making an effort to respect and talk to "
              "one another. Closing this gap in perceived closeness is the key to a deeper bond."),
+            ("dots", ["bh_magnet.jpg", "bh_hinge.jpg", {"f": "bh_cable.jpg", "pos": "62% 50%"}]),
             ("row", "SOLUTION",
              "가족 구성원의 세대별 특성을 리서치하고, 그 결과를 바탕으로 전 세대를 잇는 감정 공유 콘텐츠형 스마트 홈스크린 Flever를 "
              "제안했습니다. 출퇴근·등하교로 소통이 없는 가족을 위한 소통 창구가 되어, 삭막한 집 안을 소통이 활발한 공간으로 바꿉니다.",
              "Based on research into each generation's traits, Flever was proposed as an emotion-sharing smart home screen that "
              "connects every generation, a channel for families who barely talk between commutes and school runs."),
-            ("img", {"f": "pair.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "bh_call.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
+        ("scene", {"f": "bh_green.jpg", "r": "natural"}),
         ("text", "Market",
          "다기능이거나 소통 기능이 있을수록 개인을 위한 제품인 경우가 많고, 가족을 위한 제품일수록 단순한 기능만 있는 경우가 많았습니다. "
          "Flever는 가족에 초점을 맞춰, 멀티프로필로 각자의 개성을 표현하고 세대별 특성과 소통 방식의 차이를 활용한 콘텐츠를 담았습니다.",
          "Multi-function and communication devices tend to be personal, while family products tend to be simple. Flever "
          "focuses on the family, with multi-profiles for each member and content built on generational differences in how "
          "people communicate."),
-        ("pair", [{"f": "shelf.jpg", "r": "natural"}, "close.jpg"]),
+        ("pair", [{"f": "bh_set.jpg", "r": "natural"}, "bh_grey.jpg"]),
+        ("text", "UXUI",
+         "가족 구성원마다 프로필을 나누는 멀티프로필, 단순한 메뉴 바, 크게 보이는 레이아웃으로 아이부터 어르신까지 쉽게 쓰도록 "
+         "구성했습니다.",
+         "Multi-profiles for each family member, a simple menu bar and a large, easy-to-read layout make it usable from "
+         "children to the elderly."),
+        ("bleed", {"f": "bh_ui.jpg", "r": "natural"}, "natural"),
+        ("video", "anim_screen.mp4", "anim_screen_poster.jpg"),
         ("text", "Display",
          "디스플레이 뒷면에는 마그네틱이 내장되어 스피커 본체에 부착해 거치합니다. 거실 탁상에서는 스마트 스피커 역할을 하고, 떼어 내 "
          "냉장고나 철제 파티션에 붙이면 스마트 냉장고처럼 가족 간 포스트잇 메모로 쓸 수 있습니다. 스케줄 알림과 음성 메모·그림 메모로 "
@@ -735,7 +747,12 @@ PAGES["flever"] = dict(
          "speaker; detached and stuck to a fridge or steel partition it becomes a family note board. Schedule alerts and voice "
          "and drawing memos help the family stay close. Face recognition logs each member in, and messages can be left as "
          "front-camera video or by touch."),
-        ("bleed", {"f": "exploded.jpg", "r": "natural"}, "natural"),
+        ("bleed", {"f": "bh_pair.jpg", "r": "natural"}, "natural"),
+        ("video", "anim_hinge.mp4", "anim_hinge_poster.jpg"),
+        ("text", "Detachable",
+         "화면과 거치대에 자석이 있어 쉽게 붙이고 뗄 수 있고, 화면 각도를 자유롭게 조절할 수 있습니다.",
+         "Magnets in the screen and the base make it easy to attach and detach, and the screen angle adjusts freely."),
+        ("bleed", {"f": "bh_exploded.jpg", "r": "natural"}, "natural"),
         ("text", "Speaker",
          "배터리와 스피커가 내장된 하단 파츠는 디스플레이를 떼어 두었을 때 별도의 포터블 스피커로 쓸 수 있고, USB-C 타입으로 충전합니다. "
          "디스플레이를 부착한 상태에서는 거치대 역할을 하며, 다각도 힌지로 원하는 각도와 높이를 맞출 수 있습니다. 화면을 붙이면 "
@@ -745,7 +762,7 @@ PAGES["flever"] = dict(
          "Attaching the screen pairs it over Bluetooth and charges it wirelessly, and the perforated shell can be swapped "
          "for another colour or shape."),
         ("square", "bh_speaker.jpg"),
-        ("pair", [{"f": "bh_hinge.jpg", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
+        ("pair", [{"f": "bh_hinge_side.jpg", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
                   {"f": "bh_usbc.jpg", "cap": "<b>USB-C</b>포터블 스피커 충전"}]),
         ("dark", [
             ("row", "PROCESS",
@@ -755,6 +772,8 @@ PAGES["flever"] = dict(
              "Research (problems, background, users, target users, market and field research), concept (design concept, "
              "differentiated value, storytelling) and design (inspiration, mood board, strategy, sketching, 3D modelling, UXUI, "
              "visualising)."),
+            ("img", {"f": "bh_ideation.jpg", "r": "natural"}),
+            ("img", {"f": "bh_sketch.jpg", "r": "natural"}),
         ]),
         ("band",),
     ],

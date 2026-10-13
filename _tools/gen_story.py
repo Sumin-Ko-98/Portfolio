@@ -283,6 +283,13 @@ def section(d, s):
         if len(s) > 2 and s[2]:
             cells.append(f'<div class="st-lineup__more"><b>{E(s[2][0])}</b><span>{E(s[2][1])}</span></div>')
         return '<section class="st-lineup">\n  ' + "\n  ".join(cells) + "\n</section>"
+    if k == "video":
+        # ("video", "anim.mp4", "anim_poster.jpg") — 풀블리드 자동재생 루프 (소리 없음)
+        _, mp4, poster = s
+        w, h, _p = ensure_asset(d, poster)
+        return (f'<section class="wd-bleed wd-bleed--final">\n  <div class="wd-bleed__frame wd-bleed__frame--photo reveal" '
+                f'style="aspect-ratio:{w}/{h}"><video src="../assets/works/{d}/{mp4}" poster="../assets/works/{d}/{poster}" '
+                f'autoplay muted loop playsinline preload="metadata"></video></div>\n</section>')
     if k == "band":
         return '<div class="wd-band"></div>'
     raise ValueError(k)
