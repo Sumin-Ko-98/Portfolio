@@ -1010,3 +1010,10 @@ img.st-contain { box-sizing: border-box; }
 /* 라인업: 이미지 박스를 정사각으로 고정해 캡션 기준선 통일 */
 .st-lineup { align-items: start; }
 .st-lineup__cell img { aspect-ratio: 1 / 1 !important; height: auto; }
+
+/* 라벨 열: 긴 라벨(TECHNOLOGY, TRANSPARENT DISPLAY 등)이 본문과 붙지 않게 폭·간격 확보 (리뷰 2026.10) */
+.wd-dark-row, .wd-textrow { grid-template-columns: 200px minmax(0, 1fr); column-gap: clamp(28px, 3vw, 48px); }
+.wd-dark-row__mark, .wd-textrow__label { min-width: 0; overflow-wrap: break-word; font-size: clamp(17px, 1.4vw, 20px); }
+@media (max-width: 800px) {
+  .wd-dark-row, .wd-textrow { grid-template-columns: 1fr; }
+}

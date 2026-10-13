@@ -7,6 +7,7 @@ import os
 LS = r"C:\Users\Hkyum\iCloudDrive\04_포트폴리오\261006 LS 포트폴리오"
 HEIC = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\heic"  # HEIC → JPG 변환본
 J = os.path.join
+BEHANCE = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\behance_flever"
 # 옛 포트폴리오(240430) PDF 쪽 이미지(1920×1080, 쪽마다 한 장)를 뽑아 둔 폴더 — p14.png 등
 OLD = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\old"
 def OLDP(n, crop):
@@ -107,9 +108,9 @@ SOURCES = {
     },
     # 옛 포트폴리오 PDF 14–21쪽 (MobiLink) / 30–35쪽 (Flever). crop = 쪽 안 비율 좌표
     "mobilink": {
-        "hero.jpg": OLDP(14, (0.36, 0.17, 1.0, 0.92)),
-        "render.jpg": OLDP(15, (0.42, 0.10, 1.0, 0.98)),
-        "connect.jpg": OLDP(16, (0.0, 0.0, 1.0, 0.62)),
+        "hero2.jpg": OLDP(14, (0.38, 0.14, 1.0, 0.80)),  # 왼쪽 아래 PDF 글자 제외
+        "render_sq.jpg": {**OLDP(15, (0.42, 0.10, 1.0, 0.98)), "square": True},
+        "connect2.jpg": OLDP(16, (0.0, 0.0, 1.0, 0.67)),  # Mobility·Home 라벨 포함
         "mobility.jpg": OLDP(17, (0.0, 0.06, 0.5, 0.49)),
         "home.jpg": OLDP(17, (0.5, 0.06, 1.0, 0.49)),
         "tech_glazing.jpg": OLDP(17, (0.035, 0.66, 0.26, 0.88)),
@@ -123,6 +124,12 @@ SOURCES = {
         "lifestyle.jpg": OLDP(21, (0.0, 0.0, 1.0, 0.79)),
     },
     "flever": {
+        # Behance 본인 프로젝트 원본 (behance.net/gallery/145103341/flever, 사용자 승인 후 다운로드)
+        "bh_hero.jpg": J(BEHANCE, "b1.png"),
+        "bh_hinge.jpg": J(BEHANCE, "b2.png"),
+        "bh_hinge_side.jpg": J(BEHANCE, "b3.png"),
+        "bh_usbc.jpg": J(BEHANCE, "b4.png"),
+        "bh_speaker.jpg": J(BEHANCE, "b5.png"),
         "hero.jpg": OLDP(30, (0.36, 0.03, 1.0, 0.98)),
         "pair.jpg": OLDP(31, (0.33, 0.12, 1.0, 0.97)),
         "scene.jpg": OLDP(32, (0.0, 0.0, 1.0, 0.53)),
@@ -584,11 +591,11 @@ PAGES["wade"] = dict(
 # =====================================================================
 # 대학원(HIDE Lab) 작업 — 사실 기준: 옛 포트폴리오 PDF(240430) 14–21쪽 / 30–35쪽만
 PAGES["mobilink"] = dict(
-    dir="mobilink", cat_key="product", title="MobiLink", year="2022", category="Mobile Console · Hongik Univ.",
+    dir="mobilink", cat_key="product", title="MobiLink", year="2022", category="Mobile Console · Hongik Univ.",  # noqa
     desc="MobiLink — 모빌리티와 주거 공간을 오가는 이동형 모바일 콘솔 (공모전 참여작, IDEA · Spark Finalist)",
     lede="모빌리티와 주거 공간 사이를 자유롭게 오가는 <b>이동형 모바일 콘솔</b>입니다. 모빌리티 안에서는 주행 경험을, "
          "집에서는 스마트 홈 제어를 돕습니다.",
-    hero="hero.jpg",
+    hero="hero2.jpg",
     meta=[("Term", "2022.09 — 2022.12"), ("Type", "공모전 참여작 · HIDE Lab"), ("Team", "3인 (기여도 60%)"),
           ("Process", "생성형 AI · Midjourney · Vizcom"), ("Award", "IDEA · Spark Finalist")],
     intro=([("idea", "2024.04", "IDEA", "International Design Excellence Awards · Finalist"),
@@ -603,7 +610,7 @@ PAGES["mobilink"] = dict(
            "ride to the user, and when docked to a smart home it manages and controls the home environment."),
     sections=[
         ("dark", [
-            ("img", {"f": "connect.jpg", "r": "natural"}),
+            ("img", {"f": "connect2.jpg", "r": "natural"}),
             ("row", "BACKGROUND",
              "미래 모빌리티는 이동수단과 생활 공간의 역할을 동시에 수행하므로, 이러한 라이프 스타일에 맞춘 다용도 기능이 필요합니다. "
              "MobiLink는 모빌리티 내부에서 온도·조명·음향 같은 환경을 손쉽게 조작하게 하고, 모빌리티를 벗어나 주거 환경으로 이동해서도 "
@@ -635,7 +642,6 @@ PAGES["mobilink"] = dict(
          "움직이지 않도록 바퀴가 고정됩니다.",
          "A button raises or lowers the powered handle. With the handle up the console can be moved; with it down the wheels "
          "lock so the console stays put."),
-        ("bleed", {"f": "handle.jpg", "r": "natural"}, "natural"),
         ("text", "Multi-Function",
          "모빌리티와 스마트 홈의 실내 환경을 제어하는 컨트롤러와 수납함을 탑재했습니다. 핸드폰을 올려 두면 충전되는 무선 충전, "
          "음료와 간단한 식품을 보관하는 펠티어 냉장고를 갖췄고, 복곡면 투명 가니시에 Shy Tech로 기능 제어 아이콘을 넣었습니다.",
@@ -660,7 +666,7 @@ PAGES["mobilink"] = dict(
           "A docking step in the vehicle's charging zone locks the console's wheels so it stays steady while driving. Undocked, "
           "springs return the step to a flat floor so no dust collects in the gaps.")),
         ("bleed", {"f": "dock.jpg", "r": "natural"}, "natural"),
-        ("square", {"f": "render.jpg", "fit": "contain", "bg": "auto"}),
+        ("square", "render_sq.jpg"),
         ("dark", [
             ("row", "PROCESS",
              "(주)서연이화 주관 정부과제 ‘심리스 환경 제공을 위한 자동차 내장재 보유기술 기반 미래 모빌리티 내장디자인 연구’에서 진행한 "
@@ -681,11 +687,11 @@ PAGES["mobilink"] = dict(
 )
 
 PAGES["flever"] = dict(
-    dir="flever", cat_key="product", title="Flever", year="2022", category="Smart Home Screen · Team Project",
+    dir="flever", cat_key="product", title="Flever", year="2022", category="Smart Home Screen · Team Project",  # noqa
     desc="Flever — 가족 간 감정 공유 콘텐츠를 중심으로 한 탈부착형 스마트 홈스크린 (대학원 팀 프로젝트)",
     lede="가족 간 감정 공유 콘텐츠를 중심으로 한 <b>탈부착형 스마트 홈스크린</b>입니다. 하나의 오브제로 자리하면서도 "
          "톡톡 튀는 컬러로 존재감을 드러내도록 디자인했습니다.",
-    hero="hero.jpg",
+    hero="bh_hero.jpg",
     meta=[("Term", "2022.03 — 2022.06"), ("Type", "대학원 팀 프로젝트"), ("Team", "2인 (기여도 50%)"),
           ("Product", "디스플레이 · 포터블 스피커"), ("Output", "UXUI · 3D 모델링")],
     intro=([("UX", "Design Process", "Research → Concept → Design", "Sketch · 3D modeling · UXUI"),
@@ -723,19 +729,24 @@ PAGES["flever"] = dict(
         ("text", "Display",
          "디스플레이 뒷면에는 마그네틱이 내장되어 스피커 본체에 부착해 거치합니다. 거실 탁상에서는 스마트 스피커 역할을 하고, 떼어 내 "
          "냉장고나 철제 파티션에 붙이면 스마트 냉장고처럼 가족 간 포스트잇 메모로 쓸 수 있습니다. 스케줄 알림과 음성 메모·그림 메모로 "
-         "가족 간 유대감 형성을 돕습니다.",
+         "가족 간 유대감 형성을 돕습니다. 얼굴 인식으로 자동 로그인하고, 전면 카메라로 영상 메시지를 남기거나 터치로 메시지를 남길 수 "
+         "있습니다.",
          "A magnet in the back of the display mounts it on the speaker body. On a living-room table it works as a smart "
          "speaker; detached and stuck to a fridge or steel partition it becomes a family note board. Schedule alerts and voice "
-         "and drawing memos help the family stay close."),
+         "and drawing memos help the family stay close. Face recognition logs each member in, and messages can be left as "
+         "front-camera video or by touch."),
         ("bleed", {"f": "exploded.jpg", "r": "natural"}, "natural"),
         ("text", "Speaker",
          "배터리와 스피커가 내장된 하단 파츠는 디스플레이를 떼어 두었을 때 별도의 포터블 스피커로 쓸 수 있고, USB-C 타입으로 충전합니다. "
-         "디스플레이를 부착한 상태에서는 거치대 역할을 하며, 다각도 힌지로 원하는 각도와 높이를 맞출 수 있습니다.",
+         "디스플레이를 부착한 상태에서는 거치대 역할을 하며, 다각도 힌지로 원하는 각도와 높이를 맞출 수 있습니다. 화면을 붙이면 "
+         "블루투스로 자동 연결되고 무선으로 충전되며, 타공 외관을 교체해 원하는 컬러와 형태로 바꿀 수 있습니다.",
          "The lower part houses a battery and speaker: with the display removed it works as a portable speaker, charged over "
-         "USB-C. With the display attached it serves as the stand, and a multi-angle hinge sets the angle and height."),
-        ("square", "speaker.jpg"),
-        ("pair", [{"f": "magnet.jpg", "r": "natural", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
-                  {"f": "usbc.jpg", "cap": "<b>USB-C</b>포터블 스피커 충전"}]),
+         "USB-C. With the display attached it serves as the stand, and a multi-angle hinge sets the angle and height. "
+         "Attaching the screen pairs it over Bluetooth and charges it wirelessly, and the perforated shell can be swapped "
+         "for another colour or shape."),
+        ("square", "bh_speaker.jpg"),
+        ("pair", [{"f": "bh_hinge.jpg", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
+                  {"f": "bh_usbc.jpg", "cap": "<b>USB-C</b>포터블 스피커 충전"}]),
         ("dark", [
             ("row", "PROCESS",
              "Research(Problems · Background · User · Target User · Market · Field Research) → Concept(Design concept · "
