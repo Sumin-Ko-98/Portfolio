@@ -12,7 +12,7 @@ OLD = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054
 def OLDP(n, crop):
     return {"src": os.path.join(OLD, f"p{n}.png"), "crop": crop}
 FINAL_PDF = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\final_portfolio.pdf"  # 최종 제출 PDF 사본
-ROT_CW = 270  # pymupdf insert_image 의 rotate 는 반시계 → 시계 90° = 270
+ROT_CW = 90  # EXIF 6 — pymupdf insert_image rotate=90 이 맞음(270은 뒤집혀 보였음, 리뷰 확인)
 
 # PDF 순서: TS450 → TS700 → H500 → WADE → CMF, 이어서 대학원 작업과 UX
 ORDER = ["threespin", "ts700", "h500", "wade", "odm-cmf", "mobilink", "flever", "inclusive", "seuv", "ev-sedan"]
@@ -22,6 +22,8 @@ SOURCES = {
         "cover_src.jpg": J(LS, "_시안", "assets", "ts450", "cover_src.jpg"),
         "main_pers.jpg": J(LS, "TS450", "TS450_Main_Pers.png"),
         "side_02.jpg": J(LS, "TS450", "TS450_Side_02.png"),
+        "front_sq.jpg": {"src": J(LS, "TS450", "TS450_Front_Pers.png"), "trim": 0.08, "square": True},
+        "side_sq.jpg": {"src": J(LS, "TS450", "TS450_Side_02.png"), "trim": 0.05, "square": True},
         "macro2.jpg": J(LS, "TS450", "genspark", "gs_ts450_mop_macro_02.png"),
         # 최종 PDF 7쪽의 주석(화살표·라벨) 포함 Before / After / Cradle
         "sensor_before_pdf.jpg": {"pdf": FINAL_PDF, "page": 6, "rect": (584, 120, 1194, 529), "scale": 2},
@@ -194,8 +196,8 @@ PAGES["threespin"] = dict(
          "A black sensor-window line wraps the body through 360 degrees and leads the eye horizontally, while corners "
          "finished with varied radii set it apart from round robot vacuums."),
         ("square", {"f": "main_pers.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}),
-        ("tri", [{"f": "front_pers.jpg", "fit": "contain", "bg": "auto", "pad": "8%"},
-                 {"f": "side_02.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}, "topview.jpg"]),
+        ("tri", ["front_sq.jpg",
+                 "side_sq.jpg", "topview.jpg"]),
         ("text", "Low Proportion",
          "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 개발 중 IR 센서가 "
          "측후면으로 이동한 뒤에도 손잡이·상면 곡률·센서창 비율을 함께 조정해 이 라인을 유지했습니다.",
@@ -329,7 +331,7 @@ PAGES["h500"] = dict(
     dir="h500", cat_key="product", title="H500", year="2025 — 2026", category="Wheelchair · Everybot Mobility",
     desc="에브리봇모빌리티 H500 수전동휠체어 컨트롤러 · 인휠모터 휠 디자인",
     lede="수전동휠체어 H500의 <b>컨트롤러</b>와 <b>인휠모터 휠</b>을 디자인했습니다.",
-    hero={"f": "chair186.jpg", "fit": "contain", "bg": "auto", "pad": "2% 0"},
+    hero={"f": "ctrl_cover_src.jpg", "fit": "contain", "bg": "auto", "pad": "4% 0"},  # 휠체어 렌더는 원본에서 등받이가 잘려 있어 제외
     meta=[("Term", "2025.12 — 2026.06"), ("Client", "에브리봇모빌리티"), ("Product", "H500 수전동휠체어"),
           ("Scope", "컨트롤러 · 인휠모터 휠"), ("Output", "3D 프린팅 목업 · CMF 목업")],
     intro=([("CTRL", "Controller", "팜레스트 형상 · 버튼 배치", "오조작 방지 · 표시부 가독성"),
@@ -366,10 +368,9 @@ PAGES["h500"] = dict(
          "줄였습니다.",
          "The palm rest detaches and can be mounted on either side, so left-handed users can use it too. An off-the-shelf "
          "joystick keeps the cost down."),
-        ("square", {"f": "ctrl_pers.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}),
-        ("tri", [{"f": "ctrl_top.jpg", "fit": "contain", "bg": "auto", "pad": "8%"},
-                 {"f": "ctrl_side.jpg", "fit": "contain", "bg": "auto", "pad": "8%"},
-                 {"f": "concept.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}]),
+        ("square", {"f": "ctrl_top.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}),
+        ("pair", [{"f": "ctrl_side.jpg", "fit": "contain", "bg": "auto", "pad": "8%"},
+                  {"f": "concept.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}]),
         ("split",
          ("Button Grouping", "레드 전원 버튼을 중심으로 라이트·비상등·경적 버튼을 기능별로 묶었습니다.",
           "Light, hazard and horn buttons are grouped by function around the central red power button."),

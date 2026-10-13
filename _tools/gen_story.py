@@ -39,7 +39,7 @@ MAX = 1800
 # ---------------------------------------------------------------- assets
 def _load_source(src):
     """SOURCES 값 → Pixmap. 값은 경로 문자열 또는 dict:
-       {"src": 경로, "rot": 90|180|270, "crop": (x0, y0, x1, y1) 비율}
+       {"src": 경로, "rot": 90|180|270, "crop": (x0, y0, x1, y1) 비율, "trim": 0.06 (빈 배경 자르고 여백 비율)}
        {"pdf": 경로, "page": 0부터, "rect": (x0, y0, x1, y1) PDF 좌표, "scale": 1.5}"""
     if isinstance(src, str):
         src = {"src": src}
@@ -65,7 +65,46 @@ def _load_source(src):
             x0, y0, x1, y1 = crop
             clip = pymupdf.Rect(w * x0, h * y0, w * x1, h * y1)
         pix = pg.get_pixmap(clip=clip)
+    if src.get("trim") is not None:
+        pix = _trim(pix, src["trim"])
+    if src.get("square"):
+        pix = _square(pix)
     return pix
+
+
+def _square(pix):
+    """가장자리 픽셀을 늘려 정사각형으로 (그라데이션 배경 렌더를 정사각 칸에 꽉 채울 때)"""
+    import numpy as np
+    a = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)[:, :, :3]
+    h, w = a.shape[:2]
+    if w > h:
+        t = (w - h) // 2
+        a = np.pad(a, ((t, w - h - t), (0, 0), (0, 0)), mode="edge")
+    elif h > w:
+        t = (h - w) // 2
+        a = np.pad(a, ((0, 0), (t, h - w - t), (0, 0)), mode="edge")
+    a = np.ascontiguousarray(a)
+    return pymupdf.Pixmap(pymupdf.csRGB, a.shape[1], a.shape[0], a.tobytes(), False)
+
+
+def _trim(pix, margin):
+    """렌더 바깥의 빈 배경을 잘라 제품 둘레에 margin(긴 변 비율)만 남긴다."""
+    import numpy as np
+    if pix.alpha:
+        pix = pymupdf.Pixmap(pix, 0)
+    a = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)[:, :, :3].astype(int)
+    corners = np.array([a[2, 2], a[2, -3], a[-3, 2], a[-3, -3]])
+    bg = np.median(corners, axis=0)
+    mask = np.abs(a - bg).sum(axis=2) > 36
+    ys, xs = np.where(mask)
+    if len(xs) == 0:
+        return pix
+    m = int(max(pix.width, pix.height) * margin)
+    x0, x1 = max(0, xs.min() - m), min(pix.width, xs.max() + m)
+    y0, y1 = max(0, ys.min() - m), min(pix.height, ys.max() + m)
+    doc = pymupdf.open(); pg = doc.new_page(width=pix.width, height=pix.height)
+    pg.insert_image(pg.rect, pixmap=pix)
+    return pg.get_pixmap(clip=pymupdf.Rect(x0, y0, x1, y1))
 
 
 def ensure_asset(d, name):
@@ -100,8 +139,12 @@ class Img:
         self.pad = spec.get("pad")      # contain 일 때 제품 둘레 여백 (예: "6%")
         self.alt = spec.get("alt", "")
         self.w, self.h, pix = ensure_asset(d, self.f)
-        if self.bg == "auto":           # 렌더 배경색에 맞춘 판 (왼쪽 위 구석 픽셀)
-            r, g, b = pix.pixel(3, 3)[:3]
+        if self.bg == "auto":           # 렌더 배경색에 맞춘 판 (가장자리 픽셀 평균)
+            # 위쪽 가장자리 + 좌우 중간 (아래쪽은 제품 그림자 때문에 어두워서 제외), 중앙값
+            px = [pix.pixel(x, y)[:3] for x, y in ((3, 3), (pix.width - 4, 3), (pix.width // 4, 3),
+                                                     (pix.width // 2, 3), (3 * pix.width // 4, 3),
+                                                     (3, pix.height // 3), (pix.width - 4, pix.height // 3))]
+            r, g, b = (sorted(c[i] for c in px)[len(px) // 2] for i in range(3))
             self.bg = f"#{r:02x}{g:02x}{b:02x}"
         self.src = f"../assets/works/{d}/{self.f}"
 
