@@ -291,7 +291,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
     </p>
     <div class="work-index-hero__stat">
       <span><b>2022 — 2026</b></span>
-      <span><b>13</b> Projects</span>
+      <span><b>16</b> Projects</span>
     </div>
   </div>
 </header>
@@ -312,130 +312,172 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
   </header>
 
   <div class="wcat__grid">
-    <!-- Sorted newest → oldest -->
+    <!-- 최신순. Archive = 상세페이지 없음(링크 없음) -->
 
-    <!-- 2026 -->
-    <a class="card reveal" href="#">
+    <a class="card reveal" href="work/ts700.html">
       <div class="card__media">
-        <img src="assets/works/threespin_cover.jpg" alt="Threespin Slim TS450 · Slim rotary home care appliance">
-        <span class="card__laurel"><img src="assets/awards/if-gold.png" alt="iF Gold"></span>
+        <img src="assets/works/ts700/cover.jpg" alt="쓰리스핀 스팀 TS700">
         <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
-          <h3 class="card__title">Threespin Slim</h3>
-          <p class="card__sub">쓰리스핀 슬림(TS450) - 물걸레 로봇 청소기</p>
+          <h3 class="card__title">Threespin Steam</h3>
+          <p class="card__sub">쓰리스핀 스팀(TS700) · 스팀 물걸레 로봇청소기</p>
         </div>
         <span class="card__year">2026</span>
       </div>
     </a>
 
-    <!-- 2023 -->
+    <a class="card reveal delay-1" href="work/h500.html">
+      <div class="card__media">
+        <img src="assets/works/h500/ctrl_cover.jpg" alt="H500 컨트롤러">
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">H500</h3>
+          <p class="card__sub">수전동휠체어 컨트롤러 · 인휠모터 휠</p>
+        </div>
+        <span class="card__year">2026</span>
+      </div>
+    </a>
+
+    <a class="card reveal delay-2" href="work/odm-cmf.html">
+      <div class="card__media">
+        <img src="assets/works/odm/q3_turbo.jpg" alt="ODM CMF">
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">ODM CMF</h3>
+          <p class="card__sub">양산 제품 CMF 디자인 16종</p>
+        </div>
+        <span class="card__year">2026</span>
+      </div>
+    </a>
+
+    <a class="card reveal" href="work/threespin.html">
+      <div class="card__media">
+        <img src="assets/works/threespin_cover.jpg" alt="쓰리스핀 슬림 TS450">
+        <span class="card__laurel"><img src="assets/awards/if-gold.png" alt=""></span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">Threespin Slim</h3>
+          <p class="card__sub">쓰리스핀 슬림(TS450) · 물걸레 로봇청소기</p>
+        </div>
+        <span class="card__year">2025</span>
+      </div>
+    </a>
+
     <a class="card reveal delay-1" href="work/wade.html">
       <div class="card__media">
-        <img src="assets/works/wade_cover.jpg" alt="WADE — Autonomous water-drawing robot">
-        <span class="card__laurel"><img src="assets/awards/hci.png" alt="HCI Korea"></span>
+        <img src="assets/works/wade/cover.jpg" alt="WADE 워터 드로잉 서비스 로봇">
+        <span class="card__laurel"><img src="assets/awards/hci.png" alt=""></span>
         <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">WADE</h3>
-          <p class="card__sub">Autonomous Water-Drawing Service Robot</p>
+          <p class="card__sub">Water-Drawing Service Robot</p>
         </div>
         <span class="card__year">2023</span>
       </div>
     </a>
 
-    <a class="card reveal delay-2" href="#">
-      <div class="card__media">
-        <img src="assets/works/mobilink_cover.jpg" alt="MobiLink — Hooogh Unit for PBV">
-        <span class="card__laurel"><img src="assets/awards/idea.png" alt="IDEA"></span>
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">MobiLink</h3>
-          <p class="card__sub">Hooogh Unit for Future Mobility Cabins</p>
-        </div>
-        <span class="card__year">2023</span>
-      </div>
-    </a>
-
-    <a class="card reveal" href="#">
-      <div class="card__media">
-        <img src="assets/works/flever_cover.jpg" alt="Flever — Ambient video-call companion">
-        <span class="card__view">View project →</span>
-      </div>
-      <div class="card__foot">
-        <div>
-          <h3 class="card__title">Flever</h3>
-          <p class="card__sub">Ambient Video-Call Companion</p>
-        </div>
-        <span class="card__year">2023</span>
-      </div>
-    </a>
-
-    <a class="card reveal delay-1 card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal delay-2">
       <div class="card__media">
         <div class="tp-cover tp-cover--slate">
           <div class="tp-cover__inner">
             <span class="tp-cover__kicker">Service Robot</span>
             <span class="tp-cover__name">ARO</span>
-            <span class="tp-cover__sub">Autonomous Retail Companion</span>
           </div>
         </div>
-        <span class="card__laurel"><img src="assets/awards/idea.png" alt="IDEA"></span>
-        <span class="card__view">View project →</span>
+        <span class="card__laurel"><img src="assets/awards/idea.png" alt=""></span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">ARO</h3>
-          <p class="card__sub">Autonomous Retail Companion Robot</p>
+          <p class="card__sub">Classroom Arrangement Robot · IDEA Finalist</p>
         </div>
-        <span class="card__year">2023</span>
+        <span class="card__year">2023 · Archive</span>
       </div>
-    </a>
+    </div>
 
-    <a class="card reveal delay-2 card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal">
       <div class="card__media">
         <div class="tp-cover tp-cover--rose">
           <div class="tp-cover__inner">
-            <span class="tp-cover__kicker">Smart Lighting</span>
+            <span class="tp-cover__kicker">Spark Finalist</span>
             <span class="tp-cover__name">FODI</span>
-            <span class="tp-cover__sub">Human-centered Smart Light</span>
           </div>
         </div>
-        <span class="card__laurel"><img src="assets/awards/spark.png" alt="Spark"></span>
-        <span class="card__view">View project →</span>
+        <span class="card__laurel"><img src="assets/awards/spark.png" alt=""></span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">FODI</h3>
-          <p class="card__sub">Human-centered Smart Light</p>
+          <p class="card__sub">Spark Design Awards Finalist</p>
         </div>
-        <span class="card__year">2023</span>
+        <span class="card__year">2023 · Archive</span>
       </div>
-    </a>
+    </div>
 
-    <a class="card reveal card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal delay-1">
+      <div class="card__media">
+        <div class="tp-cover tp-cover--indigo">
+          <div class="tp-cover__inner">
+            <span class="tp-cover__kicker">Mobility</span>
+            <span class="tp-cover__name">MobiLink</span>
+          </div>
+        </div>
+        <span class="card__laurel"><img src="assets/awards/idea.png" alt=""></span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">MobiLink</h3>
+          <p class="card__sub">Mobile Console for Future Mobility</p>
+        </div>
+        <span class="card__year">2022 · Archive</span>
+      </div>
+    </div>
+
+    <div class="card card--wip reveal delay-2">
+      <div class="card__media">
+        <div class="tp-cover tp-cover--amber">
+          <div class="tp-cover__inner">
+            <span class="tp-cover__kicker">Smart Home</span>
+            <span class="tp-cover__name">Flever</span>
+          </div>
+        </div>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">Flever</h3>
+          <p class="card__sub">Smart Home Screen for Family</p>
+        </div>
+        <span class="card__year">2022 · Archive</span>
+      </div>
+    </div>
+
+    <div class="card card--wip reveal">
       <div class="card__media">
         <div class="tp-cover tp-cover--charcoal">
           <div class="tp-cover__inner">
             <span class="tp-cover__kicker">Home Appliance</span>
             <span class="tp-cover__name">NOBLE</span>
-            <span class="tp-cover__sub">Premium Water Purifier</span>
           </div>
         </div>
-        <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">NOBLE</h3>
-          <p class="card__sub">Premium Water Purifier UX</p>
+          <p class="card__sub">COWAY · 프리미엄 정수기 UX</p>
         </div>
-        <span class="card__year">2023</span>
+        <span class="card__year">2023 · Archive</span>
       </div>
-    </a>
+    </div>
   </div>
 </section>
 
@@ -446,108 +488,99 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
   </header>
 
   <div class="wcat__grid">
-    <!-- Sorted newest → oldest -->
+    <!-- 최신순. Archive = 상세페이지 없음(링크 없음) -->
 
-    <!-- 2024 -->
-    <a class="card reveal card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal">
       <div class="card__media">
         <div class="tp-cover tp-cover--indigo">
           <div class="tp-cover__inner">
             <span class="tp-cover__kicker">Consumer Research</span>
             <span class="tp-cover__name">SDV<br>Pace</span>
-            <span class="tp-cover__sub">Concept Discovery for Pace Car</span>
           </div>
         </div>
-        <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">SDV Pace Car</h3>
-          <p class="card__sub">Consumer-driven Concept Discovery</p>
+          <p class="card__sub">현대자동차 × 마크로밀엠브레인 · 소비자 조사</p>
         </div>
-        <span class="card__year">2024</span>
+        <span class="card__year">2024 · Archive</span>
       </div>
-    </a>
+    </div>
 
-    <!-- 2023 -->
-    <a class="card reveal delay-1" href="#">
+    <a class="card reveal delay-1" href="work/inclusive.html">
       <div class="card__media">
-        <img src="assets/works/ux_inclusive.jpg" alt="Inclusive future mobility UX">
+        <img src="assets/works/inclusive/door_ramp.jpg" alt="Inclusive PBV 도어스텝">
         <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">Inclusive Mobility</h3>
-          <p class="card__sub">Universal Interior UX for Future Cabins</p>
+          <p class="card__sub">Universal Boarding &amp; Interior UX for PBV</p>
         </div>
         <span class="card__year">2023</span>
       </div>
     </a>
 
-    <a class="card reveal delay-2" href="#">
+    <a class="card reveal delay-2" href="work/seuv.html">
       <div class="card__media">
-        <img src="assets/works/ux_seuv.jpg" alt="Large SEUV wellness UX concept">
+        <img src="assets/works/seuv/clamshell_crop.jpg" alt="SeUV 클램쉘 테일게이트 목업">
         <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
-          <h3 class="card__title">SEUV Wellness</h3>
+          <h3 class="card__title">SeUV UX</h3>
           <p class="card__sub">Cabin Space &amp; Wellness Concept</p>
         </div>
         <span class="card__year">2023</span>
       </div>
     </a>
 
-    <a class="card reveal card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal">
       <div class="card__media">
         <div class="tp-cover tp-cover--sage">
           <div class="tp-cover__inner">
-            <span class="tp-cover__kicker">Metaverse UX</span>
+            <span class="tp-cover__kicker">Smart Lighting</span>
             <span class="tp-cover__name">GlowOne</span>
-            <span class="tp-cover__sub">Presence-tech Smart Light Platform</span>
           </div>
         </div>
-        <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
-          <h3 class="card__title">GlowOne Metaverse</h3>
-          <p class="card__sub">Human-centered Smart Light Design</p>
+          <h3 class="card__title">GlowOne</h3>
+          <p class="card__sub">글로우원 · 인간중심 스마트조명 디자인</p>
         </div>
-        <span class="card__year">2023</span>
+        <span class="card__year">2023 · Archive</span>
       </div>
-    </a>
+    </div>
 
-    <a class="card reveal delay-1 card--wip" href="#" aria-disabled="true">
+    <div class="card card--wip reveal delay-1">
       <div class="card__media">
         <div class="tp-cover tp-cover--slate">
           <div class="tp-cover__inner">
             <span class="tp-cover__kicker">Automotive Interior</span>
             <span class="tp-cover__name">Seamless<br>Cabin</span>
-            <span class="tp-cover__sub">Interior Material R&amp;D</span>
           </div>
         </div>
-        <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
           <h3 class="card__title">Seamless Cabin</h3>
-          <p class="card__sub">Future Interior Design R&amp;D</p>
+          <p class="card__sub">서연이화 · 미래 모빌리티 내장디자인 연구</p>
         </div>
-        <span class="card__year">2023</span>
+        <span class="card__year">2023 · Archive</span>
       </div>
-    </a>
+    </div>
 
-    <!-- 2022 -->
-    <a class="card reveal delay-2" href="#">
+    <a class="card reveal delay-2" href="work/ev-sedan.html">
       <div class="card__media">
-        <img src="assets/works/ux_suv.jpg" alt="Genesis premium sedan UX">
+        <img src="assets/works/ev-sedan/ev_scene_console.jpg" alt="전기세단 확장형 센터콘솔">
         <span class="card__view">View project →</span>
       </div>
       <div class="card__foot">
         <div>
-          <h3 class="card__title">Premium Sedan UX</h3>
-          <p class="card__sub">Interaction Concept for a Flagship Sedan</p>
+          <h3 class="card__title">EV Sedan UX</h3>
+          <p class="card__sub">UX Concepts for a Mid-size EV Sedan</p>
         </div>
         <span class="card__year">2022</span>
       </div>
@@ -578,12 +611,11 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 120px)); }
     <div>
       <h4>CV</h4>
       <a href="about.html#resume">View resume</a>
-      <a href="assets/portfolio.pdf" target="_blank" rel="noopener">PDF · 40 MB</a>
     </div>
   </div>
   <div class="footer__meta">
     <span>© 2026 Su-min Ko. All rights reserved.</span>
-    <span>Portfolio v. 2026.08 — Industrial Design</span>
+    <span>Portfolio v. 2026.10 — Industrial Design</span>
   </div>
 </footer>
 

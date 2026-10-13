@@ -20,5 +20,9 @@ npm-debug.log*
 .cache/
 .parcel-cache/
 
+# Claude 로컬 설정
+.claude/
+
 # Genspark Designer sidecar (자동 생성, 배포에 불필요)
 *.srcmap.json
+__pycache__/

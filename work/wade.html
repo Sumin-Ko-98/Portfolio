@@ -952,6 +952,19 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   .wd-textrow { padding-top: 28px; padding-bottom: 28px; }
   .wd-band { height: 40px; }
 }
+/* 2026.10 — 실제 사진이 들어간 칸 */
+[data-label]:has(img)::after, .wd-trirow__cell:has(img)::after, .wd-bigsquare__frame:has(img)::after,
+.wd-detailduo > div:has(img)::after { content: none; }
+.wd-trirow__cell img, .wd-detailduo > div img, .wd-protogrid > div img, .wd-dark-img img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+.wd-bigsquare__frame--portrait { aspect-ratio: 1648 / 2208; max-width: 760px; margin: 0 auto; background: #ececec; }
+.wd-bigsquare__frame--portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wd-detailduo--wide > div { aspect-ratio: 16 / 9; }
+.wd-award__symbol--text {
+  display: grid; place-items: center; border: 1px solid var(--hair); border-radius: 50%;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink);
+}
 </style>
 </head>
 <body data-page="work-detail">
@@ -982,11 +995,11 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 <!-- ================================================================ -->
 <header class="work-head work-head--compact" data-screen-label="Wade · Head">
   <div class="reveal">
-    <div class="work-head__cat"><span class="num">2023</span>service robot</div>
+    <div class="work-head__cat"><span class="num">2023</span>Service Robot · KIRO</div>
     <h1 class="work-head__title">Wade.</h1>
   </div>
   <p class="work-head__lede reveal delay-1" style="font-size: 15px; color: rgb(11, 11, 15); letter-spacing: 0px">
-    사용자가 터치 패널에 그린 그림을 <b>물로 바닥에 출력하는</b> 자율주행 서비스 로봇입니다.
+    관람객이 터치 디스플레이에 그린 그림을 <b>물로 바닥에 출력하는</b> 놀이공원 서비스 로봇입니다.
     물로 그린 그림은 시간이 지나면 증발하기 때문에 따로 지울 필요가 없습니다.
   </p>
 </header>
@@ -996,7 +1009,7 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 <!-- ================================================================ -->
 <section class="v2-hero v2-hero--plain v2-hero--after-head">
   <div class="v2-hero__media" aria-label="Wade · product hero">
-    <img src="../assets/works/wade_cover.jpg" alt="Wade · product hero">
+    <img src="../assets/works/wade/cover.jpg" alt="WADE 워터 드로잉 서비스 로봇">
   </div>
 </section>
 
@@ -1004,11 +1017,11 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 <!-- 04 · META STRIP — 5-column key facts                              -->
 <!-- ================================================================ -->
 <section class="meta">
-  <div class="meta__item"><span class="k">Year</span><span class="v">2023</span></div>
-  <div class="meta__item"><span class="k">Client</span><span class="v">KIRO 한국로봇융합연구원 × 서울로봇아카데미</span></div>
-  <div class="meta__item"><span class="k">Category</span><span class="v">Service Robot</span></div>
-  <div class="meta__item"><span class="k">Role</span><span class="v">Product &amp; Service Design (디자인 100%)</span></div>
-  <div class="meta__item"><span class="k">Output</span><span class="v">워킹 프로토타입</span></div>
+  <div class="meta__item"><span class="k">Term</span><span class="v">2023.07 — 2023.08</span></div>
+  <div class="meta__item"><span class="k">Client</span><span class="v">KIRO 서울로봇아카데미</span></div>
+  <div class="meta__item"><span class="k">Team</span><span class="v">5인 (엔지니어 4 · 디자이너 1)</span></div>
+  <div class="meta__item"><span class="k">Role</span><span class="v">외관 디자인 · 구조 설계 · 워킹 프로토타입 (디자인 기여도 100%)</span></div>
+  <div class="meta__item"><span class="k">Output</span><span class="v">워킹 프로토타입 · 특허 · 디자인 등록</span></div>
 </section>
 
 <!-- 05 · WORDMARK + BILINGUAL INTRO -->
@@ -1021,56 +1034,55 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
         <span class="wd-award__body">
           <span class="wd-award__year">2024.01</span>
           <span class="wd-award__name">HCI Korea</span>
-          <span class="wd-award__note">Creative Award, Grand Prize</span>
-        </span>
-      </li>
-      <!-- ▼ 레이아웃 검증용 더미 2건 (실제 수상 아님 — 확정 후 삭제/교체) -->
-      <li class="wd-award">
-        <span class="wd-award__symbol"><img src="../assets/awards/idea.png" alt="IDEA International Design Excellence Awards"></span>
-        <span class="wd-award__body">
-          <span class="wd-award__year">2024</span>
-          <span class="wd-award__name">IDEA International</span>
-          <span class="wd-award__note">Design Excellence Awards — Finalist</span>
+          <span class="wd-award__note">Creative Award · Excellence Award (최우수상)</span>
         </span>
       </li>
       <li class="wd-award">
-        <span class="wd-award__symbol"><img src="../assets/awards/reddot.png" alt="Red Dot Design Award"></span>
+        <span class="wd-award__symbol wd-award__symbol--text">PAT</span>
         <span class="wd-award__body">
-          <span class="wd-award__year">2024</span>
-          <span class="wd-award__name">Red Dot Design Award</span>
-          <span class="wd-award__note">Winner — Design Concept</span>
+          <span class="wd-award__year">2026.03</span>
+          <span class="wd-award__name">Patent</span>
+          <span class="wd-award__note">특허 제10-2942532호 · 워터 드로잉을 위한 로봇 장치</span>
+        </span>
+      </li>
+      <li class="wd-award">
+        <span class="wd-award__symbol wd-award__symbol--text">DES</span>
+        <span class="wd-award__body">
+          <span class="wd-award__year">2024.10</span>
+          <span class="wd-award__name">Design Reg.</span>
+          <span class="wd-award__note">디자인 등록 제30-1280754호 · 지능형 서비스 로봇</span>
         </span>
       </li>
     </ul>
   </div>
   <div class="wd-intro__body reveal delay-1">
     <div>
-      <h2 class="wd-intro__h">물로 그림을 그리는 자율주행 서비스 로봇</h2>
-      <p class="wd-intro__h-en">An autonomous service robot that draws with water</p>
+      <h2 class="wd-intro__h">기다리는 시간을 볼거리로 바꾸는 워터 드로잉 로봇</h2>
+      <p class="wd-intro__h-en">A service robot that turns waiting time into a show, drawn in water</p>
       <p class="wd-intro__kor">
-        WADE는 야외 바닥에 <b>물로 그림을 그리는</b> 자율주행 서비스 로봇입니다.
-        사용자가 상단 터치 패널에 그림을 그리면 로봇이 이동하면서 그 형태를 바닥에 출력합니다.
-        사람이 없는 구간에서는 스스로 워터드로잉을 실행해 방문객의 시선을 모읍니다.
-        캐리커처와 캐릭터 드로잉, 상점 홍보 문구 출력, 물 도면을 이용한 길 안내와 대기열 안내를 제공합니다.
-        물은 증발하기 때문에 청소가 필요하지 않고, 놀이공원과 페스티벌, 박람회처럼
-        사람이 오래 머무는 장소에서 활용도가 높습니다.
+        WADE는 야외 바닥에 <b>물로 그림을 그리는</b> 서비스 로봇입니다.
+        놀이공원에서 가장 불편한 점으로 꼽힌 긴 대기줄(47.9%, 메타베이 2023.06)에서 출발해,
+        대기 시간을 줄이는 대신 줄 옆 바닥에 그림을 그려 기다리는 시간을 볼거리로 바꾸는 컨셉입니다.
+        관람객이 머리 위 터치 디스플레이에 그림을 그리면 그림을 20×12개의 점으로 바꾸고,
+        로봇이 직진하는 동안 12개의 노즐이 한 줄씩 바닥에 물을 뿌려 출력합니다.
+        물 그림은 소음 속에서도 눈에 띄고, 마르면 흔적 없이 사라집니다.
       </p>
     </div>
     <p class="wd-intro__eng">
-      WADE is an autonomous service robot that draws on outdoor ground surfaces with water.
-      When a user draws on the upper touch panel, the robot moves forward and prints that
-      shape onto the ground. In areas where no one is present, it runs a water-drawing
-      routine on its own to attract visitors. The service covers caricature and character
-      drawing, printed store promotions, and wayfinding or queue information drawn in water.
-      Because the water evaporates, no cleaning is required, which makes the robot suitable
-      for amusement parks, festivals, and expos where visitors stay for long periods.
+      WADE is a service robot that draws on outdoor ground surfaces with water.
+      It started from the long queues that visitors named as the biggest discomfort at
+      amusement parks (47.9%, Metabay, June 2023): instead of shortening the wait, the robot
+      draws next to the line and turns waiting time into something to watch. A visitor draws
+      on the overhead touch display, the drawing is converted into a 20×12 dot grid, and
+      twelve nozzles print it row by row while the robot drives straight. Water drawings stand
+      out even in a noisy crowd and disappear without a trace once they dry.
     </p>
   </div>
 </section>
 
 <!-- 06 · DARK PANEL #1 -->
 <section class="wd-dark" data-screen-label="Wade · Statement">
-  <div class="wd-dark-img reveal" data-label="Fig. 01 · Overview Scene"></div>
+  <div class="wd-dark-img reveal"><img src="../assets/works/wade/scene_print.jpg" alt="" loading="lazy"></div>
 
   <div class="wd-dark-row reveal">
     <div class="wd-dark-row__mark">PROBLEM</div>
@@ -1094,14 +1106,6 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
     </div>
   </div>
 
-  <!-- 원형 이미지 슬롯 3개 — <img>를 안에 넣으면 자동으로 원형 크롭됨.
-       비어 있을 때는 data-label 이 placeholder 로 표시됨. -->
-  <div class="wd-dots reveal delay-1">
-    <div class="wd-dot" data-label="Fig. 02"></div>
-    <div class="wd-dot" data-label="Fig. 03"></div>
-    <div class="wd-dot" data-label="Fig. 04"></div>
-  </div>
-
   <div class="wd-dark-row reveal">
     <div class="wd-dark-row__mark">APPROACH</div>
     <div class="wd-dark-row__body">
@@ -1109,8 +1113,8 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
         구현 방식은 워터펌프와 솔레노이드 밸브를 조합한 적정기술입니다. 별도 출력
         장비 없이 압력탱크로 물을 밀어내고 밸브의 개폐만 제어하기 때문에 야외에서
         운용할 수 있고 유지비가 낮습니다. 여기에 틸팅과 스위블이 가능한 헤드와 표정
-        변화를 더해 사용자가 로봇의 상태를 확인하면서 조작하도록 했습니다. 감정
-        의인화 표현을 다룬 연구는 IDEA 2024 국제디자인학회에 논문으로 발표했습니다.
+        변화를 더해 사용자가 로봇의 상태를 확인하면서 조작하도록 했습니다. 캐릭터성은
+        절제하고 직선을 줄인 유선형으로 다듬어 불쾌한 골짜기를 피했습니다.
       </p>
       <p class="wd-dark-row__eng">
         The system is built on appropriate technology, combining a water pump with
@@ -1118,22 +1122,15 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
         pushes the water out and only the valve opening and closing is controlled, which
         allows outdoor operation at a low maintenance cost. A tilting and swiveling head
         with changing facial expressions was added so that users can check the robot's
-        status while operating it. The study on emotional personification was published
-        at IDEA 2024, the International Design Conference.
+        status while operating it. The character was kept restrained, with a streamlined
+        form and fewer straight lines, to avoid the uncanny valley.
       </p>
     </div>
   </div>
 
   <!-- Wide grey image box sitting INSIDE the dark panel (per reference) -->
-  <div class="wd-dark-img reveal" data-label="Fig. 05 · Context Scene" style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"></div>
+  <div class="wd-dark-img reveal" style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"><img src="../assets/works/wade/step_print.jpg" alt="" loading="lazy"></div>
 
-</section>
-
-<!-- 06.5 · FULL-BLEED PRODUCT SCENE with dark-gradient veil on top.
-     The gradient continues the dark panel's ink down into the image
-     so the transition reads as one piece (matches reference). -->
-<section data-om-id="731addee:om-section-6" data-om-id="b0b8def1:om-section-6" class="wd-scene-bleed">
-  <div data-om-id="731addee:om-div-26" data-om-id="b0b8def1:om-div-26" class="wd-scene-bleed__frame" data-label="Fig. 06 · Product Scene"></div>
 </section>
 
 <section data-om-id="731addee:om-section-7" data-om-id="b0b8def1:om-section-7" class="wd-textrow">
@@ -1150,14 +1147,14 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 
 <!-- 08 · BIG SQUARE (padded, near-1:1) -->
 <section class="wd-bigsquare">
-  <div class="wd-bigsquare__frame reveal" data-label="Fig. 07 · Product Portrait"></div>
+  <div class="wd-bigsquare__frame wd-bigsquare__frame--portrait reveal"><img src="../assets/works/wade/scene_wait.jpg" alt="" loading="lazy"></div>
 </section>
 
 <!-- 09 · 3-COLUMN GRID (padded) -->
 <section class="wd-trirow">
-  <div class="wd-trirow__cell reveal" data-label="Fig. 08"></div>
-  <div class="wd-trirow__cell reveal delay-1" data-label="Fig. 09"></div>
-  <div class="wd-trirow__cell reveal delay-2" data-label="Fig. 10"></div>
+  <div class="wd-trirow__cell reveal"><img src="../assets/works/wade/step_detect.jpg" alt="" loading="lazy" style="object-position:72% 50%"></div>
+  <div class="wd-trirow__cell reveal delay-1"><img src="../assets/works/wade/step_draw.jpg" alt="" loading="lazy"></div>
+  <div class="wd-trirow__cell reveal delay-2"><img src="../assets/works/wade/step_pixelate.jpg" alt="" loading="lazy"></div>
 </section>
 
 <section class="wd-textrow">
@@ -1172,12 +1169,6 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   </div>
 </section>
 
-<!-- 10 · ASYMMETRIC DUO (grip + display) — FULL-BLEED -->
-<section class="wd-bleed-duo wd-bleed-duo--sq-tall">
-  <div class="reveal" data-label="Fig. 11 · Grip in Hand"></div>
-  <div class="reveal delay-1" data-label="Fig. 12 · Display"></div>
-</section>
-
 <section class="wd-textrow">
   <div class="wd-textrow__label">Reach for Everyone</div>
   <div class="wd-textrow__body">
@@ -1188,11 +1179,6 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
       The touch display height was set so that children from 120 cm, adults up to 180 cm, and wheelchair users can all use it. The height of the upper panel was determined by comparing the reach ranges of these three conditions. All controls are placed on a single upper face, so the input can be completed from one position. The criteria were based on operation in venues with a wide range of visitor ages.
     </p>
   </div>
-</section>
-
-<!-- 11 · TALL CLOSE-UP — FULL-BLEED -->
-<section class="wd-bleed wd-bleed--tall">
-  <div class="wd-bleed__frame reveal" data-label="Fig. 13 · Product Close-up"></div>
 </section>
 
 <!-- 11b · CAPTION under Fig. 08 — Material & Finish (distinct topic) -->
@@ -1206,17 +1192,6 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
       The outer shell was 3D printed in PLA and then assembled. The internal support structure was built from aluminium profiles so that the frame carries the load of the shell and the components. Foamex partitions separate the water drive section from the electrical section. Since the robot was intended to be operated on exhibition floors, it was built as an assembled structure that allows parts to be replaced and serviced.
     </p>
   </div>
-</section>
-
-<!-- 12 · TWO-HAND SCENARIO (padded, square) -->
-<section class="wd-scenario">
-  <div class="wd-scenario__frame reveal" data-label="Fig. 14 · Two-hand Scenario"></div>
-</section>
-
-<!-- 13 · LARGE GRIP MACRO — FULL-BLEED -->
-<!-- Fig.09 ↔ Fig.10 사이 여백 2배 (clamp 24/3vw/40 → 48/6vw/80) -->
-<section class="wd-bleed wd-bleed--macro" style="margin-top: clamp(48px, 6vw, 80px);">
-  <div class="wd-bleed__frame reveal" data-label="Fig. 15 · Grip Macro"></div>
 </section>
 
 <!-- 13b · CAPTION under Fig. 10 — Grip & Ergonomics -->
@@ -1233,9 +1208,9 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 </section>
 
 <!-- 14 · CAMERA / USB DUO (padded, even 4:5) -->
-<section class="wd-detailduo">
-  <div class="reveal" data-label="Fig. 16 · Camera"></div>
-  <div class="reveal delay-1" data-label="Fig. 17 · USB-C"></div>
+<section class="wd-detailduo wd-detailduo--wide">
+  <div class="reveal"><img src="../assets/works/wade/inner_front.jpg" alt="" loading="lazy"></div>
+  <div class="reveal delay-1"><img src="../assets/works/wade/inner_rear.jpg" alt="" loading="lazy"></div>
 </section>
 
 <section class="wd-textrow wd-textrow--split">
@@ -1255,46 +1230,24 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   </div>
 </section>
 
-<!-- 15 · STRAP TALL — FULL-BLEED -->
-<section class="wd-bleed wd-bleed--strap">
-  <div class="wd-bleed__frame reveal" data-label="Fig. 18 · Strap Detail"></div>
-</section>
-
-
-<!-- 16 · RELATED OBJECT — FULL-BLEED -->
-<section class="wd-bleed wd-bleed--related">
-  <div class="wd-bleed__frame reveal" data-label="Fig. 19 · Related Object"></div>
-</section>
-
 <!-- 17 · DARK PANEL #2 -->
 <!-- Fig.13 바로 아래 붙도록 흰색 상단 여백 제거 -->
 <section class="wd-dark" data-screen-label="Wade · Process">
   <!-- Prototype gallery: unified 6-image grid (3 × 2, all 4:3) —
        foam mockups → resin prints under the same lighting -->
   <div class="wd-protogrid reveal" aria-label="Prototype Process">
-    <div data-label="Fig. 20"></div><div data-label="Fig. 21"></div><div data-label="Fig. 22"></div>
-    <div data-label="Fig. 23"></div><div data-label="Fig. 24"></div><div data-label="Fig. 25"></div>
+    <div title="01 외장 3D 프린팅·도장"><img src="../assets/works/wade/build_paint.jpg" alt="" loading="lazy"></div><div title="02 플랫폼·배선"><img src="../assets/works/wade/build_chassis.jpg" alt="" loading="lazy"></div><div title="03 헤드 프로토타입 제작"><img src="../assets/works/wade/build_head.jpg" alt="" loading="lazy"></div><div title="04 방수 설계"><img src="../assets/works/wade/build_valves.jpg" alt="" loading="lazy"></div><div title="05 출력 테스트"><img src="../assets/works/wade/test_print.jpg" alt="" loading="lazy"></div><div title="06 조립"><img src="../assets/works/wade/build_assembly.jpg" alt="" loading="lazy"></div>
   </div>
 
   <div class="wd-dark-row reveal">
     <div class="wd-dark-row__mark">PROCESS</div>
     <div class="wd-dark-row__body">
       <p class="wd-dark-row__kor">
-        엔지니어 4명과 디자이너 1명으로 구성된 팀에서 디자인 전체를 담당했습니다. 컨셉과 시나리오를 함께 정한 뒤 서비스 로봇과 자율주행, LabVIEW 교육을 이수하고 엔지니어링과 디자인을 동시에 진행했습니다. 엔지니어링에서 구현 범위 설정과 코딩, 플랫폼 조립, 구조설계, 전기 배선을 맡는 동안 스케치와 3D 모델링, 렌더링, 3D 프린팅, 프로토타이핑, 영상 제작을 진행했습니다. 최종 결과물이 구동하는 실물이었기 때문에 치수와 배선 경로는 프로토타입을 제작해 확인하면서 수정했습니다.
+        엔지니어 4명과 디자이너 1명으로 구성된 팀에서 디자인 전체를 담당했습니다. 컨셉과 시나리오를 함께 정한 뒤 서비스 로봇과 LabVIEW 교육을 이수하고 엔지니어링과 디자인을 동시에 진행했습니다. 엔지니어링에서 구현 범위 설정과 코딩, 플랫폼 조립, 구조설계, 전기 배선을 맡는 동안 스케치와 3D 모델링, 렌더링, 3D 프린팅, 프로토타이핑, 영상 제작을 진행했습니다. 최종 결과물이 구동하는 실물이었기 때문에 치수와 배선 경로는 프로토타입을 제작해 확인하면서 수정했습니다.
       </p>
       <p class="wd-dark-row__eng">
-        In a team of four engineers and one designer, I handled the entire design track. After defining the concept and scenario together, the team completed coursework in service robotics, autonomous driving, and LabVIEW, then ran engineering and design in parallel. While engineering covered feasibility scoping, coding, platform assembly, structural design, and electrical wiring, I worked on sketching, 3D modeling, rendering, 3D printing, prototyping, and film production. Since the final deliverable was a working machine, dimensions and wiring routes were revised by building prototypes and checking them.
+        In a team of four engineers and one designer, I handled the entire design track. After defining the concept and scenario together, the team completed coursework in service robotics and LabVIEW, then ran engineering and design in parallel. While engineering covered feasibility scoping, coding, platform assembly, structural design, and electrical wiring, I worked on sketching, 3D modeling, rendering, 3D printing, prototyping, and film production. Since the final deliverable was a working machine, dimensions and wiring routes were revised by building prototypes and checking them.
       </p>
-    </div>
-  </div>
-
-  <!-- BW people mosaic: 2×2 asymmetric (small+wide / wide+small) -->
-  <div class="wd-mosaic reveal delay-1" aria-label="User Scenarios">
-    <div class="wd-mosaic__row wd-mosaic__row--a">
-      <div data-label="Fig. 26"></div><div data-label="Fig. 27"></div>
-    </div>
-    <div class="wd-mosaic__row wd-mosaic__row--b">
-      <div data-label="Fig. 28"></div><div data-label="Fig. 29"></div>
     </div>
   </div>
 
@@ -1302,10 +1255,10 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
     <div class="wd-dark-row__mark">IN THE FIELD</div>
     <div class="wd-dark-row__body">
       <p class="wd-dark-row__kor">
-        완성한 로봇은 2023 로보월드와 서울디자인페스티벌, 2024 HCI KOREA 전시에서 직접 운용했습니다. 운용 시나리오는 GPS 기반 자율주행, 사람을 인식해 정지하고 그림을 받는 단계, 0.5m/s로 직진하며 출력하는 단계로 구성했습니다. 현장에서는 어린이와 성인 관람객이 로봇에 그림을 그리고 출력 과정을 지켜보면서 주변에 사람이 모이는 반응을 확인했습니다. 이 프로젝트로 HCI KOREA 2024 Creative Award 최우수상을 받았습니다.
+        완성한 로봇은 2023 로보월드와 서울디자인페스티벌, 2024 HCI KOREA 전시에서 직접 운용했습니다. 프로토타입은 원격 조종으로 주행하고, 사람을 인식해 정지한 뒤 그림을 받고, 0.5m/s로 직진하며 12개 노즐로 출력합니다. 34°C에서도 물 그림이 5분 이상 유지됐습니다. 현장에서는 어린이와 성인 관람객이 로봇에 그림을 그리고 출력 과정을 지켜보면서 주변에 사람이 모이는 반응을 확인했습니다. 이 프로젝트로 HCI KOREA 2024 Creative Award 최우수상을 받았고, 특허(제10-2942532호)와 디자인(제30-1280754호)을 등록했습니다.
       </p>
       <p class="wd-dark-row__eng">
-        The completed robot was operated at Robot World 2023, the Seoul Design Festival, and the HCI KOREA 2024 exhibition. The operating scenario consisted of GPS-based autonomous driving, detecting a person and stopping to receive a drawing, and printing while advancing straight at 0.5 m/s. On site, children and adult visitors drew on the robot and watched the printing process, and visitors gathered around it. The project received the Creative Award, Grand Prize, at HCI KOREA 2024.
+        The completed robot was operated at Robot World 2023, the Seoul Design Festival, and the HCI KOREA 2024 exhibition. The prototype is driven by remote control; it detects a person, stops to receive a drawing, and prints with twelve nozzles while advancing straight at 0.5 m/s. At 34°C the water drawings stayed visible for more than five minutes. On site, children and adult visitors drew on the robot and watched the printing process, and visitors gathered around it. The project received the Excellence Award (최우수상) at the HCI KOREA 2024 Creative Award and was granted a patent (No. 10-2942532) and a design registration (No. 30-1280754).
       </p>
     </div>
   </div>
@@ -1313,7 +1266,7 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 
 <!-- 18 · FINAL LIFESTYLE — FULL-BLEED -->
 <section class="wd-bleed wd-bleed--final">
-  <div class="wd-bleed__frame reveal" data-label="Fig. 30 · Final Lifestyle"></div>
+  <div class="wd-bleed__frame wd-bleed__frame--photo reveal" style="aspect-ratio: 1800 / 638;"><img src="../assets/works/wade/print_field.jpg" alt="" loading="lazy"></div>
 </section>
 
 <!-- Thin black band -->
@@ -1321,13 +1274,13 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 
 <!-- 19 · PAGER (threespin 상세페이지와 동일 스타일) -->
 <nav class="pager" aria-label="Project navigation">
-  <a href="../work.html" class="left">
-    <span class="pager__label">All Works</span>
-    <span class="pager__title">← Index</span>
+  <a href="odm-cmf.html" class="left">
+    <span class="pager__label">Previous</span>
+    <span class="pager__title">← ODM CMF</span>
   </a>
-  <a href="#" class="right">
+  <a href="inclusive.html" class="right">
     <span class="pager__label">Next Project</span>
-    <span class="pager__title">Threespin →</span>
+    <span class="pager__title">Inclusive Mobility →</span>
   </a>
 </nav>
 
@@ -1337,7 +1290,7 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   <div class="footer__grid">
     <div>
       <h4>Contact</h4>
-      <a href="mailto:hello@sumin.co">hello@sumin.co</a>
+      <a href="mailto:ssom98@naver.com">ssom98@naver.com</a>
       <span>+82 10 5660 5032</span>
     </div>
     <div>
@@ -1353,7 +1306,7 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   </div>
   <div class="footer__meta">
     <span>© 2026 Su-min Ko. All rights reserved.</span>
-    <span>Portfolio v. 2026.09 — Industrial Design</span>
+    <span>Portfolio v. 2026.10 — Industrial Design</span>
   </div>
 </footer>
 

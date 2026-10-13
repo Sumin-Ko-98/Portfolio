@@ -71,6 +71,11 @@
   }
 
   /* ---------- Reveal on scroll ---------- */
+  // 모션 줄이기 설정이거나 ?static (전체 페이지 캡처용)이면 애니메이션 없이 바로 표시
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]static\b/.test(location.search)) {
+    document.documentElement.classList.add('no-motion');
+    document.querySelectorAll('.reveal, .reveal-lines').forEach(el => el.classList.add('is-in'));
+  }
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       if (en.isIntersecting) {

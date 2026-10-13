@@ -256,6 +256,7 @@ img, video { max-width: 100%; }
 .reveal.delay-2 { transition-delay: .16s; }
 .reveal.delay-3 { transition-delay: .24s; }
 .reveal.delay-4 { transition-delay: .32s; }
+.no-motion .reveal, .no-motion .reveal-lines .line > span { transition: none !important; }
 
 .reveal-lines .line { display: inline-block; overflow: hidden; }
 .reveal-lines .line > span {
