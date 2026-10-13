@@ -137,7 +137,7 @@ PAGES["threespin"] = dict(
              "On the previous model the sensor window sat flush with the housing and hit furniture directly, and customers "
              "reported scratches on both. The upper and lower housings now step out beyond the sensor window, so the "
              "housing touches first."),
-            ("img", {"f": "kitchen.jpg", "pos": "50% 55%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "kitchen.jpg", "pos": "50% 78%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "bedroom.jpg", "r": "natural"}),
         ("text", "Triangle Form",
@@ -145,8 +145,8 @@ PAGES["threespin"] = dict(
          "다른 인상을 만듭니다. #슬림 · #심리스 · #미니멀",
          "A black sensor-window line wraps the body through 360 degrees and leads the eye horizontally, while corners "
          "finished with varied radii set it apart from round robot vacuums."),
-        ("square", {"f": "front_pers.jpg", "pos": "50% 55%"}),
-        ("tri", ["topview.jpg", "kv_shelf.jpg", "kv_wall.jpg"]),
+        ("square", "kv_shelf.jpg"),
+        ("tri", ["topview.jpg", {"f": "mop_pads.jpg", "pos": "45% 50%"}, {"f": "front_pers.jpg", "pos": "50% 50%"}]),
         ("text", "Low Proportion",
          "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 개발 중 IR 센서가 "
          "측후면으로 이동한 뒤에도 손잡이·상면 곡률·센서창 비율을 함께 조정해 이 라인을 유지했습니다.",
@@ -167,7 +167,7 @@ PAGES["threespin"] = dict(
          ("Mop Pads", "세 개의 회전 패드는 손쉽게 탈착·세탁할 수 있고, 세탁 후 반복 사용합니다.",
           "The three rotating pads detach easily and can be washed and reused.")),
         ("duo", ["robospin.jpg", {"f": "ui.jpg", "pos": "62% 50%"}]),
-        ("bleed", "mop_pads.jpg", "macro"),
+        ("bleed", "kv_wall.jpg", "macro"),
         ("text", "Storage &amp; CMF",
          "본체를 세워 결합하는 수직형 거치대로 보관 면적을 줄였습니다. 거치대도 본체와 같은 곡면·컬러·마감으로 통일해 보관 중에도 "
          "하나의 오브제로 읽힙니다.",
@@ -217,23 +217,23 @@ PAGES["ts700"] = dict(
            "split, followed by UI and voice guidance, CMF and mass-production support."),
     sections=[
         ("dark", [
-            ("img", {"f": "hero_gs.jpg", "r": "natural"}),
+            ("img", {"f": "steam_macro.jpg", "r": "natural"}),
             ("row", "PROBLEM",
              "로봇청소기 시장에서는 전고가 낮을수록 제품 가치가 높게 평가되지만, 스팀 모듈 탑재로 전고가 크게 높아졌습니다. "
              "또 기존 자사 제품은 깊은 바텀과 얕은 탑의 2분할 구조라, A/S 때 하단 모듈에 접근하려면 상단 모듈을 모두 분해해야 했습니다.",
              "In the robot vacuum market a lower height is read as higher value, but the steam module made the robot much "
              "taller. Existing models also used a two-part housing, a deep bottom and a shallow top, so reaching the lower "
              "module for service meant taking the whole upper module apart."),
-            ("dots", ["steam_macro.jpg", {"f": "pers4.jpg", "bg": W}, {"f": "mop_exploded.jpg", "pos": "50% 60%"}]),
+            ("dots", [{"f": "pers4.jpg", "bg": W}, {"f": "mop_exploded.jpg", "pos": "50% 60%"}, {"f": "hand_cradle.jpg", "pos": "55% 50%"}]),
             ("row", "APPROACH",
              "바텀 하우징 엣지에 대형 챔퍼를, 바텀 파트에 다크 톤 CMF를 적용해 하단부가 시각적으로 후퇴하도록 했습니다. "
              "그리고 바디를 바텀·미들·탑 3분할로 재구성해, 상단 전체를 해체하지 않고도 하단 모듈에 접근할 수 있게 했습니다.",
              "A large chamfer on the bottom-housing edge and a dark-tone CMF on the bottom part make the lower body visually "
              "recede. The body was then rebuilt as bottom, middle and top, so the lower module can be reached without "
              "dismantling the entire top."),
-            ("img", {"f": "steam_macro2.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "home2.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
-        ("scene", {"f": "home2.jpg", "r": "natural"}),
+        ("scene", {"f": "lifestyle_hand.jpg", "r": "natural"}),
         ("text", "Slim Look",
          "사용자가 서서 내려다보는 시선 각도에서는 챔퍼로 덜어낸 측면과 어두운 하단이 잘 보이지 않습니다. 그래서 실제 전고보다 "
          "얇은 바디로 인지됩니다.",
@@ -248,7 +248,7 @@ PAGES["ts700"] = dict(
          "The housing was rebuilt in three parts (bottom, middle and top), so the lower module can be reached without "
          "dismantling the whole top."),
         ("bleed", "three_part_body.png", "natural"),
-        ("duo", [{"f": "hand_cradle.jpg", "pos": "55% 50%"}, {"f": "lifestyle_hand.jpg", "pos": "35% 50%"}]),
+        ("duo", [{"f": "steam_macro2.jpg", "pos": "50% 60%"}, {"f": "hero_gs.jpg", "pos": "46% 50%"}]),
         ("text", "Product Details",
          "물통은 래치 방식으로 탈착하고, 사용하지 않을 때는 거치대에 세워 보관합니다.",
          "The water tank detaches with a latch, and the robot stands upright on its cradle when not in use."),
@@ -258,7 +258,6 @@ PAGES["ts700"] = dict(
           "Lighting UI and voice guidance were designed from the operating specification, with sound effects and TTS produced in-house."),
          ("CMF", "다양한 컬러의 디자인 목업을 제작·검토한 뒤 CMF와 실크를 확정했습니다.",
           "Design mock-ups in a range of colours were built and reviewed before the CMF and silk-screen were fixed.")),
-        ("bleed", "overview_main.jpg", "macro"),
         ("dark", [
             ("grid", ["photo_2323.jpg", "photo_2324.jpg", "mockup_2325.jpg", "photo_0188.jpg", "mockup_1109.jpg", "mockup_1665.jpg"]),
             ("row", "MASS PRODUCTION",
@@ -269,7 +268,7 @@ PAGES["ts700"] = dict(
             ("roles", ["시장·트렌드·경쟁 제품 리서치", "UX 디자인", "스케치·2D 렌더링", "3D 모델링·렌더링",
                        "UI·음성 안내 설계 및 제작(효과음·TTS)", "CMF", "디자인 목업", "디자인 사양서", "양산 지원", "마케팅 이미지 소스 지원"]),
         ]),
-        ("bleed", "hero_gs2.jpg", "natural"),
+        ("bleed", "overview_main.jpg", "natural"),
         ("band",),
     ],
 )
@@ -302,13 +301,13 @@ PAGES["h500"] = dict(
              "The display and controls were angled up from the conventional flat layout for better visibility. A detachable, "
              "reversible palm rest supports the hand, and the red power button sits at the centre with the direction "
              "buttons grouped around it by function."),
-            ("dots", [{"f": "ctrl_top.jpg", "fit": "contain", "bg": W}, "mock_ctrl1.jpg", "ctrl_mockup.jpg"]),
+            ("dots", ["mock_ctrl1.jpg", "ctrl_mockup.jpg", "wheel_white_mockup.jpg"]),
             ("row", "WHEEL",
              "인휠모터를 허브에 담아 휠 하나로 구동부를 완결했습니다. 스포크 인서트는 원하는 컬러로 커스텀할 수 있도록 확장성을 "
              "고려했고, 손으로 수동 주행할 때를 고려해 핸드림의 두께와 휠과의 간격을 설정했습니다.",
              "The in-wheel motor sits in the hub, so one wheel completes the drive unit. Spoke inserts were designed to be "
              "swapped for any colour, and the hand-rim thickness and its gap from the wheel were set for manual propulsion."),
-            ("img", {"f": "gs_wheel_detail.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "wheel_rim_hand.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "ctrl_living.jpg", "r": "natural"}),
         ("text", "Palm Rest",
@@ -327,29 +326,28 @@ PAGES["h500"] = dict(
         ("text", "Mock-up",
          "3D 프린팅 목업으로 직접 쥐고 조작하며 형상과 버튼 배치를 다듬었습니다.",
          "3D-printed mock-ups were held and operated to refine the form and button layout."),
-        ("pair", [{"f": "mock_ctrl2.jpg", "r": "natural"}, "mock_ctrl3.jpg"]),
+        ("bleed", "mock_ctrl2.jpg", "strap"),
         ("bleed", "chair186.jpg", "natural"),
         ("text", "In-wheel Motor Wheel",
          "수전동휠체어의 구동부를 휠 안에 담은 인휠모터 휠입니다. 3-스포크의 스포크 인서트를 원하는 컬러로 커스텀할 수 있도록 "
          "확장성을 고려해 디자인했습니다.",
          "An in-wheel motor wheel that places the wheelchair's drive unit inside the wheel. The inserts of its three "
          "spokes were designed to be customised in any colour."),
-        ("duo", ["wheel_render_24.jpg", {"f": "wheel_rim_hand.jpg", "pos": "45% 50%"}]),
+        ("square", "wheel_render_24.jpg"),
         ("text", "Hand Rim",
          "손으로 수동 주행할 때를 고려해 메탈 핸드림의 두께와 휠과의 간격을 설정했습니다.",
          "The thickness of the metal hand rim and its gap from the wheel were set for manual propulsion."),
-        ("bleed", "wheel_chair_side.jpg", "macro"),
         ("dark", [
             ("grid", ["mock_wheel1.jpg", "mock_wheel2.jpg", "mock_wheel3.jpg", "mock_wheel5.jpg", "wheel_cmf_mockup.jpg", "photo_8218.jpg"]),
-            ("row", "MOCK-UP &amp; CMF".replace("&amp;", "&"),
+            ("row", "MOCK-UP &amp; CMF",
              "스포크 인서트 컬러와 핸드림 블랙 / 실버 마감을 실물 목업으로 비교하고, 컬러칩 5종으로 최종 컬러를 확인했습니다.",
              "Spoke-insert colours and black / silver hand-rim finishes were compared on physical mock-ups, and the final "
              "colours were checked against five colour chips."),
-            ("mosaic", ["wheel_color_chips.jpg", "gs_door.jpg", "mock_wheel4.jpg", "wheel_white_mockup.jpg"]),
+            ("mosaic", ["wheel_color_chips.jpg", "wheel_chair_side.jpg", "mock_wheel4.jpg", "gs_wheel_detail.jpg"]),
             ("roles", ["컨트롤러 디자인", "UX 디자인 (팜레스트 형상·버튼 배치·오조작 방지·표시부 가독성)", "3D 프린팅 목업 검증",
                        "휠 · 시장·트렌드·경쟁 제품 리서치", "스케치", "3D 모델링", "CMF 디자인", "디자인 목업"]),
         ]),
-        ("bleed", "gs_wheel_side.jpg", "final"),
+        ("bleed", "gs_door.jpg", "natural"),
         ("band",),
     ],
 )
@@ -399,7 +397,6 @@ PAGES["odm-cmf"] = dict(
                     ("q9.jpg", "Q9 · 탑 커버"), ("q9_plus.jpg", "Q9 PLUS"), ("q11.jpg", "Q11"), ("q13.jpg", "Q13"), ("q7.jpg", "Q7"),
                     ("ts402m.jpg", "TS402M · 페이스리프트"), ("b1.jpg", "B1"), ("x1.jpg", "X1"), ("x2.jpg", "X2"), ("sr13w.jpg", "SR13W")],
          ("+ MORE", "TS800 · SR15W(맥스젠) · H300(에브리봇모빌리티)")),
-        ("pair", [{"f": "q13_set.jpg", "fit": "contain", "bg": W, "r": "natural"}, {"f": "q7plus_main.jpg", "fit": "contain", "bg": W}]),
         ("text", "Q9 Station Top Cover",
          "Q9은 스테이션 탑 커버를 새로 디자인해 제작까지 맡았습니다.",
          "For the Q9, a new station top cover was designed and taken into production."),
@@ -620,7 +617,7 @@ PAGES["seuv"] = dict(
              "테일게이트를 펼쳐 앉고 쉬는 공간으로 쓰도록, 그 위에서 쓰는 액세서리를 1:1 폼보드로 만들어 직접 시연했습니다.",
              "To use the opened tailgate as a place to sit and rest, the accessories used on it were built in full-scale "
              "foam board and demonstrated in person."),
-            ("dots", ["clamshell_step.jpg", "s_luggage.jpg", "s_tray.jpg"]),
+            ("dots", ["s_luggage.jpg", "s_tray.jpg", "s_cupholder.jpg"]),
             ("row", "WELLNESS",
              "시트 배열 7가지 모드, 후석 보조 모니터, 캐빈 살균 로직, 무드 큐레이터 등 웰니스 항목을 시나리오와 목업으로 구체화했습니다.",
              "Wellness items such as seven seat-arrangement modes, rear auxiliary monitors, cabin-sterilisation logic and a mood curator were "
@@ -642,14 +639,13 @@ PAGES["seuv"] = dict(
           "Rear auxiliary monitors were compared by screen size in a real vehicle."),
          ("OTT Display", "고정형과 팝업형 OTT 디스플레이를 제안했습니다.",
           "Fixed and pop-up OTT displays were proposed.")),
-        ("tri", ["s_ott_popup.jpg", "s_cupholder.jpg", {"f": "rear_display_test.jpg", "pos": "40% 50%"}]),
+        ("pair", [{"f": "s_ott_popup.jpg", "r": "natural"}, "rear_display_test.jpg"]),
         ("dark", [
             ("row", "PROCESS",
              "항목마다 PoC 목업을 만들어 마크로밀엠브레인의 사용성 테스트에 썼습니다.",
              "A PoC mock-up was built for each item and used in Macromill Embrain's usability tests."),
             ("roles", UX_ROLE),
         ]),
-        ("bleed", "rear_display_test.jpg", "natural"),
         ("band",),
     ],
 )
@@ -681,7 +677,7 @@ PAGES["ev-sedan"] = dict(
              "아이템은 3D 애니메이션·영상으로 표현했습니다.",
              "Scenario items such as heatwave/cold-snap climate modes, a HUD U-turn guide, a surveillance mode that records "
              "ten seconds before and after a collision, and Relax and Cinema custom modes were shown as 3D animations and videos."),
-            ("dots", ["s_aircon.jpg", "s_relax.jpg", "s_security.jpg"]),
+            ("dots", ["s_aircon.jpg", "s_relax.jpg", "s_cinema.jpg"]),
             ("row", "INTERIOR",
              "실내 아이템 4종은 폼보드 PoC로 만들어 1·2열 배치를 재현하고 직접 사용해 보며 검증했습니다. 테이블은 애프터마켓 "
              "테이블 아이디어 3안을 도출해 실차에서 검증했습니다.",
@@ -705,7 +701,6 @@ PAGES["ev-sedan"] = dict(
              "The foam-board PoCs were used in Macromill Embrain's usability tests with real users."),
             ("roles", UX_ROLE),
         ]),
-        ("bleed", "s_cinema.jpg", "natural"),
         ("band",),
     ],
 )

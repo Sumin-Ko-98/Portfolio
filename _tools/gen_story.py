@@ -110,7 +110,7 @@ def dark_block(d, b):
         _, mark, kor, eng = b
         body = kor_eng(kor, eng, "wd-dark-row__kor", "wd-dark-row__eng", ' style="color: rgb(246, 245, 242)"')
         return f"""  <div class="wd-dark-row reveal">
-    <div class="wd-dark-row__mark">{E(mark)}</div>
+    <div class="wd-dark-row__mark">{mark}</div>
     <div class="wd-dark-row__body">
       {body}
     </div>
@@ -151,7 +151,7 @@ def section(d, s):
     if k == "text":
         _, label, kor, eng = s
         return f"""<section class="wd-textrow">
-  <div class="wd-textrow__label">{E(label)}</div>
+  <div class="wd-textrow__label">{label}</div>
   <div class="wd-textrow__body">
     {kor_eng(kor, eng, "wd-textrow__kor", "wd-textrow__eng")}
   </div>
@@ -160,7 +160,7 @@ def section(d, s):
         cols = []
         for side, (label, kor, eng) in zip(("left", "right"), s[1:]):
             cols.append(f"""  <div class="wd-textrow__col wd-textrow__col--{side}">
-    <h3 class="wd-textrow__caplabel">{E(label)}</h3>
+    <h3 class="wd-textrow__caplabel">{label}</h3>
     {kor_eng(kor, eng, "wd-textrow__kor", "wd-textrow__eng")}
   </div>""")
         return '<section class="wd-textrow wd-textrow--split">\n' + "\n".join(cols) + "\n</section>"
