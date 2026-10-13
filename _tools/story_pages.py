@@ -65,6 +65,7 @@ SOURCES = {
     },
     "h500": {
         "ctrl_pers.jpg": J(LS, "_시안", "assets", "h500", "ctrl_pers.jpg"),
+        "wheel_chair_side.jpg": J(LS, "_시안", "assets", "h500", "wheel_chair_side.jpg"),
         "mock_ctrl3.jpg": J(LS, "H500", "H500_Mockup_Controller_03.jpg"),
         "ctrl_cover_src.jpg": J(LS, "_시안", "assets", "h500", "ctrl_cover_src.jpg"),
         "wheel_cover_src.jpg": J(LS, "_시안", "assets", "h500", "wheel_cover_src.jpg"),
@@ -116,7 +117,7 @@ SOURCES = {
         "home.jpg": OLDP(17, (0.5, 0.06, 1.0, 0.49)),
         "tech_glazing.jpg": OLDP(17, (0.035, 0.66, 0.26, 0.88)),
         "tech_display.jpg": OLDP(17, (0.27, 0.66, 0.49, 0.88)),
-        "tech_dock.jpg": OLDP(17, (0.50, 0.66, 0.72, 0.88)),
+        "dock_diagram.jpg": OLDP(20, (0.76, 0.63, 0.98, 0.80)),  # PBV Docking Step 도식
         "speaker_panel.jpg": OLDP(20, (0.02, 0.10, 0.58, 0.62)),  # 측면 스마트 서피스 스피커
         "dock_step.jpg": OLDP(20, (0.0, 0.52, 0.50, 0.98)),  # 도킹 스텝 (PDF 주석 제외)
         "handle.jpg": OLDP(18, (0.0, 0.14, 1.0, 0.33)),
@@ -156,7 +157,9 @@ SOURCES = {
         "s_ott.jpg": J(LS, "_시안", "assets", "ux", "seuv", "s_ott.jpg"),
     },
     "ev-sedan": {
-        "s_aircon_car.jpg": {"src": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_aircon.jpg"), "crop": (0.51, 0.0, 0.74, 1.0)},
+        # 기아 엠블럼·번호판이 보이는 차량 패널(2·3번)은 제외하고 대시보드·시트 패널만
+        "s_aircon_dash.jpg": {"src": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_aircon.jpg"), "crop": (0.0, 0.0, 0.245, 1.0)},
+        "s_aircon_seat.jpg": {"src": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_aircon.jpg"), "crop": (0.755, 0.0, 1.0, 1.0)},
         "s_security.jpg": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_security.jpg"),
     },
 }
@@ -347,7 +350,7 @@ PAGES["h500"] = dict(
     dir="h500", cat_key="product", title="H500", year="2025 — 2026", category="Wheelchair · Everybot Mobility",
     desc="에브리봇모빌리티 H500 수전동휠체어 컨트롤러 · 인휠모터 휠 디자인",
     lede="수전동휠체어 H500의 <b>컨트롤러</b>와 <b>인휠모터 휠</b>을 디자인했습니다.",
-    hero={"f": "ctrl_cover_src.jpg", "fit": "contain", "bg": "auto", "pad": "4% 0"},  # 휠체어 렌더는 원본에서 등받이가 잘려 있어 제외
+    hero={"f": "wheel_cover_src.jpg", "fit": "contain", "bg": "auto", "pad": "4% 0"},  # 컨트롤러 투시는 Final Design 3열에 있어 히어로는 휠
     meta=[("Term", "2025.12 — 2026.06"), ("Client", "에브리봇모빌리티"), ("Product", "H500 수전동휠체어"),
           ("Scope", "컨트롤러 · 인휠모터 휠"), ("Output", "3D 프린팅 목업 · CMF 목업")],
     intro=([("CTRL", "Controller", "팜레스트 형상 · 버튼 배치", "오조작 방지 · 표시부 가독성"),
@@ -403,12 +406,12 @@ PAGES["h500"] = dict(
          "확장성을 고려해 디자인했습니다.",
          "An in-wheel motor wheel that places the wheelchair's drive unit inside the wheel. The inserts of its three "
          "spokes were designed to be customised in any colour."),
-        ("bleed", {"f": "wheel_cover_src.jpg", "r": "natural"}, "natural"),
+        ("bleed", {"f": "wheel_chair_side.jpg", "r": "natural"}, "natural"),  # 휠체어 장착 측면
         ("text", "Hand Rim",
          "손으로 수동 주행할 때를 고려해 메탈 핸드림의 두께와 휠과의 간격을 설정했습니다.",
          "The thickness of the metal hand rim and its gap from the wheel were set for manual propulsion."),
         ("dark", [
-            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "photo_8218.jpg", "wheel_color_chips.jpg", "mock_wheel3.jpg", "mock_ctrl3.jpg"]),
+            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "wheel_color_chips.jpg"]),  # 3열 한 줄 (5장이면 빈 칸이 생김)
             ("row", "MOCK-UP &amp; CMF",
              "스포크 인서트 컬러와 핸드림 블랙 / 실버 마감을 실물 목업으로 비교하고, 컬러칩 5종으로 최종 컬러를 확인했습니다.",
              "Spoke-insert colours and black / silver hand-rim finishes were compared on physical mock-ups, and the final "
@@ -628,7 +631,7 @@ PAGES["mobilink"] = dict(
              "Future vehicles act as both transport and living space, calling for multi-purpose functions. MobiLink makes "
              "temperature, lighting and sound in the vehicle easy to control, then keeps working after it moves into the home, "
              "blurring the line between vehicle and home."),
-            ("dots", ["tech_glazing.jpg", "tech_display.jpg", "tech_dock.jpg"]),
+            ("dots", ["tech_glazing.jpg", "tech_display.jpg", "dock_diagram.jpg"]),
             ("row", "TECHNOLOGY",
              "(주)서연이화의 보유 기술력을 반영해 기획한 모바일 콘솔입니다. PC Glazing Tech, Smart Surfaces, Transparent Garnish를 "
              "활용해 복곡면 투명 소재에 Shy Tech를 적용했고, Transparent Display로 터치 조작과 내부 공간이 보이는 수납·냉장 기능을 "
@@ -931,7 +934,7 @@ PAGES["ev-sedan"] = dict(
              "아이템은 3D 애니메이션·영상으로 표현했습니다.",
              "Scenario items such as heatwave/cold-snap climate modes, a HUD U-turn guide, a surveillance mode that records "
              "ten seconds before and after a collision, and Relax and Cinema custom modes were shown as 3D animations and videos."),
-            ("dots", ["s_aircon_car.jpg", "s_relax.jpg", "s_cinema.jpg"]),
+            ("dots", ["s_aircon_dash.jpg", "s_security.jpg", "s_aircon_seat.jpg"]),  # 공조 · 감시 모드 · 공조(시트)
             ("row", "INTERIOR",
              "실내 아이템 4종은 폼보드 PoC로 만들어 1·2열 배치를 재현하고 직접 사용해 보며 검증했습니다. 테이블은 애프터마켓 "
              "테이블 아이디어 3안을 도출해 실차에서 검증했습니다.",
