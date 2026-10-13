@@ -383,6 +383,13 @@
   transition: transform .3s ease;
 }
 .work__viewall a:hover .arrow { transform: translateX(4px); }
+
+/* Product: 첫 카드(TS450) 2칸 강조 — 5개 카드로 3열 두 줄을 채움 */
+@media (min-width: 901px) {
+  .work__grid--feature > .card:first-child { grid-column: span 2; display: flex; flex-direction: column; }
+  .work__grid--feature > .card:first-child .card__media { flex: 1; aspect-ratio: auto; min-height: 0; }
+  .work__grid--feature > .card:first-child .card__media img { position: absolute; inset: 0; }
+}
 </style>
 </head>
 <body data-page="home">
@@ -419,7 +426,7 @@
       </svg>
     </h1>
     <div class="hero__sub">
-      <div class="col-left">Product · PXD · Advanced Design</div>
+      <div class="col-left">Product Design · Physical UX</div>
       <div class="col-mid">Selected works, 2022&mdash;2026.<br>Product design and Physical UX</div>
       <div class="hero__name">Su-min Ko — Designer</div>
     </div>
@@ -456,7 +463,7 @@
     <h2 class="work__cat">PRODUCT DESIGN.</h2>
   </header>
 
-  <div class="work__grid">
+  <div class="work__grid work__grid--feature">
     <a class="card reveal" data-magnetic href="work/threespin.html">
       <div class="card__media">
         <img src="assets/works/threespin_cover.jpg" alt="쓰리스핀 슬림 TS450">
@@ -474,7 +481,7 @@
 
     <a class="card reveal delay-1" data-magnetic href="work/ts700.html">
       <div class="card__media">
-        <img src="assets/works/ts700/cover.jpg" alt="쓰리스핀 스팀 TS700">
+        <img src="assets/works/ts700/cover_src.jpg" alt="쓰리스핀 스팀 TS700">
         <span class="card__badge">Everybot · 양산 지원</span>
         <span class="card__view">View project →</span>
       </div>
@@ -487,7 +494,22 @@
       </div>
     </a>
 
-    <a class="card reveal delay-2" data-magnetic href="work/wade.html">
+    <a class="card reveal delay-2" data-magnetic href="work/h500.html">
+      <div class="card__media">
+        <img src="assets/works/h500/ctrl_cover_src.jpg" alt="H500 컨트롤러">
+        <span class="card__badge">Everybot Mobility</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">H500</h3>
+          <p class="card__sub">수전동휠체어 컨트롤러 · 인휠모터 휠</p>
+        </div>
+        <span class="card__year">2026</span>
+      </div>
+    </a>
+
+    <a class="card reveal" data-magnetic href="work/wade.html">
       <div class="card__media">
         <img src="assets/works/wade/cover.jpg" alt="WADE 워터 드로잉 서비스 로봇">
         <span class="card__badge">HCI Korea 2024 · Excellence</span>
@@ -499,6 +521,21 @@
           <p class="card__sub">Water-Drawing Service Robot</p>
         </div>
         <span class="card__year">2023</span>
+      </div>
+    </a>
+
+    <a class="card reveal delay-1" data-magnetic href="work/odm-cmf.html">
+      <div class="card__media">
+        <img src="assets/works/odm/cmf_chips.jpg" alt="CMF 컬러칩">
+        <span class="card__badge">16 Models</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">CMF &amp; Facelift</h3>
+          <p class="card__sub">양산 제품 CMF · 부분 형상 디자인 16종</p>
+        </div>
+        <span class="card__year">2026</span>
       </div>
     </a>
   </div>
@@ -554,7 +591,7 @@
       <div class="card__foot">
         <div>
           <h3 class="card__title">EV Sedan UX</h3>
-          <p class="card__sub">UX Concepts for a Mid-size EV Sedan</p>
+          <p class="card__sub">UX Concepts for a Large EV Sedan</p>
         </div>
         <span class="card__year">2022</span>
       </div>

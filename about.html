@@ -195,12 +195,13 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
   animation: barFill 1.6s cubic-bezier(.2,.7,.2,1) forwards;
 }
 @keyframes barFill { to { transform: scaleX(1); } }
+.skill { border-top: 1px solid var(--hair); padding-top: 14px; }
 .skill .val {
   font-family: var(--f-mono);
   font-size: 11px;
   color: var(--mute);
   letter-spacing: 0.06em;
-  margin-top: 8px;
+  margin: 0 0 8px;
   display: block;
 }
 
@@ -438,10 +439,6 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
       <div><h4>현대자동차 X 마크로밀엠브레인</h4><p>고객 관점 실차 UX 점검 조사 시나리오</p></div>
     </div>
     <div class="tl-item">
-      <time>2023.07 — 2023.08</time>
-      <div><h4>KIRO · 서울로봇아카데미</h4><p>모바일 로봇 디자인 엔지니어 과정 수료 · WADE</p></div>
-    </div>
-    <div class="tl-item">
       <time>2022.09 — 2023.08</time>
       <div><h4>서연이화</h4><p>심리스 환경 제공을 위한 자동차 내장재 보유기술 기반 미래 모빌리티 내장디자인 연구</p></div>
     </div>
@@ -492,6 +489,10 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
       <div><h4>한국스텐포드연구소</h4><p>아이트래커 활용 사용성 평가 데이터 분석 워크숍</p></div>
     </div>
     <div class="tl-item">
+      <time>2023.07 — 2023.08</time>
+      <div><h4>KIRO · 서울로봇아카데미</h4><p>모바일 로봇 디자인 엔지니어 과정 수료 · WADE</p></div>
+    </div>
+    <div class="tl-item">
       <time>2022.07 — 08</time>
       <div><h4>홍익대학교 · 2022 디자인 해커톤</h4><p>프로토타입 캠프</p></div>
     </div>
@@ -502,17 +503,13 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
 <section class="skills">
   <header class="skills__head">
     <h2 class="h-2 reveal">Toolkit.</h2>
-    <span class="mono reveal delay-1">Tools I use daily</span>
+    <span class="mono reveal delay-1">Tools</span>
   </header>
   <div class="skills__grid">
-    <div class="skill reveal"><h4>Rhino 3D</h4><div class="bar" style="--v:90%"></div><span class="val">90 · Expert</span></div>
-    <div class="skill reveal delay-1"><h4>Keyshot</h4><div class="bar" style="--v:80%"></div><span class="val">80 · Advanced</span></div>
-    <div class="skill reveal delay-2"><h4>Photoshop</h4><div class="bar" style="--v:95%"></div><span class="val">95 · Expert</span></div>
-    <div class="skill reveal delay-3"><h4>Illustrator</h4><div class="bar" style="--v:90%"></div><span class="val">90 · Expert</span></div>
-    <div class="skill reveal"><h4>After Effects</h4><div class="bar" style="--v:70%"></div><span class="val">70 · Proficient</span></div>
-    <div class="skill reveal delay-1"><h4>Adobe XD</h4><div class="bar" style="--v:70%"></div><span class="val">70 · Proficient</span></div>
-    <div class="skill reveal delay-2"><h4>AI Tools</h4><span class="val">VIZCOM · Claude Code</span></div>
-    <div class="skill reveal delay-3"><h4>UX Research</h4><div class="bar" style="--v:80%"></div><span class="val">80 · Field-tested</span></div>
+    <div class="skill reveal"><span class="val">3D</span><h4>Rhino 3D · Keyshot</h4></div>
+    <div class="skill reveal delay-1"><span class="val">2D</span><h4>Photoshop · Illustrator</h4></div>
+    <div class="skill reveal delay-2"><span class="val">Motion</span><h4>After Effects</h4></div>
+    <div class="skill reveal delay-3"><span class="val">AI</span><h4>Claude Code · VIZCOM</h4></div>
   </div>
 </section>
 

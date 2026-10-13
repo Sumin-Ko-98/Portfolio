@@ -998,3 +998,15 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
 
 .st-lineup__cell { min-width: 0; }
 .st-lineup__cell img { height: auto; }
+
+/* 2칸 이미지 아래 캡션 */
+.st-pair-caps { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 24px);
+  padding: 12px var(--pad-x) 0; font-family: var(--f-kr); font-size: 13px; line-height: 1.5; color: var(--mute); }
+.st-pair-caps b { font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink); margin-right: 8px; }
+@media (max-width: 720px) { .st-pair-caps { grid-template-columns: 1fr; } }
+/* contain 이미지: 여백(padding)이 판 안쪽으로 들어가게 */
+img.st-contain { box-sizing: border-box; }
+/* 라인업: 이미지 박스를 정사각으로 고정해 캡션 기준선 통일 */
+.st-lineup { align-items: start; }
+.st-lineup__cell img { aspect-ratio: 1 / 1 !important; height: auto; }

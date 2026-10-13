@@ -37,6 +37,37 @@ MAX = 1800
 
 
 # ---------------------------------------------------------------- assets
+def _load_source(src):
+    """SOURCES 값 → Pixmap. 값은 경로 문자열 또는 dict:
+       {"src": 경로, "rot": 90|180|270, "crop": (x0, y0, x1, y1) 비율}
+       {"pdf": 경로, "page": 0부터, "rect": (x0, y0, x1, y1) PDF 좌표, "scale": 1.5}"""
+    if isinstance(src, str):
+        src = {"src": src}
+    if "pdf" in src:
+        doc = pymupdf.open(src["pdf"])
+        s = src.get("scale", 1.5)
+        return doc[src["page"]].get_pixmap(matrix=pymupdf.Matrix(s, s), clip=pymupdf.Rect(*src["rect"]))
+    path = src["src"]
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
+        raise SystemExit(f"원본 없음/동기화 중: {path}")
+    pix = pymupdf.Pixmap(path)
+    rot = src.get("rot", 0)
+    crop = src.get("crop")
+    if pix.alpha or pix.n > 3 or rot or crop:
+        # 흰 바탕 페이지에 그려서 투명 합성 · 회전 · 크롭을 한 번에
+        w, h = (pix.height, pix.width) if rot in (90, 270) else (pix.width, pix.height)
+        doc = pymupdf.open()
+        pg = doc.new_page(width=w, height=h)
+        pg.draw_rect(pg.rect, color=None, fill=(1, 1, 1))
+        pg.insert_image(pg.rect, filename=path, rotate=rot)
+        clip = None
+        if crop:
+            x0, y0, x1, y1 = crop
+            clip = pymupdf.Rect(w * x0, h * y0, w * x1, h * y1)
+        pix = pg.get_pixmap(clip=clip)
+    return pix
+
+
 def ensure_asset(d, name):
     """assets/works/d/name 이 없으면 SOURCES 원본에서 만든다. (w, h) 반환."""
     rel = f"assets/works/{d}/{name}"
@@ -45,16 +76,8 @@ def ensure_asset(d, name):
         src = SP.SOURCES.get(d, {}).get(name)
         if not src:
             raise SystemExit(f"이미지 없음, SOURCES에도 없음: {rel}")
-        if not os.path.exists(src) or os.path.getsize(src) == 0:
-            raise SystemExit(f"원본 없음/동기화 중: {src}")
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        pix = pymupdf.Pixmap(src)
-        if pix.alpha or pix.n > 3:  # 투명 PNG → 흰 바탕에 합성
-            doc = pymupdf.open()
-            pg = doc.new_page(width=pix.width, height=pix.height)
-            pg.draw_rect(pg.rect, color=None, fill=(1, 1, 1))
-            pg.insert_image(pg.rect, filename=src)
-            pix = pg.get_pixmap()
+        pix = _load_source(src)
         s = min(1.0, MAX / max(pix.width, pix.height))
         if s < 1:
             pix = pymupdf.Pixmap(pix, round(pix.width * s), round(pix.height * s))
@@ -62,7 +85,7 @@ def ensure_asset(d, name):
             fh.write(pix.tobytes("jpg", jpg_quality=84))
         print("  + asset", rel, f"{pix.width}x{pix.height}")
     pix = pymupdf.Pixmap(path)
-    return pix.width, pix.height
+    return pix.width, pix.height, pix
 
 
 class Img:
@@ -74,8 +97,12 @@ class Img:
         self.fit = spec.get("fit")
         self.bg = spec.get("bg")
         self.r = spec.get("r")
+        self.pad = spec.get("pad")      # contain 일 때 제품 둘레 여백 (예: "6%")
         self.alt = spec.get("alt", "")
-        self.w, self.h = ensure_asset(d, self.f)
+        self.w, self.h, pix = ensure_asset(d, self.f)
+        if self.bg == "auto":           # 렌더 배경색에 맞춘 판 (왼쪽 위 구석 픽셀)
+            r, g, b = pix.pixel(3, 3)[:3]
+            self.bg = f"#{r:02x}{g:02x}{b:02x}"
         self.src = f"../assets/works/{d}/{self.f}"
 
     def tag(self):
@@ -84,13 +111,20 @@ class Img:
             style.append(f"object-position:{self.pos}")
         if self.bg:
             style.append(f"background:{self.bg}")
+        if self.pad:
+            style.append(f"padding:{self.pad}")
         cls = ' class="st-contain"' if self.fit == "contain" else ""
         st = f' style="{";".join(style)}"' if style else ""
         return f'<img src="{self.src}" alt="{E(self.alt)}" loading="lazy" width="{self.w}" height="{self.h}"{cls}{st}>'
 
-    def ratio_style(self):
-        return f' style="aspect-ratio:{self.w}/{self.h}"' if self.r == "natural" else ""
+    def ratio_css(self):
+        return f"aspect-ratio:{self.w}/{self.h}" if self.r == "natural" else ""
 
+    def ratio_style(self, extra=""):
+        css = ";".join(x for x in (self.ratio_css(), extra) if x)
+        if self.bg and self.fit == "contain":
+            css = ";".join(x for x in (css, f"background:{self.bg}") if x)
+        return f' style="{css}"' if css else ""
 
 # ---------------------------------------------------------------- blocks
 def kor_eng(kor, eng, cls_k, cls_e, kor_style=""):
@@ -105,7 +139,10 @@ def dark_block(d, b):
     if k == "img":
         im = Img(d, b[1])
         extra = b[2] if len(b) > 2 else ""
-        return f'  <div class="wd-dark-img reveal"{im.ratio_style() or ""}{extra}>{im.tag()}</div>'
+        extra = extra.strip()
+        if extra.startswith('style="'):
+            extra = extra[7:-1]
+        return f'  <div class="wd-dark-img reveal"{im.ratio_style(extra)}>{im.tag()}</div>'
     if k == "row":
         _, mark, kor, eng = b
         body = kor_eng(kor, eng, "wd-dark-row__kor", "wd-dark-row__eng", ' style="color: rgb(246, 245, 242)"')
@@ -180,9 +217,13 @@ def section(d, s):
                 f'  <div class="reveal delay-1">{b.tag()}</div>\n</section>')
     if k == "pair":
         a, b = [Img(d, x) for x in s[1]]
-        st = a.ratio_style()
-        return (f'<section class="wd-detailduo">\n  <div class="reveal"{st}>{a.tag()}</div>\n'
-                f'  <div class="reveal delay-1"{st}>{b.tag()}</div>\n</section>')
+        ra = a.ratio_css()
+        out = (f'<section class="wd-detailduo">\n  <div class="reveal"{a.ratio_style()}>{a.tag()}</div>\n'
+               f'  <div class="reveal delay-1"{b.ratio_style(ra) if ra else b.ratio_style()}>{b.tag()}</div>\n</section>')
+        caps = [x.get("cap") if isinstance(x, dict) else None for x in s[1]]
+        if any(caps):
+            out += ('\n<div class="st-pair-caps">' + "".join(f"<span>{c or ''}</span>" for c in caps) + "</div>")
+        return out
     if k == "bleed":
         im = Img(d, s[1])
         kind = s[2] if len(s) > 2 else "natural"
