@@ -24,7 +24,7 @@
   ("band",)                                      검은 띠
 img = "파일.jpg" 또는 dict(f="파일.jpg", pos="50% 40%", fit="contain", bg="#fff", r="natural")
 """
-import os, sys, html
+import os, sys, html, re
 
 import pymupdf
 
@@ -34,6 +34,12 @@ import story_pages as SP  # noqa: E402
 
 E = html.escape
 MAX = 1800
+BASE = "https://sumin-ko-98.github.io/Portfolio/"
+CTX = {"title": "", "label": ""}  # 이미지 alt 자동 생성용 (프로젝트명 · 섹션 라벨)
+
+
+def _plain(x):
+    return re.sub(r"<[^>]+>", " ", html.unescape(x or "")).replace("  ", " ").strip()
 
 
 # ---------------------------------------------------------------- assets
@@ -137,7 +143,9 @@ class Img:
         self.bg = spec.get("bg")
         self.r = spec.get("r")
         self.pad = spec.get("pad")      # contain 일 때 제품 둘레 여백 (예: "6%")
-        self.alt = spec.get("alt", "")
+        cap = _plain(spec.get("cap", ""))
+        parts = [CTX["title"], CTX["label"], cap]
+        self.alt = spec.get("alt") or " · ".join(dict.fromkeys(x for x in parts if x))
         self.w, self.h, pix = ensure_asset(d, self.f)
         if self.bg == "auto":           # 렌더 배경색에 맞춘 판 (가장자리 픽셀 평균)
             # 위쪽 가장자리 + 좌우 중간 (아래쪽은 제품 그림자 때문에 어두워서 제외), 중앙값
@@ -177,8 +185,10 @@ def kor_eng(kor, eng, cls_k, cls_e, kor_style=""):
     return out
 
 
-def dark_block(d, b):
+def dark_block(d, b, label=""):
     k = b[0]
+    if label:
+        CTX["label"] = label
     if k == "img":
         im = Img(d, b[1])
         extra = b[2] if len(b) > 2 else ""
@@ -224,7 +234,14 @@ def dark_block(d, b):
 def section(d, s):
     k = s[0]
     if k == "dark":
-        inner = "\n\n".join(dark_block(d, b) for b in s[1])
+        blocks = s[1]
+        marks = [_plain(b[1]) if b[0] == "row" else None for b in blocks]
+
+        def label_for(i):
+            nxt = next((m for m in marks[i + 1:] if m), None)
+            prv = next((m for m in reversed(marks[:i]) if m), None)
+            return (nxt or prv or CTX["label"]).title()
+        inner = "\n\n".join(dark_block(d, b, label_for(i)) for i, b in enumerate(blocks))
         return f'<section class="wd-dark">\n{inner}\n</section>'
     if k == "scene":
         im = Img(d, s[1])
@@ -318,7 +335,7 @@ def intro(p):
     items = []
     for key, year, name, note in awards:
         if key in AWARD_LOGO:
-            sym = f'<span class="wd-award__symbol"><img src="../assets/awards/{AWARD_LOGO[key]}" alt=""></span>'
+            sym = f'<span class="wd-award__symbol"><img src="../assets/awards/{AWARD_LOGO[key]}" alt="{E(name)} logo"></span>'
         else:
             sym = f'<span class="wd-award__symbol wd-award__symbol--text">{E(key)}</span>'
         items.append(f"""      <li class="wd-award">
@@ -375,10 +392,26 @@ def render(slug, p):
     i = order.index(slug)
     prev_s, next_s = order[i - 1], order[(i + 1) % len(order)]
     d = p["dir"]
+    CTX["title"], CTX["label"] = p["title"], "Hero"
     hero = Img(d, p["hero"])
     meta = "\n".join(f'  <div class="meta__item"><span class="k">{E(k)}</span><span class="v">{E(v)}</span></div>'
                      for k, v in p["meta"])
-    body = "\n\n".join(section(d, s) for s in p["sections"])
+    CTX["title"] = p["title"]
+    CTX["label"] = "Overview"
+    secs = p["sections"]
+    out = []
+    for i, sec in enumerate(secs):
+        k = sec[0]
+        if k in ("text", "part"):
+            CTX["label"] = _plain(sec[1] if k == "text" else sec[2])
+        elif k not in ("dark", "band"):
+            nxt = secs[i + 1] if i + 1 < len(secs) else None
+            if nxt and nxt[0] == "split":
+                CTX["label"] = " / ".join(_plain(c[0]) for c in nxt[1:])
+        out.append(section(d, sec))
+        if k == "split":
+            CTX["label"] = " / ".join(_plain(c[0]) for c in sec[1:])
+    body = "\n\n".join(out)
     back = "ux" if p.get("cat_key") == "ux" else "product"
     return f"""<!doctype html>
 <html lang="ko">
@@ -387,6 +420,17 @@ def render(slug, p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(p["title"])} — Sumin Ko</title>
 <meta name="description" content="{E(p["desc"])}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Sumin Ko Portfolio">
+<meta property="og:title" content="{E(p["title"])} — Sumin Ko">
+<meta property="og:description" content="{E(p["desc"])}">
+<meta property="og:url" content="{BASE}work/{slug}.html">
+<meta property="og:image" content="{BASE}assets/og/{slug}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/work.css">
 <link rel="stylesheet" href="../css/story.css">

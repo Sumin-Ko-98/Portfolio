@@ -247,7 +247,11 @@ img, video { max-width: 100%; }
 .cursor-dot.on-dark { background: #fff; }
 .cursor-ring.on-dark { border-color: rgba(255,255,255,0.5); }
 
-@media (hover: none) { .cursor-dot, .cursor-ring { display: none; } }
+/* 마우스가 처음 움직이기 전에는 숨김 (main.js 가 .cursor-on 을 붙임) */
+.cursor-dot, .cursor-ring { opacity: 0; }
+html.cursor-on .cursor-dot, html.cursor-on .cursor-ring { opacity: 1; }
+html.cursor-on .cursor-ring.is-hover + .cursor-dot { opacity: 0; }
+@media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-ring { display: none !important; } }
 
 /* Reveal animations ------------------------------------ */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }

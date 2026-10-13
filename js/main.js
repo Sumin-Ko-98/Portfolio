@@ -11,6 +11,7 @@
   let mx = window.innerWidth / 2, my = window.innerHeight / 2;
   let rx = mx, ry = my;
   window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'mouse') document.documentElement.classList.add('cursor-on');
     mx = e.clientX; my = e.clientY;
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`;
   });
@@ -72,6 +73,12 @@
 
   /* ---------- Reveal on scroll ---------- */
   // 모션 줄이기 설정이거나 ?static (전체 페이지 캡처용)이면 애니메이션 없이 바로 표시
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[autoplay]').forEach(v => {
+      v.removeAttribute('autoplay'); v.pause(); v.preload = 'none';
+      try { v.currentTime = 0; } catch (e) {}
+    });
+  }
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || /[?&]static\b/.test(location.search)) {
     document.documentElement.classList.add('no-motion');
     document.querySelectorAll('.reveal, .reveal-lines').forEach(el => el.classList.add('is-in'));

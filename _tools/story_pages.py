@@ -318,7 +318,7 @@ PAGES["ts700"] = dict(
          "서비스성을 개선했습니다.",
          "The housing was rebuilt in three parts (bottom, middle and top), so the lower module can be reached without "
          "dismantling the whole top."),
-        ("bleed", {"f": "three_part_body.png", "fit": "contain", "bg": "auto", "pad": "2% 8%"}, "natural"),
+        ("bleed", {"f": "three_part_body.jpg", "fit": "contain", "bg": "auto", "pad": "2% 8%"}, "natural"),
         ("text", "Product Details",
          "물통은 래치 방식으로 탈착하고, 사용하지 않을 때는 거치대에 세워 보관합니다.",
          "The water tank detaches with a latch, and the robot stands upright on its cradle when not in use."),
