@@ -287,7 +287,6 @@ FOOTER = """<footer class="footer">
     <div>
       <h4>Contact</h4>
       <a href="mailto:ssom98@naver.com">ssom98@naver.com</a>
-      <span>+82 10 5660 5032</span>
     </div>
     <div>
       <h4>Index</h4>
@@ -301,7 +300,7 @@ FOOTER = """<footer class="footer">
     </div>
   </div>
   <div class="footer__meta">
-    <span>© 2026 Su-min Ko. All rights reserved.</span>
+    <span>© 2026 Sumin Ko. All rights reserved.</span>
     <span>Portfolio v. 2026.10 — Industrial Design</span>
   </div>
 </footer>"""
@@ -322,7 +321,7 @@ def render(slug, p):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{E(p["title"])} — Su-min Ko</title>
+<title>{E(p["title"])} — Sumin Ko</title>
 <meta name="description" content="{E(p["desc"])}">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/work.css">
@@ -334,7 +333,7 @@ def render(slug, p):
 <nav class="nav" aria-label="Primary">
   <a class="nav__brand" href="../index.html">
     <span class="dot" aria-hidden="true"></span>
-    <span>Su-min Ko</span>
+    <span>Sumin Ko</span>
   </a>
   <ul class="nav__menu">
     <li><a href="../work.html" aria-current="page">Work</a></li>

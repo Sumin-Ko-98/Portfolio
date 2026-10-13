@@ -7,10 +7,15 @@ import os
 LS = r"C:\Users\Hkyum\iCloudDrive\04_포트폴리오\261006 LS 포트폴리오"
 HEIC = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\heic"  # HEIC → JPG 변환본
 J = os.path.join
+# 옛 포트폴리오(240430) PDF 쪽 이미지(1920×1080, 쪽마다 한 장)를 뽑아 둔 폴더 — p14.png 등
+OLD = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\old"
+def OLDP(n, crop):
+    return {"src": os.path.join(OLD, f"p{n}.png"), "crop": crop}
 FINAL_PDF = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Users-Hkyum-iCloudDrive\1054dd20-8098-478f-a7d0-c5556a0bf222\scratchpad\final_portfolio.pdf"  # 최종 제출 PDF 사본
 ROT_CW = 270  # pymupdf insert_image 의 rotate 는 반시계 → 시계 90° = 270
 
-ORDER = ["threespin", "ts700", "h500", "odm-cmf", "wade", "inclusive", "seuv", "ev-sedan"]
+# PDF 순서: TS450 → TS700 → H500 → WADE → CMF, 이어서 대학원 작업과 UX
+ORDER = ["threespin", "ts700", "h500", "wade", "odm-cmf", "mobilink", "flever", "inclusive", "seuv", "ev-sedan"]
 
 SOURCES = {
     "ts450": {
@@ -97,6 +102,35 @@ SOURCES = {
         "nozzle1.jpg": J(LS, "WADE", "genspark", "gs_wade_nozzle_6KZTCK5o.jpg"),
         "nozzle2.jpg": J(LS, "WADE", "genspark", "gs_wade_nozzle_It2CF2g5.jpg"),
         "result_heart.jpg": J(LS, "_시안", "assets", "wade", "result_heart.jpg"),
+    },
+    # 옛 포트폴리오 PDF 14–21쪽 (MobiLink) / 30–35쪽 (Flever). crop = 쪽 안 비율 좌표
+    "mobilink": {
+        "hero.jpg": OLDP(14, (0.36, 0.17, 1.0, 0.92)),
+        "render.jpg": OLDP(15, (0.42, 0.10, 1.0, 0.98)),
+        "connect.jpg": OLDP(16, (0.0, 0.0, 1.0, 0.62)),
+        "mobility.jpg": OLDP(17, (0.0, 0.06, 0.5, 0.49)),
+        "home.jpg": OLDP(17, (0.5, 0.06, 1.0, 0.49)),
+        "tech_glazing.jpg": OLDP(17, (0.035, 0.66, 0.26, 0.88)),
+        "tech_display.jpg": OLDP(17, (0.27, 0.66, 0.49, 0.88)),
+        "tech_dock.jpg": OLDP(17, (0.50, 0.66, 0.72, 0.88)),
+        "handle.jpg": OLDP(18, (0.0, 0.14, 1.0, 0.33)),
+        "multi.jpg": OLDP(18, (0.0, 0.34, 1.0, 1.0)),
+        "storage.jpg": OLDP(19, (0.26, 0.22, 0.68, 1.0)),
+        "storage_side.jpg": OLDP(19, (0.69, 0.22, 1.0, 1.0)),
+        "dock.jpg": OLDP(20, (0.0, 0.0, 0.73, 1.0)),
+        "lifestyle.jpg": OLDP(21, (0.0, 0.0, 1.0, 0.79)),
+    },
+    "flever": {
+        "hero.jpg": OLDP(30, (0.36, 0.03, 1.0, 0.98)),
+        "pair.jpg": OLDP(31, (0.33, 0.12, 1.0, 0.97)),
+        "scene.jpg": OLDP(32, (0.0, 0.0, 1.0, 0.53)),
+        "shelf.jpg": OLDP(33, (0.0, 0.0, 0.5, 0.60)),
+        "close.jpg": OLDP(33, (0.5, 0.0, 1.0, 0.60)),
+        "hello.jpg": OLDP(34, (0.0, 0.10, 0.37, 0.97)),
+        "exploded.jpg": OLDP(34, (0.37, 0.10, 0.97, 0.80)),
+        "speaker.jpg": OLDP(35, (0.0, 0.33, 0.395, 1.0)),
+        "magnet.jpg": OLDP(35, (0.70, 0.33, 1.0, 0.66)),
+        "usbc.jpg": OLDP(35, (0.70, 0.66, 1.0, 1.0)),
     },
     "inclusive": {
         "door_test_crop.jpg": {"src": J(LS, "_시안", "assets", "ux", "inclusive", "door_wheelchair_test.jpg"),
@@ -542,6 +576,174 @@ PAGES["wade"] = dict(
                        "도장", "워킹 프로토타입 제작", "특허 서류 및 도면 제작"]),
         ]),
         ("bleed", "print_field.jpg", "natural"),
+        ("band",),
+    ],
+)
+
+# =====================================================================
+# 대학원(HIDE Lab) 작업 — 사실 기준: 옛 포트폴리오 PDF(240430) 14–21쪽 / 30–35쪽만
+PAGES["mobilink"] = dict(
+    dir="mobilink", cat_key="product", title="MobiLink", year="2022", category="Mobile Console · Hongik Univ.",
+    desc="MobiLink — 모빌리티와 주거 공간을 오가는 이동형 모바일 콘솔 (공모전 참여작, IDEA · Spark Finalist)",
+    lede="모빌리티와 주거 공간 사이를 자유롭게 오가는 <b>이동형 모바일 콘솔</b>입니다. 모빌리티 안에서는 주행 경험을, "
+         "집에서는 스마트 홈 제어를 돕습니다.",
+    hero="hero.jpg",
+    meta=[("Term", "2022.09 — 2022.12"), ("Type", "공모전 참여작 · HIDE Lab"), ("Team", "3인 (기여도 60%)"),
+          ("Process", "생성형 AI · Midjourney · Vizcom"), ("Award", "IDEA · Spark Finalist")],
+    intro=([("idea", "2024.04", "IDEA", "International Design Excellence Awards · Finalist"),
+            ("spark", "2023.12", "Spark Design Awards", "Finalist")],
+           "모빌리티와 집을 잇는 모바일 리빙 스페이스",
+           "A mobile console that links the vehicle and the home",
+           "모빌리티가 주거 공간과 연결되는 ‘모바일 리빙 스페이스’ 개념에 따라, 미래 모빌리티 환경에서 새로운 경험을 제공하는 "
+           "모바일 콘솔입니다. MobiLink는 모빌리티와 연결된 주거 환경 사이에서 자유롭게 이동할 수 있습니다. 모빌리티 내부에서는 "
+           "<b>사용자의 주행 경험 맞춤화 서비스</b>를 제공하고, 스마트 홈과 연결되었을 때는 <b>집안의 환경을 관리하고 제어</b>합니다.",
+           "Following the idea of a ‘mobile living space’ where the vehicle connects to the home, MobiLink is a mobile console "
+           "for future mobility. It moves freely between the vehicle and the connected home: inside the vehicle it tailors the "
+           "ride to the user, and when docked to a smart home it manages and controls the home environment."),
+    sections=[
+        ("dark", [
+            ("img", {"f": "connect.jpg", "r": "natural"}),
+            ("row", "BACKGROUND",
+             "미래 모빌리티는 이동수단과 생활 공간의 역할을 동시에 수행하므로, 이러한 라이프 스타일에 맞춘 다용도 기능이 필요합니다. "
+             "MobiLink는 모빌리티 내부에서 온도·조명·음향 같은 환경을 손쉽게 조작하게 하고, 모빌리티를 벗어나 주거 환경으로 이동해서도 "
+             "역할을 이어 갑니다. 모빌리티와 주거 환경 사이의 경계를 희미하게 하며 통합된 라이프스타일을 지향합니다.",
+             "Future vehicles act as both transport and living space, calling for multi-purpose functions. MobiLink makes "
+             "temperature, lighting and sound in the vehicle easy to control, then keeps working after it moves into the home, "
+             "blurring the line between vehicle and home."),
+            ("dots", ["tech_glazing.jpg", "tech_display.jpg", "tech_dock.jpg"]),
+            ("row", "TECHNOLOGY",
+             "(주)서연이화의 보유 기술력을 반영해 기획한 모바일 콘솔입니다. PC Glazing Tech, Smart Surfaces, Transparent Garnish를 "
+             "활용해 복곡면 투명 소재에 Shy Tech를 적용했고, Transparent Display로 터치 조작과 내부 공간이 보이는 수납·냉장 기능을 "
+             "담았습니다. PBV Docking Step을 더해 주행 중인 모빌리티 안에서도 콘솔이 바닥에 도킹되도록 디자인했습니다.",
+             "Planned around Seoyon E-Hwa's in-house technologies: PC glazing, smart surfaces and a transparent garnish bring "
+             "shy tech to a doubly curved transparent surface, a transparent display adds touch control and a see-through "
+             "storage and fridge compartment, and a PBV docking step lets the console dock to the floor inside a moving vehicle."),
+            ("img", {"f": "lifestyle.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+        ]),
+        ("text", "Mobility &amp; Home",
+         "주행 중인 모빌리티 안에서는 도킹된 상태로 사용합니다. 완만한 곡선의 전동식 핸들은 팔을 걸쳐 암레스트로 쓰고, 모빌리티 "
+         "내부 환경을 제어해 편리한 주행 경험을 제공합니다. 모빌리티가 스마트 홈에 도킹되면 핸들을 밀어 콘솔을 옮기고, IoT로 연결된 "
+         "주거 환경을 쉽게 제어합니다.",
+         "Inside a moving vehicle the console stays docked; its gently curved powered handle doubles as an armrest while the "
+         "console controls the cabin. When the vehicle docks to a smart home, the handle is used to push the console inside, "
+         "where it controls the IoT-connected home."),
+        ("pair", [{"f": "mobility.jpg", "r": "natural", "cap": "<b>Mobility</b>모빌리티 안에서 도킹된 상태로 사용"},
+                  {"f": "home.jpg", "cap": "<b>Home</b>핸들을 밀어 집 안으로 이동"}]),
+        ("text", "Pop up-down Handle",
+         "버튼을 눌러 전동 핸들을 상하로 조정합니다. 핸들이 올라가 있을 때는 이동 가능한 상태가 되고, 내려가 있을 때는 콘솔이 "
+         "움직이지 않도록 바퀴가 고정됩니다.",
+         "A button raises or lowers the powered handle. With the handle up the console can be moved; with it down the wheels "
+         "lock so the console stays put."),
+        ("bleed", {"f": "handle.jpg", "r": "natural"}, "natural"),
+        ("text", "Multi-Function",
+         "모빌리티와 스마트 홈의 실내 환경을 제어하는 컨트롤러와 수납함을 탑재했습니다. 핸드폰을 올려 두면 충전되는 무선 충전, "
+         "음료와 간단한 식품을 보관하는 펠티어 냉장고를 갖췄고, 복곡면 투명 가니시에 Shy Tech로 기능 제어 아이콘을 넣었습니다.",
+         "A controller for the vehicle and smart-home environment and storage are built in, with wireless charging for a "
+         "phone, a Peltier fridge for drinks and snacks, and shy-tech control icons in the doubly curved transparent garnish."),
+        ("bleed", {"f": "multi.jpg", "r": "natural"}, "natural"),
+        ("text", "Transparent Display",
+         "상단 스토리지의 커버는 투명 디스플레이로 만들어, 커버를 열어 L자형으로 고정하면 OTT·동영상을 보기 편한 각도가 됩니다. "
+         "좌우 스토리지와 후면 소형 냉장고의 커버는 손잡이 없이 손으로 살짝 누르면 부드럽게 열리는 심리스 커버입니다.",
+         "The top storage cover is a transparent display; opened and fixed in an L shape it sits at a comfortable angle for "
+         "OTT and video. The side storage and rear mini-fridge use handle-free seamless covers that slide open with a light press."),
+        ("pair", [{"f": "storage.jpg", "r": "natural"}, "storage_side.jpg"]),
+        ("split",
+         ("Smart Surfaces Speaker",
+          "사용자가 손으로 표면을 쓸면 터치 센서가 압력을 감지하고, 빛이 스마트 표면에서 나옵니다. 빛이 방출되는 패턴은 맞춤형으로 "
+          "만들 수 있습니다.",
+          "Sweeping a hand across the surface triggers the touch sensor and light emerges through the smart surface, in a "
+          "pattern the user can customise."),
+         ("PBV Docking Step",
+          "모빌리티 내부 충전 구역의 도킹 스텝이 콘솔 바퀴를 바닥에 고정해 주행 중에도 흔들리지 않게 합니다. 도킹을 해제하면 스텝 "
+          "내부 스프링이 복구되며 평평한 면이 되어 틈새에 먼지가 쌓이지 않습니다.",
+          "A docking step in the vehicle's charging zone locks the console's wheels so it stays steady while driving. Undocked, "
+          "springs return the step to a flat floor so no dust collects in the gaps.")),
+        ("bleed", {"f": "dock.jpg", "r": "natural"}, "natural"),
+        ("square", {"f": "render.jpg", "fit": "contain", "bg": "auto"}),
+        ("dark", [
+            ("row", "PROCESS",
+             "(주)서연이화 주관 정부과제 ‘심리스 환경 제공을 위한 자동차 내장재 보유기술 기반 미래 모빌리티 내장디자인 연구’에서 진행한 "
+             "내용을 토대로 미래형 콘솔을 디자인해 공모전에 출품했습니다. 컨셉 기획·유저 시나리오 → Midjourney로 컨셉 이미지 대량 생성·셀렉 → "
+             "Vizcom 퀵 렌더링 → 디자인 스케치 · Low-fidelity 프로토타이핑 · 3D 모델링·렌더링 순으로, 생성형 AI를 활용한 디자인 "
+             "프로세스를 적용했습니다.",
+             "Building on the government project led by Seoyon E-Hwa on future mobility interiors, the console was designed and "
+             "entered into competition through a generative-AI process: concept planning and user scenarios, mass concept "
+             "images in Midjourney, quick renders in Vizcom, then sketching, low-fidelity prototyping and 3D modelling and rendering."),
+            ("row", "OUTCOME",
+             "공모전 출품 후 Spark Design Awards Finalist(2023.12), IDEA International Design Excellence Awards Finalist(2024.04)에 "
+             "선정됐습니다.",
+             "The project was selected as a Spark Design Awards finalist (Dec 2023) and an IDEA International Design Excellence "
+             "Awards finalist (Apr 2024)."),
+        ]),
+        ("band",),
+    ],
+)
+
+PAGES["flever"] = dict(
+    dir="flever", cat_key="product", title="Flever", year="2022", category="Smart Home Screen · Team Project",
+    desc="Flever — 가족 간 감정 공유 콘텐츠를 중심으로 한 탈부착형 스마트 홈스크린 (대학원 팀 프로젝트)",
+    lede="가족 간 감정 공유 콘텐츠를 중심으로 한 <b>탈부착형 스마트 홈스크린</b>입니다. 하나의 오브제로 자리하면서도 "
+         "톡톡 튀는 컬러로 존재감을 드러내도록 디자인했습니다.",
+    hero="hero.jpg",
+    meta=[("Term", "2022.03 — 2022.06"), ("Type", "대학원 팀 프로젝트"), ("Team", "2인 (기여도 50%)"),
+          ("Product", "디스플레이 · 포터블 스피커"), ("Output", "UXUI · 3D 모델링")],
+    intro=([("UX", "Design Process", "Research → Concept → Design", "Sketch · 3D modeling · UXUI"),
+            ("2022", "Color", "2022 인테리어 트렌드 컬러", "오렌지 · 파스텔")],
+           "가족의 소통 창구가 되는 스마트 홈스크린",
+           "A smart home screen that opens a channel for the family",
+           "현대 사회에서 심화되고 있는 가족 해체 현상과 함께, 코로나19로 집에 머무는 시간이 길어진 현상을 바탕으로 진행한 "
+           "제품디자인 프로젝트입니다. 즐거움을 주고 접근하기 쉬운 UXUI와, 가족 구성원의 <b>세대별 특성</b>을 고려한 요소로 내부 "
+           "콘텐츠를 구성했습니다.",
+           "A product design project grounded in the growing breakdown of family ties and in the longer time families spent "
+           "at home during COVID-19. The UXUI is playful and easy to approach, and the content reflects the traits of each "
+           "generation in the family."),
+    sections=[
+        ("dark", [
+            ("img", {"f": "scene.jpg", "r": "natural"}),
+            ("row", "PAINPOINT",
+             "가족 안에서 서로 존중하고 함께 대화하려는 노력이 이뤄지고 있다는 사실에, 젊은 층은 부모 세대보다 덜 공감합니다. 부모 세대와 "
+             "자녀 세대가 느끼는 가족 간 친밀감에는 차이가 있고, 이 차이를 극복해야 더 깊은 유대감을 기대할 수 있습니다.",
+             "Younger family members feel less than their parents that the family is making an effort to respect and talk to "
+             "one another. Closing this gap in perceived closeness is the key to a deeper bond."),
+            ("row", "SOLUTION",
+             "가족 구성원의 세대별 특성을 리서치하고, 그 결과를 바탕으로 전 세대를 잇는 감정 공유 콘텐츠형 스마트 홈스크린 Flever를 "
+             "제안했습니다. 출퇴근·등하교로 소통이 없는 가족을 위한 소통 창구가 되어, 삭막한 집 안을 소통이 활발한 공간으로 바꿉니다.",
+             "Based on research into each generation's traits, Flever was proposed as an emotion-sharing smart home screen that "
+             "connects every generation, a channel for families who barely talk between commutes and school runs."),
+            ("img", {"f": "pair.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+        ]),
+        ("text", "Market",
+         "다기능이거나 소통 기능이 있을수록 개인을 위한 제품인 경우가 많고, 가족을 위한 제품일수록 단순한 기능만 있는 경우가 많았습니다. "
+         "Flever는 가족에 초점을 맞춰, 멀티프로필로 각자의 개성을 표현하고 세대별 특성과 소통 방식의 차이를 활용한 콘텐츠를 담았습니다.",
+         "Multi-function and communication devices tend to be personal, while family products tend to be simple. Flever "
+         "focuses on the family, with multi-profiles for each member and content built on generational differences in how "
+         "people communicate."),
+        ("pair", [{"f": "shelf.jpg", "r": "natural"}, "close.jpg"]),
+        ("text", "Display",
+         "디스플레이 뒷면에는 마그네틱이 내장되어 스피커 본체에 부착해 거치합니다. 거실 탁상에서는 스마트 스피커 역할을 하고, 떼어 내 "
+         "냉장고나 철제 파티션에 붙이면 스마트 냉장고처럼 가족 간 포스트잇 메모로 쓸 수 있습니다. 스케줄 알림과 음성 메모·그림 메모로 "
+         "가족 간 유대감 형성을 돕습니다.",
+         "A magnet in the back of the display mounts it on the speaker body. On a living-room table it works as a smart "
+         "speaker; detached and stuck to a fridge or steel partition it becomes a family note board. Schedule alerts and voice "
+         "and drawing memos help the family stay close."),
+        ("bleed", {"f": "exploded.jpg", "r": "natural"}, "natural"),
+        ("text", "Speaker",
+         "배터리와 스피커가 내장된 하단 파츠는 디스플레이를 떼어 두었을 때 별도의 포터블 스피커로 쓸 수 있고, USB-C 타입으로 충전합니다. "
+         "디스플레이를 부착한 상태에서는 거치대 역할을 하며, 다각도 힌지로 원하는 각도와 높이를 맞출 수 있습니다.",
+         "The lower part houses a battery and speaker: with the display removed it works as a portable speaker, charged over "
+         "USB-C. With the display attached it serves as the stand, and a multi-angle hinge sets the angle and height."),
+        ("square", "speaker.jpg"),
+        ("pair", [{"f": "magnet.jpg", "r": "natural", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
+                  {"f": "usbc.jpg", "cap": "<b>USB-C</b>포터블 스피커 충전"}]),
+        ("dark", [
+            ("row", "PROCESS",
+             "Research(Problems · Background · User · Target User · Market · Field Research) → Concept(Design concept · "
+             "Differentiated Value · Storytelling) → Design(Inspirations · Mood board · Design Strategy · Sketch · 3D modeling · "
+             "UXUI · Visualizing) 순으로 진행했습니다.",
+             "Research (problems, background, users, target users, market and field research), concept (design concept, "
+             "differentiated value, storytelling) and design (inspiration, mood board, strategy, sketching, 3D modelling, UXUI, "
+             "visualising)."),
+        ]),
         ("band",),
     ],
 )
