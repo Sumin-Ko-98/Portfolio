@@ -406,7 +406,7 @@ PAGES["h500"] = dict(
          "확장성을 고려해 디자인했습니다.",
          "An in-wheel motor wheel that places the wheelchair's drive unit inside the wheel. The inserts of its three "
          "spokes were designed to be customised in any colour."),
-        ("bleed", {"f": "wheel_chair_side.jpg", "r": "natural"}, "natural"),  # 휠체어 장착 측면
+        ("square", "gs_wheel_side.jpg"),  # 휠체어 렌더 원본은 모두 발판이 잘려 있어 휠 측면 컷 사용
         ("text", "Hand Rim",
          "손으로 수동 주행할 때를 고려해 메탈 핸드림의 두께와 휠과의 간격을 설정했습니다.",
          "The thickness of the metal hand rim and its gap from the wheel were set for manual propulsion."),
@@ -934,7 +934,7 @@ PAGES["ev-sedan"] = dict(
              "아이템은 3D 애니메이션·영상으로 표현했습니다.",
              "Scenario items such as heatwave/cold-snap climate modes, a HUD U-turn guide, a surveillance mode that records "
              "ten seconds before and after a collision, and Relax and Cinema custom modes were shown as 3D animations and videos."),
-            ("dots", ["s_aircon_dash.jpg", "s_security.jpg", "s_aircon_seat.jpg"]),  # 공조 · 감시 모드 · 공조(시트)
+            ("dots", ["s_aircon_dash.jpg", "s_aircon_seat.jpg"]),  # 공조(대시보드 · 시트) — 감시 모드 렌더는 대비가 없어 제외
             ("row", "INTERIOR",
              "실내 아이템 4종은 폼보드 PoC로 만들어 1·2열 배치를 재현하고 직접 사용해 보며 검증했습니다. 테이블은 애프터마켓 "
              "테이블 아이디어 3안을 도출해 실차에서 검증했습니다.",

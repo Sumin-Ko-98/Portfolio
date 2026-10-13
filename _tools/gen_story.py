@@ -197,7 +197,8 @@ def dark_block(d, b):
   </div>"""
     if k == "dots":
         cells = "\n".join(f'    <div class="wd-dot">{Img(d, s).tag()}</div>' for s in b[1])
-        return f'  <div class="wd-dots reveal delay-1">\n{cells}\n  </div>'
+        two = " wd-dots--2" if len(b[1]) == 2 else ""
+        return f'  <div class="wd-dots{two} reveal delay-1">\n{cells}\n  </div>'
     if k == "grid":
         cells = "".join(f"<div>{Img(d, s).tag()}</div>" for s in b[1])
         return f'  <div class="wd-protogrid reveal">\n    {cells}\n  </div>'

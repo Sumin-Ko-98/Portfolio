@@ -1026,3 +1026,7 @@ img.st-contain { box-sizing: border-box; }
 
 .st-tri-caps { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 720px) { .st-tri-caps { grid-template-columns: 1fr; } }
+
+/* 원형 2개일 때 가운데 정렬 */
+.wd-dots.wd-dots--2 { grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; }
+@media (max-width: 720px) { .wd-dots.wd-dots--2 { grid-template-columns: repeat(2, 1fr); } }
