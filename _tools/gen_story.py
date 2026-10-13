@@ -250,10 +250,23 @@ def section(d, s):
     if k == "scenario":
         im = Img(d, s[1])
         return f'<section class="wd-scenario">\n  <div class="wd-scenario__frame reveal"{im.ratio_style()}>{im.tag()}</div>\n</section>'
+    if k == "single":
+        # ("single", img, caption) — 여백 있는 단독 이미지(원래 비율) + 캡션
+        im = Img(d, s[1])
+        cap = s[2] if len(s) > 2 else ""
+        out = (f'<section class="wd-detailduo" style="grid-template-columns:1fr">\n'
+               f'  <div class="reveal" style="aspect-ratio:{im.w}/{im.h}">{im.tag()}</div>\n</section>')
+        if cap:
+            out += f'\n<div class="st-pair-caps" style="grid-template-columns:1fr"><span>{cap}</span></div>'
+        return out
     if k == "tri":
         cells = "\n".join(f'  <div class="wd-trirow__cell reveal{" delay-" + str(i) if i else ""}">{Img(d, x).tag()}</div>'
                           for i, x in enumerate(s[1]))
-        return f'<section class="wd-trirow">\n{cells}\n</section>'
+        out = f'<section class="wd-trirow">\n{cells}\n</section>'
+        caps = [x.get("cap") if isinstance(x, dict) else None for x in s[1]]
+        if any(caps):
+            out += ('\n<div class="st-pair-caps st-tri-caps">' + "".join(f"<span>{c or ''}</span>" for c in caps) + "</div>")
+        return out
     if k == "duo":
         a, b = [Img(d, x) for x in s[1]]
         return (f'<section class="wd-bleed-duo wd-bleed-duo--sq-tall">\n  <div class="reveal">{a.tag()}</div>\n'

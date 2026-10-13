@@ -64,7 +64,8 @@ SOURCES = {
         "photo_0188.jpg": J(HEIC, "TS700_Photo_0188.jpg"),
     },
     "h500": {
-        "concept.jpg": J(LS, "H500", "260506_H500 CONTROLLER_CON_P2_v3_Concept2_1.png"),
+        "ctrl_pers.jpg": J(LS, "_시안", "assets", "h500", "ctrl_pers.jpg"),
+        "mock_ctrl3.jpg": J(LS, "H500", "H500_Mockup_Controller_03.jpg"),
         "ctrl_cover_src.jpg": J(LS, "_시안", "assets", "h500", "ctrl_cover_src.jpg"),
         "wheel_cover_src.jpg": J(LS, "_시안", "assets", "h500", "wheel_cover_src.jpg"),
         "mock_ctrl1.jpg": J(LS, "H500", "H500_Mockup_Controller_01.jpg"),
@@ -86,7 +87,6 @@ SOURCES = {
         "q7plus_main.jpg": J(LS, "ODM", "260526_Q7PLUS_Set_Main Pers_v3.png"),
         "q9plus_main.jpg": J(LS, "ODM", "260622_Q9 Plus_Cutout_Set_Main Pers_v1.png"),
         "q13_set.jpg": J(LS, "ODM", "260827_Q13_3D_Set_v2.png"),
-        "x2_pers.jpg": J(LS, "ODM", "260907_X2_Pers2_v1.png"),
         "q3t_set.jpg": J(LS, "ODM", "260714_Q3 Turbo_Set_Pers R 20_v1.png"),
         "ts402m_tilt.jpg": J(LS, "ODM", "260319_TS402M_3DR_Set_Front Tilting_v1.png"),
         "q9_side.jpg": J(LS, "ODM", "Q9_Set_Side_R.png"),
@@ -100,6 +100,7 @@ SOURCES = {
     },
     "wade": {
         "studio.jpg": J(LS, "WADE", "genspark", "gs_wade_studio_01.png"),
+        "step_detect2.jpg": {"src": J(LS, "_시안", "assets", "wade", "step_detect.jpg"), "crop": (0.40, 0.0, 0.985, 1.0)},
         "kid_draw.jpg": J(LS, "WADE", "genspark", "gs_wade_kid_draw_DtsenQa9.jpg"),
         "drone.jpg": J(LS, "WADE", "genspark", "gs_wade_drone_UFcdm34p.jpg"),
         "nozzle1.jpg": J(LS, "WADE", "genspark", "gs_wade_nozzle_6KZTCK5o.jpg"),
@@ -116,17 +117,19 @@ SOURCES = {
         "tech_glazing.jpg": OLDP(17, (0.035, 0.66, 0.26, 0.88)),
         "tech_display.jpg": OLDP(17, (0.27, 0.66, 0.49, 0.88)),
         "tech_dock.jpg": OLDP(17, (0.50, 0.66, 0.72, 0.88)),
+        "speaker_panel.jpg": OLDP(20, (0.02, 0.10, 0.58, 0.62)),  # 측면 스마트 서피스 스피커
+        "dock_step.jpg": OLDP(20, (0.0, 0.52, 0.50, 0.98)),  # 도킹 스텝 (PDF 주석 제외)
         "handle.jpg": OLDP(18, (0.0, 0.14, 1.0, 0.33)),
-        "multi.jpg": OLDP(18, (0.0, 0.34, 1.0, 1.0)),
+        "multi_clean.jpg": OLDP(18, (0.17, 0.50, 0.80, 1.0)),  # PDF 주석 글자 제외
         "storage.jpg": OLDP(19, (0.26, 0.22, 0.68, 1.0)),
         "storage_side.jpg": OLDP(19, (0.69, 0.22, 1.0, 1.0)),
-        "dock.jpg": OLDP(20, (0.0, 0.0, 0.73, 1.0)),
         "lifestyle.jpg": OLDP(21, (0.0, 0.0, 1.0, 0.79)),
     },
     "flever": {
         # Behance 본인 프로젝트 원본 19장 (behance.net/gallery/145103341/flever, 사용자 승인 후 source 해상도 다운로드)
         # m01~m19 = Behance 페이지 순서. m07·m10 GIF 는 ffmpeg 로 anim_screen.mp4 · anim_hinge.mp4 (레포에 직접 저장)
         "bh_hero.jpg": J(BEHANCE, "m01.png"),
+        "bh_ui_hello.jpg": {"src": J(BEHANCE, "m04.png"), "crop": (0.42, 0.50, 0.68, 0.80)},  # UI 화면 한 장 확대
         "bh_set.jpg": J(BEHANCE, "m02.png"),
         "bh_pair.jpg": J(BEHANCE, "m03.png"),
         "bh_ui.jpg": J(BEHANCE, "m04.png"),
@@ -153,6 +156,7 @@ SOURCES = {
         "s_ott.jpg": J(LS, "_시안", "assets", "ux", "seuv", "s_ott.jpg"),
     },
     "ev-sedan": {
+        "s_aircon_car.jpg": {"src": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_aircon.jpg"), "crop": (0.51, 0.0, 0.74, 1.0)},
         "s_security.jpg": J(LS, "_시안", "assets", "ux", "ev_sedan", "s_security.jpg"),
     },
 }
@@ -222,13 +226,13 @@ PAGES["threespin"] = dict(
          "is docked. Left: previous model. Right: TS450."),
         ("pair", [{"f": "sensor_before_pdf.jpg", "r": "natural", "cap": "<b>Before</b>자사 이전 모델 · 센서창과 하우징이 같은 면"},
                   {"f": "sensor_after_pdf.jpg", "cap": "<b>After</b>TS450 · 상·하단 하우징이 센서창보다 돌출"}]),
-        ("bleed", "sensor_cradle_pdf.jpg", "natural"),
+        ("single", "sensor_cradle_pdf.jpg", "<b>Cradle</b>거치 시 센서창이 크래들에 닿지 않는 구조"),
+        ("duo", ["robospin.jpg", {"f": "ui.jpg", "pos": "62% 50%"}]),
         ("split",
          ("ROBO-SPIN", "구동 바퀴 없이 세 개의 회전 패드만으로 이동과 청소를 동시에 수행합니다. 본체 무게가 세 패드에 실려 바닥을 눌러 닦습니다.",
           "With no drive wheels, three rotating pads both move the robot and clean; the body's weight presses the pads to the floor."),
          ("Simple UI", "시작·정지와 물 공급량 버튼 2개, 작동 상태를 알리는 라이트 라인, 음성 안내만으로 매뉴얼 없이 조작합니다.",
           "Two buttons for start/stop and water flow, a light line for status and voice guidance: no manual needed.")),
-        ("duo", ["robospin.jpg", {"f": "ui.jpg", "pos": "62% 50%"}]),
         ("text", "Mop Pads", "세 개의 회전 패드는 손쉽게 탈착·세탁할 수 있고, 세탁해 반복 사용할 수 있습니다.",
          "The three rotating pads detach easily and can be washed and reused."),
         ("bleed", "mop_pads.jpg", "macro"),
@@ -317,12 +321,14 @@ PAGES["ts700"] = dict(
          "The water tank detaches with a latch, and the robot stands upright on its cradle when not in use."),
         ("pair", [{"f": "detail_top_cover.jpg", "r": "natural"}, "detail_storage.jpg"]),
         ("split",
-         ("LED UI · Sound", "동작 사양에 따른 라이팅 UI와 음성 안내를 설계하고, 효과음·TTS를 제작했습니다.",
-          "Lighting UI and voice guidance were designed from the operating specification, with sound effects and TTS produced in-house."),
-         ("CMF", "다양한 컬러의 디자인 목업을 제작·검토한 뒤 CMF와 실크를 확정했습니다.",
-          "Design mock-ups in a range of colours were built and reviewed before the CMF and silk-screen were fixed.")),
+         ("Water Tank", "래치 방식으로 탈착하는 물통", "A water tank that detaches with a latch."),
+         ("Storage", "거치대에 세워 보관", "Stored upright on its cradle.")),
+        ("text", "LED UI · Sound", "동작 사양에 따른 라이팅 UI와 음성 안내를 설계하고, 효과음·TTS를 제작했습니다.",
+         "Lighting UI and voice guidance were designed from the operating specification, with sound effects and TTS produced in-house."),
+        ("text", "CMF", "다양한 컬러의 디자인 목업을 제작·검토한 뒤 CMF와 실크를 확정했습니다.",
+         "Design mock-ups in a range of colours were built and reviewed before the CMF and silk-screen were fixed."),
         ("dark", [
-            ("grid", ["photo_2323.jpg", "photo_2324.jpg", "mockup_2325.jpg", "photo_0188.jpg", "mockup_1109.jpg", "mockup_1665.jpg"]),
+            ("grid", ["mockup_2325.jpg", "photo_0188.jpg", "mockup_1109.jpg"]),  # 같은 구도 2323·2324 제외, 다른 공정 사진은 보유분 없음
             ("row", "MASS PRODUCTION",
              "디자인 목업과 시사출 외관을 검토하고, 디자인 사양서 · 시사출 검토 · 금형 수정 요청 · 마케팅 렌더링까지 양산 단계를 "
              "지원하고 있습니다.",
@@ -378,14 +384,17 @@ PAGES["h500"] = dict(
          "줄였습니다.",
          "The palm rest detaches and can be mounted on either side, so left-handed users can use it too. An off-the-shelf "
          "joystick keeps the cost down."),
-        ("square", {"f": "ctrl_top.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}),
-        ("pair", [{"f": "ctrl_side.jpg", "fit": "contain", "bg": "auto", "pad": "8%"},
-                  {"f": "concept.jpg", "fit": "contain", "bg": "auto", "pad": "8%"}]),
-        ("split",
-         ("Button Grouping", "레드 전원 버튼을 중심으로 라이트·비상등·경적 버튼을 기능별로 묶었습니다.",
-          "Light, hazard and horn buttons are grouped by function around the central red power button."),
-         ("Display", "표시부를 버튼 위에 두어 누르는 손에 가려지지 않게 했습니다.",
-          "The display sits above the buttons so the pressing hand never hides it.")),
+        ("text", "Button Grouping &amp; Display",
+         "레드 전원 버튼을 중심으로 라이트·비상등·경적 버튼을 기능별로 묶고, 표시부를 버튼 위에 두어 누르는 손에 가려지지 않게 "
+         "했습니다.",
+         "Light, hazard and horn buttons are grouped by function around the central red power button, and the display "
+         "sits above the buttons so the pressing hand never hides it."),
+        ("tri", [{"f": "ctrl_pers.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
+                  "cap": "<b>Perspective</b>레드 전원 버튼 중심 · 라이트·비상등·경적"},
+                 {"f": "ctrl_top.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
+                  "cap": "<b>Top</b>탈착해 왼손잡이도 쓰는 팜레스트"},
+                 {"f": "ctrl_side.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
+                  "cap": "<b>Side</b>기성품 조이스틱으로 원가 절감"}]),
         ("text", "Mock-up",
          "3D 프린팅 목업으로 직접 쥐고 조작하며 형상과 버튼 배치를 다듬었습니다.",
          "3D-printed mock-ups were held and operated to refine the form and button layout."),
@@ -399,7 +408,7 @@ PAGES["h500"] = dict(
          "손으로 수동 주행할 때를 고려해 메탈 핸드림의 두께와 휠과의 간격을 설정했습니다.",
          "The thickness of the metal hand rim and its gap from the wheel were set for manual propulsion."),
         ("dark", [
-            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "photo_8218.jpg", "wheel_color_chips.jpg", "mock_wheel3.jpg", "mock_wheel5.jpg"]),
+            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "photo_8218.jpg", "wheel_color_chips.jpg", "mock_wheel3.jpg", "mock_ctrl3.jpg"]),
             ("row", "MOCK-UP &amp; CMF",
              "스포크 인서트 컬러와 핸드림 블랙 / 실버 마감을 실물 목업으로 비교하고, 컬러칩 5종으로 최종 컬러를 확인했습니다.",
              "Spoke-insert colours and black / silver hand-rim finishes were compared on physical mock-ups, and the final "
@@ -461,8 +470,6 @@ PAGES["odm-cmf"] = dict(
          "Q9은 스테이션 탑 커버를 새로 디자인해 제작까지 맡았습니다.",
          "For the Q9, a new station top cover was designed and taken into production."),
         ("pair", [{"f": "q9_front.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}, {"f": "q9_side.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}]),
-        ("tri", [{"f": "x2_pers.jpg", "fit": "contain", "bg": "auto", "pad": "9%"}, {"f": "q3t_set.jpg", "fit": "contain", "bg": "auto", "pad": "9%"},
-                 {"f": "ts402m_tilt.jpg", "fit": "contain", "bg": "auto", "pad": "9%"}]),
         ("dark", [
             ("facts", [("13", "에브리봇 (ODM 12 · 페이스리프트 1)"), ("2", "맥스젠"), ("1", "에브리봇모빌리티")]),
             ("row", "PROCESS",
@@ -532,7 +539,7 @@ PAGES["wade"] = dict(
          "input through the upper touch display. Changes in facial expression indicate the current operating state, so "
          "first-time users can follow the sequence of steps."),
         ("square", {"f": "scene_wait.jpg", "fit": "contain", "bg": "auto"}),
-        ("tri", [{"f": "step_detect.jpg", "pos": "72% 50%"}, "step_draw.jpg", "step_pixelate.jpg"]),
+        ("tri", [{"f": "step_detect2.jpg", "pos": "70% 50%"}, "step_draw.jpg", "step_pixelate.jpg"]),
         ("text", "Draw to Print",
          "사용자가 그린 그림은 세 단계를 거쳐 바닥에 출력됩니다. 먼저 화면에 입력된 그림을 20×12의 점 데이터로 바꿉니다. 이 데이터를 "
          "배열 값에 따라 솔레노이드 밸브를 제어하는 신호로 전송합니다. 로봇이 0.5m/s로 직진하는 동안 12개의 밸브가 열리고 닫히면서 "
@@ -552,18 +559,18 @@ PAGES["wade"] = dict(
          "The outer shell was 3D printed in PLA and then assembled. The internal support was built from aluminium profiles "
          "so that the frame carries the load of the shell and components. Since the robot was to be operated on "
          "exhibition floors, it was built as an assembled structure that allows parts to be replaced and serviced."),
-        ("pair", [{"f": "inner_front.jpg", "r": "natural"}, "inner_rear.jpg"]),
         ("text", "Internal Structure",
          "물을 사용하는 로봇이기 때문에 누수가 전자부에 닿지 않도록 내부를 분리했습니다. 배선과 제어 부품(NI myRIO · LattePanda)은 "
-         "전면에, 물탱크와 펌프·분배 호스·솔레노이드 밸브는 방수 패널로 나눈 뒤쪽 공간에 배치했습니다.",
+         "전면에, 물탱크와 펌프·분배 호스·솔레노이드 밸브는 방수 패널로 나눈 뒤쪽 공간에 배치했습니다. 하부 LiDAR 센서로 전방의 "
+         "사람을 인식하고, 몸통 뒷면 LED로 물 잔량을 확인하며, 전면 하단 커버를 열어 배터리를 교체합니다.",
          "Because the robot uses water, the interior was divided so that leaks cannot reach the electronics. Wiring and "
          "control components (NI myRIO, LattePanda) sit at the front, while the water tank, pump, distribution hoses and "
-         "solenoid valves are in a rear compartment behind a waterproof panel."),
+         "solenoid valves are in a rear compartment behind a waterproof panel. A LiDAR sensor at the bottom detects people "
+         "ahead, an LED on the rear shows the remaining water, and the battery is replaced through the lower front cover."),
+        ("pair", [{"f": "inner_front.jpg", "r": "natural"}, "inner_rear.jpg"]),
         ("split",
-         ("LiDAR Sensor", "하부 LiDAR 센서로 전방의 사람을 인식해 주행을 멈추고 그림 입력 단계로 넘어갑니다.",
-          "The lower LiDAR sensor detects a person ahead, stops the robot, and moves to the drawing input step."),
-         ("Water Level LED", "몸통 뒷면 LED로 물 잔량을 확인하고, 전면 하단 커버를 열어 배터리를 교체합니다.",
-          "An LED on the rear shows the remaining water, and the battery is replaced through the lower front cover.")),
+         ("Front", "제어부·배선 (NI myRIO · LattePanda)", "Control and wiring (NI myRIO, LattePanda)."),
+         ("Rear", "물탱크·펌프·솔레노이드 밸브", "Water tank, pump and solenoid valves.")),
         ("dark", [
             ("grid", ["build_paint.jpg", "build_chassis.jpg", "build_head.jpg", "build_valves.jpg", "test_print.jpg", "build_assembly.jpg"]),
             ("row", "PROCESS",
@@ -586,7 +593,7 @@ PAGES["wade"] = dict(
             ("roles", ["리서치", "컨셉 수립", "디자인 스케치", "내부 부품 배치 기반 구조 설계", "3D 모델링·렌더링", "3D 프린팅",
                        "도장", "워킹 프로토타입 제작", "특허 서류 및 도면 제작"]),
         ]),
-        ("bleed", "print_field.jpg", "natural"),
+        ("bleed", "nozzle2.jpg", "natural"),
         ("band",),
     ],
 )
@@ -650,13 +657,14 @@ PAGES["mobilink"] = dict(
          "음료와 간단한 식품을 보관하는 펠티어 냉장고를 갖췄고, 복곡면 투명 가니시에 Shy Tech로 기능 제어 아이콘을 넣었습니다.",
          "A controller for the vehicle and smart-home environment and storage are built in, with wireless charging for a "
          "phone, a Peltier fridge for drinks and snacks, and shy-tech control icons in the doubly curved transparent garnish."),
-        ("bleed", {"f": "multi.jpg", "r": "natural"}, "natural"),
+        ("bleed", {"f": "multi_clean.jpg", "r": "natural"}, "natural"),
         ("text", "Transparent Display",
          "상단 스토리지의 커버는 투명 디스플레이로 만들어, 커버를 열어 L자형으로 고정하면 OTT·동영상을 보기 편한 각도가 됩니다. "
          "좌우 스토리지와 후면 소형 냉장고의 커버는 손잡이 없이 손으로 살짝 누르면 부드럽게 열리는 심리스 커버입니다.",
          "The top storage cover is a transparent display; opened and fixed in an L shape it sits at a comfortable angle for "
          "OTT and video. The side storage and rear mini-fridge use handle-free seamless covers that slide open with a light press."),
         ("pair", [{"f": "storage.jpg", "r": "natural"}, "storage_side.jpg"]),
+        ("pair", [{"f": "speaker_panel.jpg", "r": "natural"}, "dock_step.jpg"]),
         ("split",
          ("Smart Surfaces Speaker",
           "사용자가 손으로 표면을 쓸면 터치 센서가 압력을 감지하고, 빛이 스마트 표면에서 나옵니다. 빛이 방출되는 패턴은 맞춤형으로 "
@@ -668,7 +676,6 @@ PAGES["mobilink"] = dict(
           "내부 스프링이 복구되며 평평한 면이 되어 틈새에 먼지가 쌓이지 않습니다.",
           "A docking step in the vehicle's charging zone locks the console's wheels so it stays steady while driving. Undocked, "
           "springs return the step to a flat floor so no dust collects in the gaps.")),
-        ("bleed", {"f": "dock.jpg", "r": "natural"}, "natural"),
         ("square", "render_sq.jpg"),
         ("dark", [
             ("row", "PROCESS",
@@ -715,7 +722,7 @@ PAGES["flever"] = dict(
              "자녀 세대가 느끼는 가족 간 친밀감에는 차이가 있고, 이 차이를 극복해야 더 깊은 유대감을 기대할 수 있습니다.",
              "Younger family members feel less than their parents that the family is making an effort to respect and talk to "
              "one another. Closing this gap in perceived closeness is the key to a deeper bond."),
-            ("dots", ["bh_magnet.jpg", "bh_hinge.jpg", {"f": "bh_cable.jpg", "pos": "62% 50%"}]),
+            ("dots", ["bh_magnet.jpg", "bh_ui_hello.jpg", {"f": "bh_cable.jpg", "pos": "62% 50%"}]),
             ("row", "SOLUTION",
              "가족 구성원의 세대별 특성을 리서치하고, 그 결과를 바탕으로 전 세대를 잇는 감정 공유 콘텐츠형 스마트 홈스크린 Flever를 "
              "제안했습니다. 출퇴근·등하교로 소통이 없는 가족을 위한 소통 창구가 되어, 삭막한 집 안을 소통이 활발한 공간으로 바꿉니다.",
@@ -801,7 +808,7 @@ PAGES["inclusive"] = dict(
            "3D-printed parts and full-scale foam-board mock-ups."),
     sections=[
         ("dark", [
-            ("img", {"f": "door_test_crop.jpg", "pos": "50% 40%"}),
+            ("img", {"f": "door_test_crop.jpg", "pos": "50% 0%"}),
             ("row", "BOARDING",
              "양방향 슬라이드 도어로 출입구를 완전히 열고, 도어스텝이 계단 또는 경사판으로 내려와 휠체어도 바로 탈 수 있습니다. "
              "투명 디스플레이 보조도어와 탑승 신호 eHMI 시나리오도 함께 제안했습니다.",
@@ -819,16 +826,16 @@ PAGES["inclusive"] = dict(
          "노약자가 앉고 일어서는 동작을 돕는 어시스트 시트를 제안했습니다.",
          "An assist seat was proposed to help elderly passengers sit down and stand up."),
         ("bleed", "assist_pair.jpg", "natural"),
+        ("pair", [{"f": "s_wc_lock.jpg", "r": "natural"}, {"f": "s_seat_layout.jpg", "fit": "contain", "bg": "auto", "pad": "4%"}]),
         ("split",
          ("Wheelchair Lock", "이동형 모빌리티 안에서 휠체어를 고정하는 장치를 제안했습니다.",
           "A device that secures wheelchairs inside the moving vehicle."),
          ("Flexible Seating", "상황에 따라 좌석 배치를 바꾸는 이동형 좌석 배치 시나리오를 제안했습니다.",
           "A movable seating scenario that changes the layout to suit the situation.")),
-        ("pair", [{"f": "s_wc_lock.jpg", "r": "natural"}, "s_ehmi_front.jpg"]),
         ("text", "eHMI",
          "차량 외부에서 이륜차에 승하차를 알리고 보행자에게 횡단을 안내하는 eHMI 시나리오를 제안했습니다.",
          "eHMI scenarios were proposed to alert two-wheelers to boarding passengers and to guide pedestrians across."),
-        ("bleed", {"f": "s_seat_layout.jpg", "fit": "contain", "bg": "auto", "pad": "2% 8%"}, "natural"),
+        ("single", "s_ehmi_front.jpg", "<b>eHMI</b>횡단 안내"),
         ("dark", [
             ("row", "PROCESS",
              "애자일 방식으로 아이템을 빠르게 만들고 1:1 목업으로 확인하는 과정을 반복했습니다.",
@@ -858,12 +865,12 @@ PAGES["seuv"] = dict(
            "3D animation, app UI and full-scale foam-board mock-ups."),
     sections=[
         ("dark", [
-            ("img", {"f": "s_ott.jpg", "r": "natural"}),
+            ("img", {"f": "clamshell_crop.jpg", "r": "natural"}),
             ("row", "SPACE",
              "테일게이트를 펼쳐 앉고 쉬는 공간으로 쓰도록, 그 위에서 쓰는 액세서리를 1:1 폼보드로 만들어 직접 시연했습니다.",
              "To use the opened tailgate as a place to sit and rest, the accessories used on it were built in full-scale "
              "foam board and demonstrated in person."),
-            ("dots", ["s_luggage.jpg", "s_tray.jpg", "s_cupholder.jpg"]),
+            ("dots", ["s_tray.jpg", "s_cupholder.jpg", "s_luggage.jpg"]),
             ("row", "WELLNESS",
              "시트 배열 7가지 모드, 후석 보조 모니터, 캐빈 살균 로직, 무드 큐레이터 등 웰니스 항목을 시나리오와 목업으로 구체화했습니다.",
              "Wellness items such as seven seat-arrangement modes, rear auxiliary monitors, cabin-sterilisation logic and a mood curator were "
@@ -875,17 +882,18 @@ PAGES["seuv"] = dict(
          "실제 높이와 크기를 확인했습니다.",
          "Tailgate cup holders, silicone trays (types A/B), luggage boards (types A/B/C) and a footrest that stows at the "
          "end of the bed were made in foam board to check real heights and sizes."),
-        ("pair", [{"f": "clamshell_crop.jpg", "r": "natural"}, "clamshell_step.jpg"]),
+        ("single", "clamshell_step.jpg", "<b>Step</b>베드 끝에 수납되는 발걸이"),
         ("text", "Seat Variation",
          "앱으로 1·2·3열 시트를 원격 조절하는 시트 배열 7가지 모드를 제안했습니다.",
          "Seven seat-arrangement modes were proposed, with first- to third-row seats adjusted remotely from an app."),
         ("bleed", "seat_modes.jpg", "natural"),
+        ("pair", [{"f": "rear_display_test.jpg", "r": "natural"}, "s_ott_popup.jpg"]),
         ("split",
          ("Rear Entertainment", "후석 보조 모니터를 인치별로 실차에서 비교 검증했습니다.",
           "Rear auxiliary monitors were compared by screen size in a real vehicle."),
          ("OTT Display", "고정형과 팝업형 OTT 디스플레이를 제안했습니다.",
           "Fixed and pop-up OTT displays were proposed.")),
-        ("pair", [{"f": "s_ott_popup.jpg", "r": "natural"}, "rear_display_test.jpg"]),
+        ("single", "s_ott.jpg", "<b>OTT Display</b>고정형 디스플레이"),
         ("dark", [
             ("row", "PROCESS",
              "항목마다 PoC 목업을 만들어 마크로밀엠브레인의 사용성 테스트에 썼습니다.",
@@ -923,13 +931,13 @@ PAGES["ev-sedan"] = dict(
              "아이템은 3D 애니메이션·영상으로 표현했습니다.",
              "Scenario items such as heatwave/cold-snap climate modes, a HUD U-turn guide, a surveillance mode that records "
              "ten seconds before and after a collision, and Relax and Cinema custom modes were shown as 3D animations and videos."),
-            ("dots", ["s_aircon.jpg", "s_relax.jpg", {"f": "ev_table_ioniq6.jpg", "pos": "40% 55%"}]),
+            ("dots", ["s_aircon_car.jpg", "s_relax.jpg", "s_cinema.jpg"]),
             ("row", "INTERIOR",
              "실내 아이템 4종은 폼보드 PoC로 만들어 1·2열 배치를 재현하고 직접 사용해 보며 검증했습니다. 테이블은 애프터마켓 "
              "테이블 아이디어 3안을 도출해 실차에서 검증했습니다.",
              "Four interior items were built as foam-board PoCs that reproduce the first- and second-row layout and were "
              "verified by using them. For the table, three aftermarket table ideas were developed and tested in a real car."),
-            ("img", {"f": "s_cinema.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "ev_table_ioniq6.jpg", "pos": "50% 55%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("text", "Expandable Center Console",
          "콘솔에서의 1열·2열 수납, 컵홀더, 무선충전, V2L 활용 아이디어를 제안했습니다. 확장 모드는 1열 중심 · 1·2열 공유 · "
@@ -937,10 +945,10 @@ PAGES["ev-sedan"] = dict(
          "Ideas for front- and rear-row storage, cup holders, wireless charging and V2L in the console were proposed, with "
          "three extension modes (front-focused, shared, rear-focused) verified on a full-scale foam-board PoC."),
         ("pair", [{"f": "ev_console_poc.jpg", "r": "natural"}, "ev_console_test.jpg"]),
+        ("pair", [{"f": "ev_cupholder_poc.jpg", "r": "natural"}, "ev_trunk_poc.jpg"]),
         ("split",
          ("Cup Holder", "센터콘솔 하단 트레이 폴딩 컵홀더 아이템을 제안했습니다.", "A folding cup holder in the tray under the centre console."),
          ("Trunk Luggage Box", "트렁크 러기지박스의 컵홀더와 공간 분할 아이템을 도출하고 검증했습니다.", "Cup-holder and space-dividing items for a trunk luggage box, developed and verified.")),
-        ("pair", [{"f": "ev_cupholder_poc.jpg", "r": "natural"}, "ev_trunk_poc.jpg"]),
         ("dark", [
             ("row", "USABILITY TEST",
              "폼보드 PoC는 마크로밀엠브레인의 실사용자 사용성 테스트에 쓰였습니다.",
