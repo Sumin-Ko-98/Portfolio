@@ -440,3 +440,28 @@ p[lang="en"].secondary,
 .bilingual > [lang="ko"] { order: 0; }
 .bilingual > .en,
 .bilingual > [lang="en"] { order: 1; }
+
+/* ---------- 카드 수상 리본 (홈 · Work, 2026-10-14) ----------
+   카드 위쪽 가장자리에 매달린 책갈피형 태그. 수상 = 금색, Finalist = 은색 */
+.card__ribbons {
+  position: absolute; top: 0; right: 16px; z-index: 2;
+  display: flex; gap: 6px; pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.18));
+}
+.ribbon {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  width: 44px; padding: 9px 0 15px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 8px), 0 100%);
+  font-family: var(--f-display); font-weight: 900; font-size: 13px; line-height: 1; letter-spacing: .01em;
+  color: #fff; text-align: center;
+}
+.ribbon small {
+  font-family: var(--f-mono); font-weight: 500; font-size: 7.5px; letter-spacing: .04em; line-height: 1;
+  opacity: .92; white-space: nowrap;
+}
+.ribbon--win { background: linear-gradient(180deg, #c3a06a 0%, #a8844c 100%); }
+.ribbon--fin { background: linear-gradient(180deg, #86868c 0%, #636368 100%); }
+@media (max-width: 600px) {
+  .card__ribbons { right: 12px; gap: 5px; }
+  .ribbon { width: 40px; font-size: 12px; padding: 8px 0 14px; }
+}

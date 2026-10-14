@@ -210,9 +210,8 @@ def dark_block(d, b, label=""):
         two = " wd-dots--2" if len(b[1]) == 2 else ""
         return f'  <div class="wd-dots{two} reveal delay-1">\n{cells}\n  </div>'
     if k == "grid":
-        # 목업·공정 사진: CSS 에서 흑백. 세로 사진은 4:3 칸에서 잘리지 않게 통째로(contain)
-        ims = [Img(d, s) for s in b[1]]
-        cells = "".join(('<div class="is-portrait">' if im.h > im.w else "<div>") + im.tag() + "</div>" for im in ims)
+        # 목업·공정 사진: CSS 에서 흑백, 모든 칸 4:3 같은 크기 (세로 사진은 쓰지 않거나 pos 로 크롭 위치 지정)
+        cells = "".join(f"<div>{Img(d, s).tag()}</div>" for s in b[1])
         return f'  <div class="wd-protogrid reveal">\n    {cells}\n  </div>'
     if k == "mosaic":
         a, bb, c, dd = [Img(d, s).tag() for s in b[1]]

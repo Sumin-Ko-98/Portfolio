@@ -51,7 +51,7 @@ SOURCES = {
         "padchange_gs.jpg": J(LS, "TS450", "genspark", "gs_ts450_pad_change_01.png"),
         "topview.jpg": J(LS, "TS450", "genspark", "gs_ts450_topview_02.png"),
         "photo_1206.jpg": J(HEIC, "TS450_Photo_1206.jpg"),
-        "photo_5363.jpg": J(HEIC, "TS450_Photo_5363.jpg"),
+        "photo_5363.jpg": {"src": J(HEIC, "TS450_Photo_5363.jpg"), "rot": 180},  # 위에서 찍어 제품이 뒤집혀 보임 → 180° (에셋은 PIL로 직접 회전)
         "photo_5982.jpg": J(HEIC, "TS450_Photo_5982.jpg"),
     },
     "ts700": {
@@ -224,9 +224,12 @@ PAGES["threespin"] = dict(
              "ROBO-SPIN structure carries straight into a triangular silhouette, and corners finished with varied radii "
              "give it a form language distinct from round robot vacuums."),
             ("dots", ["padchange_gs.jpg", "shelf_gs.jpg", "macro2.jpg"]),
-            ("img", {"f": "kitchen.jpg", "pos": "50% 78%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("row", "IN USE",
+             "패드는 손으로 바로 떼어 갈아 끼우고, 쓰지 않을 때는 거치대에 세워 선반 위에 오브제처럼 둡니다. 83mm의 낮은 바디로 "
+             "소파·침대 아래까지 들어가 닦습니다.",
+             "Pads come off by hand; when not in use the robot stands upright in its cradle like an object, and its 83 mm body "
+             "reaches under sofas and beds."),
         ]),
-        ("scene", {"f": "bedroom.jpg", "r": "natural"}),
         ("text", "Triangle Form",
          "본체를 360도로 두르는 블랙 센서창 라인이 시선을 가로로 이끕니다. 다양한 R값으로 다듬은 모서리가 원형 로봇청소기와 "
          "다른 인상을 만듭니다.",
@@ -271,21 +274,14 @@ PAGES["threespin"] = dict(
          ("Simple UI", "VOC의 인디케이터 문제를 풀어, 시작·정지와 물 공급량 버튼 2개와 상태를 알리는 라이트 라인을 한곳에 모았습니다. "
           "음성 안내까지 더해 매뉴얼 없이 조작합니다.",
           "Answering the indicator VOC, the two buttons and the status light line sit in one place, with voice guidance.")),
-        ("bleed", "mop_pads.jpg", "macro"),
         ("text", "Storage &amp; CMF",
          "본체를 세워 결합하는 수직형 거치대로 보관 면적을 줄였습니다. 거치대도 본체와 같은 곡면·컬러·마감으로 통일해 보관 중에도 "
          "하나의 오브제로 읽힙니다.",
          "A vertical cradle that holds the robot upright reduces the storage footprint. The cradle shares the body's "
          "curves, colour and finish, so the two read as one object even in storage."),
         ("bleed", "cradle_shelf.jpg", "natural"),
-        ("text", "CMF Variation",
-         "출시 뒤 후속 컬러 4안(White & Dark Gray · Warm Gray Tone on Tone · White & Beige · Beige & Dark Beige)을 도장 목업용으로 "
-         "제안했습니다. 물통이 증착 마감이라 레진은 밝은 색만 쓸 수 있어 어두운 색은 도장으로 풀고, 자사·업체 보유 레진을 활용해 납기를 "
-         "지키는 조건 안에서 정리했습니다.",
-         "Four follow-up colourways were proposed for painted mock-ups within resin and lead-time constraints."),
-        ("single", {"f": "cmf_var.jpg", "r": "natural"}, "CMF VARIATION · A White &amp; Dark Gray · B Warm Gray Tone on Tone · C White &amp; Beige · D Beige &amp; Dark Beige"),
         ("dark", [
-            ("grid", ["mockup_1201.jpg", "photo_1206.jpg", "mockup_5465.jpg", "photo_5363.jpg", "photo_5982.jpg", "mockup_5981.jpg"]),
+            ("grid", ["photo_1206.jpg", "photo_5363.jpg", "mockup_5465.jpg"]),  # 가로 사진만 (세로·기울어진 컷 제외, 2026-10-14)
             ("row", "MOCK-UP",
              "1:1 디자인 목업을 제작해 비율 · 센서창 라인 · 다양한 CMF 시안을 검토했습니다. 시사출 단계에서는 플로우 마크 등의 "
              "품질 검수를 진행하고, 일부 금형 수정 등 양산 팔로우업을 진행했습니다.",
@@ -628,7 +624,7 @@ PAGES["wade"] = dict(
          ("Front", "제어부·배선 (NI myRIO · LattePanda)", "Control and wiring (NI myRIO, LattePanda)."),
          ("Rear", "물탱크·펌프·솔레노이드 밸브", "Water tank, pump and solenoid valves.")),
         ("dark", [
-            ("grid", ["build_paint.jpg", "build_chassis.jpg", "build_head.jpg", "build_valves.jpg", "test_print.jpg", "build_assembly.jpg"]),
+            ("grid", ["build_paint.jpg", "build_chassis.jpg", "build_head.jpg", {"f": "build_valves.jpg", "pos": "50% 78%"}, "test_print.jpg", "build_assembly.jpg"]),
             ("row", "PROCESS",
              "엔지니어 4명과 디자이너 1명으로 구성된 팀에서 디자인 전체를 담당했습니다. 엔지니어링에서 구현 범위 설정과 코딩, 플랫폼 조립, "
              "전기 배선을 맡는 동안 스케치와 3D 모델링, 렌더링, 3D 프린팅, 프로토타이핑, 영상 제작을 진행했습니다. 외장 3D 프린팅·도장 → "
