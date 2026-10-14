@@ -387,6 +387,32 @@ FOOTER = """<footer class="footer">
 </footer>"""
 
 
+IMG_KINDS = ("square", "tri", "duo", "pair", "bleed", "lineup", "video", "single")
+
+
+def caption_after_images(secs):
+    """흰 구간 읽기 순서 통일: 사진 → 그 사진의 설명.
+    story_pages에는 ("text", …) 뒤에 그 사진들이 오도록 적혀 있으므로, text 뒤에 이어지는
+    사진 묶음을 text 앞으로 옮긴다. split 바로 앞의 사진은 그 split의 짝이라 옮기지 않는다.
+    CSS(.wd-textrow 위 여백 좁게·아래 넓게)도 이 순서를 전제로 한다."""
+    out, i = [], 0
+    while i < len(secs):
+        sec = secs[i]
+        if sec[0] != "text":
+            out.append(sec); i += 1; continue
+        j = i + 1
+        while j < len(secs) and secs[j][0] in IMG_KINDS:
+            if j + 1 < len(secs) and secs[j + 1][0] == "split":
+                # 사진 바로 뒤가 split: text 바로 다음이 그 짝이면 짝째로 앞으로, 아니면 여기서 멈춤
+                if j == i + 1:
+                    j += 2
+                break
+            j += 1
+        out.extend(secs[i + 1:j]); out.append(sec)
+        i = j
+    return out
+
+
 def render(slug, p):
     order = SP.ORDER
     i = order.index(slug)
@@ -398,7 +424,7 @@ def render(slug, p):
                      for k, v in p["meta"])
     CTX["title"] = p["title"]
     CTX["label"] = "Overview"
-    secs = p["sections"]
+    secs = caption_after_images(p["sections"])
     out = []
     for i, sec in enumerate(secs):
         k = sec[0]

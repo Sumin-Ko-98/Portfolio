@@ -224,7 +224,7 @@ PAGES["threespin"] = dict(
         ("bleed", {"f": "side_view.jpg", "fit": "contain", "bg": "auto", "pad": "3% 7%"}, "natural"),
         ("text", "Sensor Protection",
          "센서창 보호 단차와 함께, 크래들에 거치할 때도 센서창이 크래들에 직접 닿는 면을 없애 스크래치를 막았습니다. "
-         "아래 왼쪽이 이전 모델, 오른쪽이 TS450입니다.",
+         "위 왼쪽이 이전 모델, 오른쪽이 TS450입니다.",
          "Besides the protective step, the cradle was shaped so that no surface touches the sensor window when the robot "
          "is docked. Left: previous model. Right: TS450."),
         ("pair", [{"f": "sensor_before_pdf.jpg", "r": "natural", "cap": "<b>Before</b>자사 이전 모델 · 센서창과 하우징이 같은 면"},
@@ -542,7 +542,6 @@ PAGES["wade"] = dict(
          "input through the upper touch display. Changes in facial expression indicate the current operating state, so "
          "first-time users can follow the sequence of steps."),
         ("square", {"f": "scene_wait.jpg", "fit": "contain", "bg": "auto"}),
-        ("tri", [{"f": "step_detect2.jpg", "pos": "70% 50%"}, "step_draw.jpg", "step_pixelate.jpg"]),
         ("text", "Draw to Print",
          "사용자가 그린 그림은 세 단계를 거쳐 바닥에 출력됩니다. 먼저 화면에 입력된 그림을 20×12의 점 데이터로 바꿉니다. 이 데이터를 "
          "배열 값에 따라 솔레노이드 밸브를 제어하는 신호로 전송합니다. 로봇이 0.5m/s로 직진하는 동안 12개의 밸브가 열리고 닫히면서 "
@@ -550,6 +549,7 @@ PAGES["wade"] = dict(
          "A drawing is printed onto the ground in three steps. The drawing on the screen is first converted into 20×12 dot "
          "data. That data is sent as control signals that open and close the solenoid valves according to the array. "
          "While the robot drives straight at 0.5 m/s, twelve valves open and close and the drawing appears on the ground."),
+        ("tri", [{"f": "step_detect2.jpg", "pos": "70% 50%"}, "step_draw.jpg", "step_pixelate.jpg"]),
         ("text", "Reach for Everyone",
          "터치 디스플레이 높이는 신장 120cm 어린이부터 180cm 성인, 휠체어 이용자까지 함께 사용할 수 있도록 폼보드 "
          "프로토타이핑으로 설정했습니다. 세 조건의 도달 범위를 비교해 상단 패널의 높이를 결정했고, 조작 요소는 상단 한 면에 모아 한 자리에서 입력을 끝낼 수 있게 했습니다.",
@@ -758,10 +758,10 @@ PAGES["flever"] = dict(
          "and drawing memos help the family stay close. Face recognition logs each member in, and messages can be left as "
          "front-camera video or by touch."),
         ("bleed", {"f": "bh_pair.jpg", "r": "natural"}, "natural"),
-        ("video", "anim_hinge.mp4", "anim_hinge_poster.jpg"),
         ("text", "Detachable",
          "화면과 거치대에 자석이 있어 쉽게 붙이고 뗄 수 있고, 화면 각도를 자유롭게 조절할 수 있습니다.",
          "Magnets in the screen and the base make it easy to attach and detach, and the screen angle adjusts freely."),
+        ("video", "anim_hinge.mp4", "anim_hinge_poster.jpg"),
         ("bleed", {"f": "bh_exploded.jpg", "r": "natural"}, "natural"),
         ("text", "Speaker",
          "배터리와 스피커가 내장된 하단 파츠는 디스플레이를 떼어 두었을 때 별도의 포터블 스피커로 쓸 수 있고, USB-C 타입으로 충전합니다. "

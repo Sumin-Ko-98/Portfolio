@@ -253,9 +253,9 @@
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 1.2s cubic-bezier(.2,.7,.2,1), filter .6s ease;
-  transform: scale(1.02);
+  transform: scale(1);
 }
-.card:hover .card__media img { transform: scale(1.08); }
+.card:hover .card__media img { transform: scale(1.04); }
 
 .card__media::after {
   content: '';
@@ -395,12 +395,6 @@
 }
 .work__viewall a:hover .arrow { transform: translateX(4px); }
 
-/* Product: 첫 카드(TS450) 2칸 강조 — 5개 카드로 3열 두 줄을 채움 */
-@media (min-width: 901px) {
-  .work__grid--feature > .card:first-child { grid-column: span 2; display: flex; flex-direction: column; }
-  .work__grid--feature > .card:first-child .card__media { flex: 1; aspect-ratio: auto; min-height: 0; }
-  .work__grid--feature > .card:first-child .card__media img { position: absolute; inset: 0; }
-}
 </style>
 </head>
 <body data-page="home">
@@ -474,10 +468,10 @@
     <h2 class="work__cat">PRODUCT DESIGN.</h2>
   </header>
 
-  <div class="work__grid work__grid--feature">
+  <div class="work__grid">
     <a class="card reveal" data-magnetic href="work/threespin.html">
       <div class="card__media">
-        <img src="assets/works/ts450/overview_life.jpg" alt="쓰리스핀 슬림 TS450 · 거실" style="object-position:50% 60%">
+        <img src="assets/cards/ts450.jpg" alt="쓰리스핀 슬림 TS450">
         <span class="card__badge">iF Gold · Red Dot · GD</span>
         <span class="card__view">View project →</span>
       </div>
@@ -492,7 +486,7 @@
 
     <a class="card reveal delay-1" data-magnetic href="work/ts700.html">
       <div class="card__media">
-        <img src="assets/works/ts700/cover_src.jpg" alt="쓰리스핀 스팀 TS700" style="object-position:40% 50%">
+        <img src="assets/cards/ts700.jpg" alt="쓰리스핀 스팀 TS700">
         <span class="card__badge">Everybot · 양산 지원</span>
         <span class="card__view">View project →</span>
       </div>
@@ -507,7 +501,7 @@
 
     <a class="card reveal delay-2" data-magnetic href="work/h500.html">
       <div class="card__media">
-        <img src="assets/works/h500/ctrl_cover_src.jpg" alt="H500 컨트롤러" style="object-fit:contain;padding:12% 10% 6%;background:#fff">
+        <img src="assets/cards/h500.jpg" alt="H500 컨트롤러">
         <span class="card__badge">Everybot Mobility</span>
         <span class="card__view">View project →</span>
       </div>
@@ -522,7 +516,7 @@
 
     <a class="card reveal" data-magnetic href="work/wade.html">
       <div class="card__media">
-        <img src="assets/works/wade/cover.jpg" alt="WADE 워터 드로잉 서비스 로봇" style="object-position:68% 50%">
+        <img src="assets/cards/wade.jpg" alt="WADE 워터 드로잉 서비스 로봇">
         <span class="card__badge">HCI Korea 2024 · Excellence</span>
         <span class="card__view">View project →</span>
       </div>
@@ -537,7 +531,7 @@
 
     <a class="card reveal delay-1" data-magnetic href="work/odm-cmf.html">
       <div class="card__media">
-        <img src="assets/works/odm/cmf_chips.jpg" alt="CMF 컬러칩">
+        <img src="assets/cards/odm-cmf.jpg" alt="CMF &amp; Facelift 양산 제품">
         <span class="card__badge">16 Models</span>
         <span class="card__view">View project →</span>
       </div>
@@ -547,6 +541,21 @@
           <p class="card__sub">양산 제품 CMF · 부분 형상 디자인 16종</p>
         </div>
         <span class="card__year">2026</span>
+      </div>
+    </a>
+
+    <a class="card reveal delay-2" data-magnetic href="work/mobilink.html">
+      <div class="card__media">
+        <img src="assets/cards/mobilink.jpg" alt="MobiLink 모바일 콘솔">
+        <span class="card__badge">IDEA · Spark Finalist</span>
+        <span class="card__view">View project →</span>
+      </div>
+      <div class="card__foot">
+        <div>
+          <h3 class="card__title">MobiLink</h3>
+          <p class="card__sub">Mobile Console for Future Mobility</p>
+        </div>
+        <span class="card__year">2022</span>
       </div>
     </a>
   </div>
@@ -565,7 +574,7 @@
   <div class="work__grid">
     <a class="card reveal" data-magnetic href="work/inclusive.html">
       <div class="card__media">
-        <img src="assets/works/inclusive/door_ramp.jpg" alt="Inclusive PBV 도어스텝">
+        <img src="assets/cards/inclusive.jpg" alt="Inclusive PBV 도어스텝">
         <span class="card__badge">Hyundai · 2023</span>
         <span class="card__view">View project →</span>
       </div>
@@ -580,7 +589,7 @@
 
     <a class="card reveal delay-1" data-magnetic href="work/seuv.html">
       <div class="card__media">
-        <img src="assets/works/seuv/clamshell_crop.jpg" alt="SeUV 클램쉘 테일게이트 목업">
+        <img src="assets/cards/seuv.jpg" alt="SeUV 실내 공간 렌더">
         <span class="card__badge">Hyundai · 2023</span>
         <span class="card__view">View project →</span>
       </div>
@@ -595,7 +604,7 @@
 
     <a class="card reveal delay-2" data-magnetic href="work/ev-sedan.html">
       <div class="card__media">
-        <img src="assets/works/ev-sedan/ev_scene_console.jpg" alt="전기세단 확장형 센터콘솔">
+        <img src="assets/cards/ev-sedan.jpg" alt="전기세단 확장형 센터콘솔">
         <span class="card__badge">Hyundai · 2022</span>
         <span class="card__view">View project →</span>
       </div>
