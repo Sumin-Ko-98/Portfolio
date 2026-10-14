@@ -170,11 +170,11 @@ PAGES = {}
 
 # =====================================================================
 PAGES["threespin"] = dict(
-    dir="ts450", cat_key="product", title="Threespin Slim", year="2024 — 2025", category="Robot Mop · Everybot",
+    dir="ts450", cat_key="product", title="TS450", year="2024 — 2025", category="Threespin Slim · Robot Mop · Everybot",
     desc="쓰리스핀 슬림 TS450 물걸레 로봇청소기 제품디자인",
     lede="에브리봇이 10년 이상 축적한 ROBO-SPIN 기술로 <b>브랜드 역사상 가장 슬림하게</b> 완성한 물걸레 로봇청소기입니다.",
     hero="cover_src.jpg",
-    meta=[("Term", "2024.07 — 2025.12"), ("Client", "에브리봇"), ("Product", "쓰리스핀 슬림 TS450"),
+    meta=[("Term", "2024.07 — 2025.12"), ("Client", "에브리봇"), ("Contribution", "디자인 기여도 90%"),
           ("Role", "UX · 3D · CMF · 디자인 목업 · 양산 지원"), ("Output", "양산 출시")],
     intro=([("if", "2026.04", "iF Design Award", "2026 · Gold"),
             ("reddot", "2026.04", "Red Dot Award", "Product Design 2026"),
@@ -216,11 +216,15 @@ PAGES["threespin"] = dict(
         ("tri", ["front_sq.jpg",
                  "side_sq.jpg", "topview.jpg"]),
         ("text", "Low Proportion",
-         "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 개발 중 IR 센서가 "
-         "측후면으로 이동한 뒤에도 손잡이·상면 곡률·센서창 비율을 함께 조정해 이 라인을 유지했습니다.",
+         "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 디자인 확정 뒤 상면의 "
+         "IR 센서를 측후면으로 옮기는 설계 변경이 생겨 360° 센서창 라인이 무너질 상황이었습니다. 센서 감지 각도(FOV)와 최소 손잡이 "
+         "깊이를 먼저 기구팀과 확인하고, 그 조건 안에서 손잡이·상면 곡률·센서창 비율을 다시 조정해 실물 목업으로 검증했습니다. "
+         "센서 기능과 이 라인을 모두 지킨 형상으로 양산했습니다.",
          "The top is kept as thin as possible and the side line flows down to the floor, so the robot looks pressed to "
-         "the ground. When the IR sensor moved to the rear side during development, the handle, top curvature and "
-         "sensor-window proportions were adjusted together to keep this line."),
+         "the ground. After the design freeze, the IR sensor had to move from the top to the rear side, which threatened the "
+         "360° sensor-window line. The sensor's field of view and the minimum handle depth were confirmed with the mechanical "
+         "team first; within those limits the handle, top curvature and sensor-window proportions were re-balanced and checked "
+         "on full-scale mock-ups, so both the sensor and the line reached mass production."),
         ("bleed", {"f": "side_view.jpg", "fit": "contain", "bg": "auto", "pad": "3% 7%"}, "natural"),
         ("text", "Sensor Protection",
          "센서창 보호 단차와 함께, 크래들에 거치할 때도 센서창이 크래들에 직접 닿는 면을 없애 스크래치를 막았습니다. "
@@ -255,9 +259,12 @@ PAGES["threespin"] = dict(
              "included partial mould changes."),
             ("facts", [("83mm", "쓰리스핀 시리즈 최저 높이"), ("3", "ROBO-SPIN 회전 패드"), ("2", "조작 버튼")]),
             ("row", "OUTCOME",
-             "출시 후 iF 디자인 어워드 2026 Gold, 레드닷 디자인 어워드(Product Design 2026), 굿디자인(GD) 선정을 받았습니다.",
-             "After launch the product received the iF Design Award 2026 Gold, the Red Dot Award: Product Design 2026 and "
-             "Good Design Korea selection."),
+             "iF 디자인 어워드 2026에서 출품작 10,003개 중 상위 0.75%에게 주는 Gold를 받았습니다. 최종 심사 점수는 340/500점"
+             "(수상 기준 275점)이고, 심사위원단은 “눈에 띄지 않으면서도 언제나 제 역할을 해내는 제품”이라고 평가했습니다. "
+             "이어 레드닷 디자인 어워드 본상과 굿디자인(GD)에도 선정되었습니다.",
+             "TS450 won an iF DESIGN AWARD 2026 Gold, given to 0.75% of 10,003 entries, with a final jury score of 340/500 "
+             "(winner threshold 275). The jury called it “unobtrusive yet always gets the job done.” It also received "
+             "a Red Dot Award: Product Design 2026 and Good Design Korea selection."),
             ("roles", ["시장·트렌드·경쟁 제품 리서치", "UX 디자인", "스케치·2D 렌더링", "3D 모델링·렌더링", "CMF",
                        "디자인 목업", "디자인 사양서", "양산 지원", "마케팅 이미지 소스 지원", "어워드 출품"]),
         ]),
@@ -268,12 +275,12 @@ PAGES["threespin"] = dict(
 
 # =====================================================================
 PAGES["ts700"] = dict(
-    dir="ts700", cat_key="product", title="Threespin Steam", year="2025 — 2026", category="Robot Mop · Everybot",
+    dir="ts700", cat_key="product", title="TS700", year="2025 — 2026", category="Threespin Steam · Robot Mop · Everybot",
     desc="쓰리스핀 스팀 TS700 제품디자인 · 양산 지원",
     lede="스팀 모듈을 탑재한 쓰리스핀 로봇청소기입니다. 높아진 전고를 <b>슬림한 실루엣</b>으로 보이게 하고, "
          "<b>A/S 효율성을 높인 하우징 분할 구조</b>를 설계했습니다.",
     hero="cover_src.jpg",
-    meta=[("Term", "2025.11 — 2026.10"), ("Client", "에브리봇"), ("Product", "쓰리스핀 스팀 TS700"),
+    meta=[("Term", "2025.11 — 2026.10"), ("Client", "에브리봇"), ("Contribution", "디자인 기여도 90%"),
           ("Role", "UX · UI·음성 · CMF · 디자인 목업 · 양산 지원"), ("Status", "양산 지원 진행 중")],
     intro=([("01", "Slim Look", "대형 챔퍼 · 다크 하단", "높아진 전고를 슬림하게"),
             ("02", "3-Part Body", "바텀 · 미들 · 탑", "하단 모듈 서비스성 개선"),
@@ -350,8 +357,8 @@ PAGES["h500"] = dict(
     dir="h500", cat_key="product", title="H500", year="2025 — 2026", category="Wheelchair · Everybot Mobility",
     desc="에브리봇모빌리티 H500 수전동휠체어 컨트롤러 · 인휠모터 휠 디자인",
     lede="수전동휠체어 H500의 <b>컨트롤러</b>와 <b>인휠모터 휠</b>을 디자인했습니다.",
-    hero={"f": "wheel_cover_src.jpg", "fit": "contain", "bg": "auto", "pad": "4% 0"},  # 컨트롤러 투시는 Final Design 3열에 있어 히어로는 휠
-    meta=[("Term", "2025.12 — 2026.06"), ("Client", "에브리봇모빌리티"), ("Product", "H500 수전동휠체어"),
+    hero="ctrl_living.jpg",  # 문제 정의(손 힘이 약한 사용자)가 컨트롤러라 히어로는 컨트롤러 사용 장면(최종 PDF 15쪽 메인 컷)
+    meta=[("Term", "2025.12 — 2026.06"), ("Client", "에브리봇모빌리티"), ("Contribution", "디자인 기여도 75%"),
           ("Scope", "컨트롤러 · 인휠모터 휠"), ("Output", "3D 프린팅 목업 · CMF 목업")],
     intro=([("CTRL", "Controller", "팜레스트 형상 · 버튼 배치", "오조작 방지 · 표시부 가독성"),
             ("WHEEL", "In-wheel Motor Wheel", "허브 일체형 구동부", "3-스포크 · 컬러 커스텀")],
@@ -381,7 +388,6 @@ PAGES["h500"] = dict(
              "swapped for any colour, and the hand-rim thickness and its gap from the wheel were set for manual propulsion."),
             ("img", {"f": "wheel_rim_hand.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
-        ("scene", {"f": "ctrl_living.jpg", "r": "natural"}),
         ("text", "Palm Rest",
          "팜레스트는 탈착할 수 있고 좌우를 바꿔 달 수 있어 왼손잡이도 사용할 수 있습니다. 조이스틱은 기성품을 사용해 원가를 "
          "줄였습니다.",
@@ -428,16 +434,16 @@ PAGES["h500"] = dict(
 PAGES["odm-cmf"] = dict(
     dir="odm", cat_key="product", title="CMF & Facelift", year="2024 — 2026", category="CMF · Partial Form · 16 Models",
     desc="에브리봇 · 맥스젠 · 에브리봇모빌리티 양산 제품 CMF · 부분 형상 디자인 16종 (ODM 15 · 페이스리프트 1)",
-    lede="ODM 15종과 자사 페이스리프트 1종, 양산 제품 <b>16종의 색상·소재·마감·실크</b>와 부분 형상을 담당했습니다.",
+    lede="제품 형상은 ODM 제조사가 설계한 양산 제품 16종에서, <b>색상·소재·마감·실크(CMF)</b>와 일부 부분 형상을 맡았습니다.",
     hero="cmf_chips.jpg",
     meta=[("Term", "2024.06 — 2026.10"), ("Client", "에브리봇 · 맥스젠 · 에브리봇모빌리티"), ("Partner", "중국 ODM 제조사"),
-          ("Scope", "CMF · 부분 형상 · 페이스리프트"), ("Output", "ODM 15종 · 페이스리프트 1종")],
+          ("Scope", "CMF · 부분 형상 16종 (ODM 15 · 페이스리프트 1)"), ("Contribution", "디자인 기여도 90%")],
     intro=([("13", "Everybot", "에브리봇", "ODM 12 · 페이스리프트 1"),
             ("2", "Maxzen", "맥스젠", "흡입스팀다리미 등"),
             ("1", "Everybot Mobility", "에브리봇모빌리티", "H300")],
            "브랜드 톤은 지키고, 모델마다 다르게",
            "One brand tone, a distinct finish for each model",
-           "브랜드 톤을 유지하면서 모델마다 차이가 드러나도록 CMF를 정리했습니다. 디자인 사양서와 CMF 가이드를 제조사에 전달하고, "
+           "제품의 형상과 설계는 중국 ODM 제조사가 맡았고, 저는 브랜드 톤을 유지하면서 모델마다 차이가 드러나도록 CMF를 정리했습니다. 디자인 사양서와 CMF 가이드를 제조사에 전달하고, "
            "도장 목업 제작을 감리하고, 양산 샘플을 검수했습니다. <b>Q7 PLUS</b>는 스테이션 물통 커버 형상 디자인과 부분 금형 수정, "
            "<b>Q9</b>은 스테이션 탑 커버 신규 제작까지 맡았습니다.",
            "Products designed and engineered by Chinese ODM partners were given a CMF that keeps one brand tone while "
@@ -461,10 +467,12 @@ PAGES["odm-cmf"] = dict(
             ("img", {"f": "q9_topcover.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("text", "Line-up",
-         "로봇청소기, 스테이션, 욕실 청소 로봇, 흡입스팀다리미까지 제품군이 다양해, 공통 톤을 유지하면서 모델 간 위계가 보이도록 "
-         "정리했습니다.",
-         "The range spans robot vacuums, stations, a bathroom-cleaning robot and a steam iron, so a shared tone was kept "
-         "while making the hierarchy between models visible."),
+         "위 렌더는 ODM 제조사가 설계한 형상에 제가 정한 CMF·실크를 적용한 양산 모델입니다. 형상까지 손댄 모델은 Q7 PLUS(물통 커버), "
+         "Q9(탑 커버), TS402M(페이스리프트)입니다. 로봇청소기부터 흡입스팀다리미까지 제품군이 다양해, 공통 톤을 유지하면서 "
+         "모델 간 위계가 보이도록 정리했습니다.",
+         "The forms above were designed by the ODM manufacturers; the CMF and silk-screen are mine. Form changes were made on "
+         "the Q7 PLUS (water-tank cover), Q9 (top cover) and TS402M (facelift). Across robot vacuums, stations, a bathroom "
+         "robot and a steam iron, a shared tone was kept while making the hierarchy between models visible."),
         ("lineup", [("q3_turbo.jpg", "Q3 Turbo"), ("q3_turbo_s.jpg", "Q3 Turbo PLUS"), ("q7_plus.jpg", "Q7 PLUS · 물통 커버"),
                     ("q9.jpg", "Q9 · 탑 커버"), ("q9_plus.jpg", "Q9 PLUS"), ("q11.jpg", "Q11"), ("q13.jpg", "Q13"), ("q7.jpg", "Q7"),
                     ("ts402m.jpg", "TS402M · 페이스리프트"), ("b1.jpg", "B1"), ("x1.jpg", "X1"), ("x2.jpg", "X2"), ("sr13w.jpg", "SR13W")],
@@ -798,7 +806,7 @@ PAGES["inclusive"] = dict(
     lede="시각·청각 장애인부터 노약자, 어린이까지 <b>누구나 안전하게 타고 내릴 수 있는 PBV</b>의 UX와 편의장치를 설계했습니다.",
     hero="door_ramp.jpg",
     meta=[("Term", "2023.02 — 2023.05"), ("Client", "현대디자인센터 퓨처모빌리티디자인팀"),
-          ("Team", "석사연구원 4 · 학부연구원 3"), ("Method", "애자일 · 1:1 프로토타입"),
+          ("Team", "석사연구원 4 · 학부연구원 3 · 기여도 80%"), ("Method", "애자일 · 1:1 프로토타입"),
           ("Role", "선행 연구 · UX 아이템 발굴 · 프로토타입 · 검증")],
     intro=([("HMC", "2023.02 — 05", "Hyundai Design Center", "퓨처모빌리티디자인팀 산학 과제"),
             ("1:1", "Prototype", "폼보드 · 3D 프린팅", "도어 · 도어스텝 · 시트 목업")],
@@ -855,7 +863,7 @@ PAGES["seuv"] = dict(
     lede="대형 SeUV의 <b>실내 공간과 웰니스 경험</b>을 위한 컨셉을 발굴하고, PoC 목업으로 만들어 사용성 테스트에 썼습니다.",
     hero="s_mood.jpg",
     meta=[("Term", "2022.12 — 2023.01"), ("Client", "현대자동차 제품UX팀 × 마크로밀엠브레인"),
-          ("Team", "석사연구원 4 · 학부연구원 4"), ("Output", "PoC 목업 · 사용성 테스트"),
+          ("Team", "석사연구원 4 · 학부연구원 4 · 기여도 90%"), ("Output", "PoC 목업 · 사용성 테스트"),
           ("Role", "선행 연구 · UX 리서치 · 아이템 발굴 · 프로토타이핑")],
     intro=([("HMC", "2022.12 — 2023.01", "Hyundai Product UX", "× 마크로밀엠브레인"),
             ("PoC", "Usability Test", "PoC 목업", "항목별 사용성 테스트")],
@@ -913,7 +921,7 @@ PAGES["ev-sedan"] = dict(
     lede="UX 아이템 10가지를 발굴해 시나리오는 영상으로, 실내 아이템은 <b>폼보드 PoC</b>로 만들어 직접 써 보며 검증했습니다.",
     hero="ev_scene_console.jpg",
     meta=[("Term", "2022.09 — 2022.11"), ("Client", "현대자동차 제품UX팀 × 마크로밀엠브레인"),
-          ("Team", "석사연구원 3 · 학부연구원 3"), ("Output", "폼보드 PoC · 시나리오 영상"),
+          ("Team", "석사연구원 3 · 학부연구원 3 · 기여도 90%"), ("Output", "폼보드 PoC · 시나리오 영상"),
           ("Role", "선행 연구 · UX 리서치 · 아이템 발굴 · 프로토타이핑")],
     intro=([("HMC", "2022.09 — 11", "Hyundai Product UX", "× 마크로밀엠브레인"),
             ("10", "UX Items", "아이템 10가지", "시나리오 영상 · 폼보드 PoC")],

@@ -1030,3 +1030,9 @@ img.st-contain { box-sizing: border-box; }
 /* 원형 2개일 때 가운데 정렬 */
 .wd-dots.wd-dots--2 { grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; }
 @media (max-width: 720px) { .wd-dots.wd-dots--2 { grid-template-columns: repeat(2, 1fr); } }
+
+/* 2026-10-14 면접관 리뷰: 국내 지원용 — 영어 본문 문단은 숨기고 한국어만(제목·라벨 영어는 유지).
+   데이터(story_pages.py)는 그대로라 영문판이 필요하면 이 블록만 지우면 됨. */
+.wd-intro__eng,
+.wd-dark-row__eng,
+.wd-textrow__eng { display: none !important; }
