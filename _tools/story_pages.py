@@ -498,38 +498,37 @@ PAGES["odm-cmf"] = dict(
            "of painted mock-ups and inspection of production samples, plus a redesigned station water-tank cover with "
            "partial mould changes for the Q7 PLUS and a new station top cover for the Q9."),
     sections=[
+        # 면접관 리뷰(2026-10-14): 외부 마감재 컬러북 컷 삭제, 거의 같은 팬톤 사진 1장만, Q9 이야기는 한 섹션으로
         ("dark", [
-            ("img", {"f": "cmf_book.jpg", "pos": "50% 45%"}),
+            ("img", {"f": "cmf_sample.jpg", "r": "natural"}),
             ("row", "CMF",
              "컬러북과 컬러칩, 팬톤 가이드로 모델별 컬러를 정하고, 실크 인쇄 위치와 색을 지정했습니다. 도장 목업과 양산 샘플을 "
              "실물로 검수해 가이드와 차이가 없는지 확인했습니다.",
              "Colours for each model were set with colour books, chips and Pantone guides, along with silk-print positions "
              "and colours. Painted mock-ups and production samples were checked against the guide in person."),
-            ("dots", ["pantone1.jpg", "pantone2.jpg", "cmf_sample.jpg"]),
-            ("row", "COVER",
-             "Q7 PLUS는 스테이션 물통 커버의 형상을 디자인하고 금형을 부분 수정했고, Q9은 스테이션 탑 커버를 새로 디자인해 "
-             "제작까지 맡았습니다.",
-             "For the Q7 PLUS the station water-tank cover was reshaped with partial mould changes; for the Q9 a new station "
-             "top cover was designed and taken into production."),
-            ("img", {"f": "q9_topcover.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
+            ("img", {"f": "pantone1.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("text", "Line-up",
-         "위 렌더는 ODM 제조사가 설계한 형상에 제가 정한 CMF·실크를 적용한 양산 모델입니다. 형상까지 손댄 모델은 Q7 PLUS(물통 커버), "
+         "ODM 제조사가 설계한 형상에 제가 정한 CMF·실크를 적용한 양산 모델입니다. 형상까지 손댄 모델은 Q7 PLUS(물통 커버), "
          "Q9(탑 커버), TS402M(페이스리프트)입니다. 로봇청소기부터 흡입스팀다리미까지 제품군이 다양해, 공통 톤을 유지하면서 "
          "모델 간 위계가 보이도록 정리했습니다.",
-         "The forms above were designed by the ODM manufacturers; the CMF and silk-screen are mine. Form changes were made on "
+         "The forms were designed by the ODM manufacturers; the CMF and silk-screen are mine. Form changes were made on "
          "the Q7 PLUS (water-tank cover), Q9 (top cover) and TS402M (facelift). Across robot vacuums, stations, a bathroom "
          "robot and a steam iron, a shared tone was kept while making the hierarchy between models visible."),
         ("lineup", [("q3_turbo.jpg", "Q3 Turbo"), ("q3_turbo_s.jpg", "Q3 Turbo PLUS"), ("q7_plus.jpg", "Q7 PLUS · 물통 커버"),
                     ("q9.jpg", "Q9 · 탑 커버"), ("q9_plus.jpg", "Q9 PLUS"), ("q11.jpg", "Q11"), ("q13.jpg", "Q13"), ("q7.jpg", "Q7"),
                     ("ts402m.jpg", "TS402M · 페이스리프트"), ("b1.jpg", "B1"), ("x1.jpg", "X1"), ("x2.jpg", "X2"), ("sr13w.jpg", "SR13W")],
          ("+ MORE", "TS800 · SR15W(맥스젠) · H300(에브리봇모빌리티)")),
-        ("text", "Q9 Station Top Cover",
-         "Q9은 스테이션 탑 커버를 새로 디자인해 제작까지 맡았습니다.",
-         "For the Q9, a new station top cover was designed and taken into production."),
+        ("text", "Station Covers",
+         "Q9은 스테이션 탑 커버를 새로 디자인해 제작까지 맡았습니다. 위는 탑 커버 시제품, 그 아래는 양산 렌더입니다. "
+         "Q7 PLUS는 스테이션 물통 커버의 형상을 디자인하고 금형을 부분 수정했습니다.",
+         "For the Q9 a new station top cover was designed and taken into production (prototype covers above, production "
+         "renders below). For the Q7 PLUS the station water-tank cover was reshaped with partial mould changes."),
+        ("single", {"f": "q9_topcover.jpg", "r": "natural"}, "<b>Prototype</b>Q9 스테이션 탑 커버 시제품"),
         ("pair", [{"f": "q9_front.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}, {"f": "q9_side.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}]),
         ("dark", [
-            ("facts", [("13", "에브리봇 (ODM 12 · 페이스리프트 1)"), ("2", "맥스젠"), ("1", "에브리봇모빌리티")]),
+            ("facts", [("16종", "CMF · 실크 양산 적용"), ("3종", "형상까지 맡은 모델 · Q7 PLUS · Q9 · TS402M"),
+                       ("3개사", "에브리봇 · 맥스젠 · 에브리봇모빌리티")]),
             ("row", "PROCESS",
              "제조사 디자인 → CMF 제안 → 디자인 사양서·CMF 가이드 전달 → 도장 목업 감리 → 샘플 검수 → 양산. 마케팅 이미지 "
              "소스도 함께 지원했습니다.",

@@ -988,7 +988,7 @@ body[data-page="work-detail"] main:has(.v2-hero--backonly:first-child) {
   padding: clamp(24px, 3vw, 40px) var(--pad-x) clamp(56px, 7vw, 96px); }
 .st-lineup__cell { margin: 0; }
 .st-lineup__cell img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #fff; display: block; }
-.st-lineup__cell figcaption { margin-top: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em;
+.st-lineup__cell figcaption { margin-top: 10px; font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--ink); }
 .st-lineup__more { aspect-ratio: 1 / 1; border: 1px dashed var(--mute-2); display: flex; flex-direction: column;
   justify-content: center; gap: 8px; padding: 20px; font-family: var(--f-kr); font-size: 13px; color: var(--mute); line-height: 1.5; }
