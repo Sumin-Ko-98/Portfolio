@@ -113,6 +113,35 @@
     tick(); setInterval(tick, 1000);
   }
 
+  /* ---------- Detail pages: tap an image to view it full size ----------
+     주석이 들어간 보고서 보드(Before/After, UX Strategy 등)는 휴대폰에서 글자가 작아 읽히지 않으므로
+     상세 페이지 본문 이미지를 누르면 화면 전체로 크게 보여 준다(핀치 줌은 브라우저 기본). */
+  if (document.body.dataset.page === 'work-detail') {
+    const imgs = document.querySelectorAll('main img:not([src*="/awards/"])');
+    let box = null;
+    const close = () => { if (box) { box.remove(); box = null; document.documentElement.style.overflow = ''; } };
+    imgs.forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        box = document.createElement('div');
+        box.className = 'lb';
+        box.setAttribute('role', 'dialog');
+        box.setAttribute('aria-label', img.alt || 'Image');
+        const big = document.createElement('img');
+        big.src = img.currentSrc || img.src; big.alt = img.alt || '';
+        const x = document.createElement('button');
+        x.className = 'lb__close'; x.type = 'button'; x.setAttribute('aria-label', 'Close'); x.textContent = '×';
+        if (img.naturalWidth > img.naturalHeight * 1.3) box.classList.add('lb--wide');
+        box.append(big, x);
+        box.addEventListener('click', (e) => { if (e.target !== big) close(); });
+        document.body.append(box);
+        document.documentElement.style.overflow = 'hidden';
+        x.focus();
+      });
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+
   /* ---------- Work card magnetic tilt (subtle) ---------- */
   document.querySelectorAll('[data-magnetic]').forEach(card => {
     card.addEventListener('pointermove', (e) => {
