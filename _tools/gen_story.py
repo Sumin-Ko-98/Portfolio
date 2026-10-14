@@ -210,7 +210,9 @@ def dark_block(d, b, label=""):
         two = " wd-dots--2" if len(b[1]) == 2 else ""
         return f'  <div class="wd-dots{two} reveal delay-1">\n{cells}\n  </div>'
     if k == "grid":
-        cells = "".join(f"<div>{Img(d, s).tag()}</div>" for s in b[1])
+        # 목업·공정 사진: CSS 에서 흑백. 세로 사진은 4:3 칸에서 잘리지 않게 통째로(contain)
+        ims = [Img(d, s) for s in b[1]]
+        cells = "".join(('<div class="is-portrait">' if im.h > im.w else "<div>") + im.tag() + "</div>" for im in ims)
         return f'  <div class="wd-protogrid reveal">\n    {cells}\n  </div>'
     if k == "mosaic":
         a, bb, c, dd = [Img(d, s).tag() for s in b[1]]
@@ -292,7 +294,7 @@ def section(d, s):
         out = (f'<section class="wd-detailduo" style="grid-template-columns:1fr">\n'
                f'  <div class="reveal" style="aspect-ratio:{im.w}/{im.h}">{im.tag()}</div>\n</section>')
         if cap:
-            out += f'\n<div class="st-pair-caps" style="grid-template-columns:1fr"><span>{cap}</span></div>'
+            out += f'\n<div class="st-pair-caps st-board-cap" style="grid-template-columns:1fr"><span>{cap}</span></div>'
         return out
     if k == "tri":
         cells = "\n".join(f'  <div class="wd-trirow__cell reveal{" delay-" + str(i) if i else ""}">{Img(d, x).tag()}</div>'
@@ -385,6 +387,7 @@ FOOTER = """<footer class="footer">
     <div>
       <h4>Contact</h4>
       <a href="mailto:ssom98@naver.com">ssom98@naver.com</a>
+      <a href="https://www.behance.net/ssom981a37" target="_blank" rel="noopener">Behance ↗</a>
     </div>
     <div>
       <h4>Index</h4>
@@ -461,7 +464,7 @@ def render(slug, p):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{E(p["title"])} — Sumin Ko</title>
+<title>{E(p["title"])} — 고수민 Sumin Ko</title>
 <meta name="description" content="{E(p["desc"])}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Sumin Ko Portfolio">

@@ -1080,3 +1080,24 @@ img.st-contain { box-sizing: border-box; }
   font-size: clamp(40px, 6vw, 88px); line-height: .95; letter-spacing: -0.02em; }
 .st-chapter__line { grid-column: 2; margin: 18px 0 0; font-family: 'Pretendard', 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: var(--ink); }
 @media (max-width: 800px) { .st-chapter { grid-template-columns: 1fr; } .st-chapter__line { grid-column: 1; } }
+
+/* ---------- 면접관 리뷰 반영 (2026-10-14) ---------- */
+/* 마지막 블랙 패널의 목업·공정 사진: 흑백으로 톤 통일 */
+.wd-protogrid img { filter: grayscale(1) contrast(1.04); }
+/* 세로 사진은 4:3 칸에서 위아래가 잘리지 않게 통째로 */
+.wd-protogrid > div.is-portrait { background: #141414; }
+.wd-protogrid > div.is-portrait img { object-fit: contain; }
+/* 휴대폰 1열: 세로 사진은 원래 비율(3:4) 칸으로 크게 */
+@media (max-width: 720px) {
+  .wd-protogrid > div.is-portrait { aspect-ratio: 3 / 4; }
+  .wd-protogrid > div.is-portrait img { object-fit: cover; }
+}
+
+/* 휴대폰: 주석 보드는 글자가 작으니 크게 보기 안내 */
+@media (max-width: 720px) {
+  .st-board-cap span::after { content: " · 탭하면 크게 보기"; color: var(--mute); }
+}
+
+/* 핵심 라벨 가독성 (10px → 12px) */
+.st-issue__k { font-size: 12px; letter-spacing: .08em; }
+.meta__item .k { font-size: 12px; letter-spacing: .12em; }

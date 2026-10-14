@@ -108,9 +108,9 @@ SOURCES = {
         "q9_front.jpg": J(LS, "ODM", "Q9_Set_Front.png"),
         "cmf_book.jpg": {"src": J(LS, "Work_Photos", "CMF_Color_Book_6775.JPG"), "rot": ROT_CW},  # EXIF 6
         "cmf_chips.jpg": J(HEIC, "CMF_Color_Chips_7998.jpg"),
-        "cmf_sample.jpg": J(HEIC, "CMF_Sample_Check_0013.jpg"),
+        "cmf_sample.jpg": {"src": J(HEIC, "CMF_Sample_Check_0013.jpg"), "rot": 270},  # 원본이 시계 방향으로 누워 있음 → 반시계 90° (2026-10-14, 에셋은 PIL로 직접 회전)
         "pantone1.jpg": J(HEIC, "CMF_Silk_Pantone_0954.jpg"),
-        "pantone2.jpg": J(HEIC, "CMF_Silk_Pantone_0955.jpg"),
+        "pantone2.jpg": {"src": J(HEIC, "CMF_Silk_Pantone_0955.jpg"), "rot": 270},  # 위와 같음
         "q9_topcover.jpg": J(HEIC, "Q9_TopCover_Photo.jpg"),
     },
     "wade": {
@@ -203,6 +203,18 @@ PAGES["threespin"] = dict(
            "matte finish with seamless curves lets it sit in the living room like an object rather than an appliance. "
            "At 83 mm it is the lowest model in the Threespin series, operated with two buttons, a light line and voice guidance."),
     sections=[
+        # 면접관 리뷰(2026-10-14): 문제가 무드 컷 4화면 뒤에 나오지 않도록 VOC 를 맨 앞에
+        ("text", "VOC",
+         "이전 모델(TS400 등)의 사용자 피드백과 파손 사례를 분석해 디자인으로 풀 과제를 정했습니다.",
+         "Feedback and failure cases from previous models defined the design tasks."),
+        ("issues", [
+            ("Rear Handle", "뒤쪽 손잡이로 들 때 손이 큰 사용자는 손가락 관절이 회전판에 닿음(TS400 피드백)",
+             "회전판과 손잡이 사이의 높이·깊이를 다시 잡아 그립감 개선"),
+            ("Indicator", "LED가 상·하단으로 흩어져 있어 상태를 한눈에 알아보기 어려움",
+             "LED와 조작부를 한곳에 모아 인디케이터를 단순화"),
+            ("Water Tank Latch", "물통과 본체 사이 단차 때문에 덜 끼운 상태를 몰라, 래치 작동 없이 강제로 빼다 파손되는 사례 다수",
+             "단차 없는 매립형으로 바꿔 '평평하게 맞아야 장착 완료'라는 어포던스 제공"),
+        ]),
         ("dark", [
             ("img", {"f": "macro.jpg", "pos": "50% 60%"}),
             ("row", "FORM",
@@ -221,17 +233,6 @@ PAGES["threespin"] = dict(
             ("img", {"f": "kitchen.jpg", "pos": "50% 78%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "bedroom.jpg", "r": "natural"}),
-        ("text", "VOC",
-         "이전 모델(TS400 등)의 사용자 피드백과 파손 사례를 분석해 디자인으로 풀 과제를 정했습니다.",
-         "Feedback and failure cases from previous models defined the design tasks."),
-        ("issues", [
-            ("Rear Handle", "뒤쪽 손잡이로 들 때 손이 큰 사용자는 손가락 관절이 회전판에 닿음(TS400 피드백)",
-             "회전판과 손잡이 사이의 높이·깊이를 다시 잡아 그립감 개선"),
-            ("Indicator", "LED가 상·하단으로 흩어져 있어 상태를 한눈에 알아보기 어려움",
-             "LED와 조작부를 한곳에 모아 인디케이터를 단순화"),
-            ("Water Tank Latch", "물통과 본체 사이 단차 때문에 덜 끼운 상태를 몰라, 래치 작동 없이 강제로 빼다 파손되는 사례 다수",
-             "단차 없는 매립형으로 바꿔 '평평하게 맞아야 장착 완료'라는 어포던스 제공"),
-        ]),
         ("text", "Triangle Form",
          "본체를 360도로 두르는 블랙 센서창 라인이 시선을 가로로 이끕니다. 다양한 R값으로 다듬은 모서리가 원형 로봇청소기와 "
          "다른 인상을 만듭니다.",
@@ -425,7 +426,7 @@ PAGES["h500"] = dict(
         ("text", "Strategy",
          "문제를 형상 기준으로 옮겼습니다. 크기 축소, 안전한 버튼 배치, 자주 쓰는 속도 버튼은 측면 스위치로, 그리고 팜레스트 추가입니다.",
          "The problems became form criteria: smaller size, safe button layout, a side speed switch and a palm rest."),
-        ("single", {"f": "ux_ctrl.jpg", "r": "natural"}, "DESIGN STRATEGY · 크기 축소 · 버튼 배치 · 속도 버튼 · 팜레스트"),
+        ("single", {"f": "ux_ctrl.jpg", "r": "natural"}, "DESIGN STRATEGY · 보고서 원본 보드 — 개선 기준(크기 축소 · 버튼 배치 · 속도 버튼 · 팜레스트)을 정리한 단계로, 최종 형태는 아래 Final Design"),
         ("text", "Final Design",
          "디스플레이와 조작부의 각도를 세워 기존 일자형보다 화면이 잘 보이게 했습니다. 레드 전원 버튼을 가운데에 두고 라이트·비상등·경적을 "
          "기능별로 묶었고, 자주 쓰는 속도 버튼은 밝은 명도로, 긴급 버튼은 밝은 색으로 구분했습니다. 팜레스트는 탈착·좌우 반전이 되어 "
@@ -460,7 +461,7 @@ PAGES["h500"] = dict(
         ("text", "Strategy",
          "모터 위치, 손잡이 간격, 탈착 버튼 조작을 형상 기준으로 삼았습니다.",
          "Motor position, hand-rim gap and quick-release access set the criteria."),
-        ("single", {"f": "ux_wheel.jpg", "r": "natural"}, "DESIGN STRATEGY · 모터 안쪽 배치 · 손잡이 간격 13 → 20mm · 탈착 버튼"),
+        ("single", {"f": "ux_wheel.jpg", "r": "natural"}, "DESIGN STRATEGY · 기존 전동 휠 분석 보드 — 모터 안쪽 배치 · 손잡이 간격 13 → 20mm · 탈착 버튼"),
         ("text", "Concept",
          "스포크휠·스포크가드 장착형·스포크매그휠 세 유형을 2안씩 비교했습니다. 작은 금형 하나로 스포크 세 개를 모두 덮고, "
          "그 파트만 바꿔 컬러를 바꿀 수 있는 3-스포크 매그휠을 골랐습니다.",
@@ -557,7 +558,7 @@ PAGES["wade"] = dict(
     lede="관람객이 터치 디스플레이에 그린 그림을 <b>물로 바닥에 출력하는</b> 놀이공원 서비스 로봇입니다. "
          "물로 그린 그림은 시간이 지나면 증발하기 때문에 따로 지울 필요가 없습니다.",
     hero="cover.jpg",
-    meta=[("Term", "2023.07 — 2023.08"), ("Client", "KIRO 서울로봇아카데미"), ("Team", "5인 (엔지니어 4 · 디자이너 1) · 디자인 기여도 100%"),
+    meta=[("Term", "2023.07 — 2023.08"), ("Program", "KIRO 서울로봇아카데미 교육 과정"), ("Team", "5인 (엔지니어 4 · 디자이너 1) · 디자인 기여도 100%"),
           ("Role", "리서치 · 컨셉 · 구조 설계 · 3D · 프로토타입"), ("Output", "워킹 프로토타입 · 특허 · 디자인 등록")],
     intro=([("hci", "2024.01", "HCI Korea", "Creative Award · Excellence Award (최우수상)"),
             ("PAT", "2026.03", "Patent", "특허 제10-2942532호 · 워터 드로잉을 위한 로봇 장치"),
@@ -659,7 +660,6 @@ PAGES["wade"] = dict(
             ("roles", ["리서치", "컨셉 수립", "디자인 스케치", "내부 부품 배치 기반 구조 설계", "3D 모델링·렌더링", "3D 프린팅",
                        "도장", "워킹 프로토타입 제작", "특허 서류 및 도면 제작"]),
         ]),
-        ("bleed", "nozzle2.jpg", "natural"),
         ("band",),
     ],
 )
