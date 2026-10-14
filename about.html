@@ -53,7 +53,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
 .bio {
   padding: 0 var(--pad-x) clamp(80px, 10vw, 140px);
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: minmax(0, 300px) 1fr;
   gap: clamp(40px, 6vw, 100px);
   align-items: start;
 }
@@ -73,7 +73,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
   mix-blend-mode: normal;
 }
 .bio__portrait::after {
-  content: '';
+  content: none;
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
 }
@@ -337,7 +337,7 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
 <!-- BIO ------------------------------------------------- -->
 <section class="bio">
   <figure class="bio__portrait reveal">
-    <img src="assets/about-portrait.jpg" alt="Sumin Ko portrait" style="filter:none;object-position:center top;">
+    <img src="assets/about-portrait.jpg" alt="Sumin Ko portrait" style="filter:none;object-position:center 30%;">
   </figure>
   <div class="bio__text reveal delay-1">
     <h3>Biography</h3>
@@ -573,11 +573,31 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
   </ul>
 </section>
 
-<!-- THESIS ---------------------------------------------- -->
+<!-- PAPERS ---------------------------------------------- -->
 <section class="honors thesis">
   <header class="honors__head">
     <h2 class="h-2 reveal">Publications.</h2>
-    <span class="mono reveal delay-1">Papers · Patents</span>
+    <span class="mono reveal delay-1">Papers · KCI</span>
+  </header>
+  <ul class="honors__list honors__list--nosymbol">
+    <li class="reveal">
+      <time>2024.02</time>
+      <h4>오프라인 사용자 경험 향상을 위한 대형마트 모바일 애플리케이션 서비스디자인 제안 — 위치기반 서비스를 중심으로</h4>
+      <p>기초조형학연구 25권 1호 (통권 121호) · KCI 등재 · 고수민, 김은영</p>
+    </li>
+    <li class="reveal">
+      <time>2023.12</time>
+      <h4>5단계 자율주행 모빌리티 실내 기능제어 위치 도출을 위한 사용자 경험 디자인 연구 — 아이트래킹 실험을 중심으로</h4>
+      <p>기초조형학연구 24권 6호 (통권 120호) · KCI 등재 · 고수민 외 4인</p>
+    </li>
+  </ul>
+</section>
+
+<!-- PATENTS --------------------------------------------- -->
+<section class="honors thesis">
+  <header class="honors__head">
+    <h2 class="h-2 reveal">Patents.</h2>
+    <span class="mono reveal delay-1">Patent · Design Registration</span>
   </header>
   <ul class="honors__list honors__list--nosymbol">
     <li class="reveal">
@@ -589,16 +609,6 @@ main { padding-top: calc(var(--nav-h) + clamp(60px, 10vw, 140px)); }
       <time>2024.10</time>
       <h4>디자인 등록 — 지능형 서비스 로봇</h4>
       <p>제30-1280754호 · 고수민 외 3인</p>
-    </li>
-    <li class="reveal">
-      <time>2024.02</time>
-      <h4>오프라인 사용자 경험 향상을 위한 대형마트 모바일 애플리케이션 서비스디자인 제안 — 위치기반 서비스를 중심으로</h4>
-      <p>기초조형학연구 25권 1호 (통권 121호) · KCI 등재 · 고수민, 김은영</p>
-    </li>
-    <li class="reveal">
-      <time>2023.12</time>
-      <h4>5단계 자율주행 모빌리티 실내 기능제어 위치 도출을 위한 사용자 경험 디자인 연구 — 아이트래킹 실험을 중심으로</h4>
-      <p>기초조형학연구 24권 6호 (통권 120호) · KCI 등재 · 고수민 외 4인</p>
     </li>
   </ul>
 </section>
