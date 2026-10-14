@@ -696,23 +696,18 @@ PAGES["mobilink"] = dict(
         ("text", "Mobility &amp; Home",
          "주행 중인 모빌리티 안에서는 도킹된 상태로 사용합니다. 완만한 곡선의 전동식 핸들은 팔을 걸쳐 암레스트로 쓰고, 모빌리티 "
          "내부 환경을 제어해 편리한 주행 경험을 제공합니다. 모빌리티가 스마트 홈에 도킹되면 핸들을 밀어 콘솔을 옮기고, IoT로 연결된 "
-         "주거 환경을 쉽게 제어합니다.",
+         "주거 환경을 쉽게 제어합니다. 핸들은 버튼으로 오르내리며, 올라가 있으면 이동할 수 있고 내려가 있으면 바퀴가 고정됩니다.",
          "Inside a moving vehicle the console stays docked; its gently curved powered handle doubles as an armrest while the "
          "console controls the cabin. When the vehicle docks to a smart home, the handle is used to push the console inside, "
          "where it controls the IoT-connected home."),
         ("pair", [{"f": "mobility.jpg", "r": "natural", "cap": "<b>Mobility</b>모빌리티 안에서 도킹된 상태로 사용"},
                   {"f": "home.jpg", "cap": "<b>Home</b>핸들을 밀어 집 안으로 이동"}]),
-        ("text", "Pop up-down Handle",
-         "버튼을 눌러 전동 핸들을 상하로 조정합니다. 핸들이 올라가 있을 때는 이동 가능한 상태가 되고, 내려가 있을 때는 콘솔이 "
-         "움직이지 않도록 바퀴가 고정됩니다.",
-         "A button raises or lowers the powered handle. With the handle up the console can be moved; with it down the wheels "
-         "lock so the console stays put."),
         ("text", "Multi-Function",
          "모빌리티와 스마트 홈의 실내 환경을 제어하는 컨트롤러와 수납함을 탑재했습니다. 핸드폰을 올려 두면 충전되는 무선 충전, "
          "음료와 간단한 식품을 보관하는 펠티어 냉장고를 갖췄고, 복곡면 투명 가니시에 Shy Tech로 기능 제어 아이콘을 넣었습니다.",
          "A controller for the vehicle and smart-home environment and storage are built in, with wireless charging for a "
          "phone, a Peltier fridge for drinks and snacks, and shy-tech control icons in the doubly curved transparent garnish."),
-        ("bleed", {"f": "multi_clean.jpg", "r": "natural"}, "natural"),
+        ("single", {"f": "multi_clean.jpg", "r": "natural"}),
         ("text", "Transparent Display",
          "상단 스토리지의 커버는 투명 디스플레이로 만들어, 커버를 열어 L자형으로 고정하면 OTT·동영상을 보기 편한 각도가 됩니다. "
          "좌우 스토리지와 후면 소형 냉장고의 커버는 손잡이 없이 손으로 살짝 누르면 부드럽게 열리는 심리스 커버입니다.",
@@ -731,7 +726,6 @@ PAGES["mobilink"] = dict(
           "내부 스프링이 복구되며 평평한 면이 되어 틈새에 먼지가 쌓이지 않습니다.",
           "A docking step in the vehicle's charging zone locks the console's wheels so it stays steady while driving. Undocked, "
           "springs return the step to a flat floor so no dust collects in the gaps.")),
-        ("square", "render_sq.jpg"),
         ("dark", [
             ("row", "PROCESS",
              "(주)서연이화 주관 정부과제 ‘심리스 환경 제공을 위한 자동차 내장재 보유기술 기반 미래 모빌리티 내장디자인 연구’에서 진행한 "
@@ -747,7 +741,6 @@ PAGES["mobilink"] = dict(
              "The project was selected as a Spark Design Awards finalist (Dec 2023) and an IDEA International Design Excellence "
              "Awards finalist (Apr 2024)."),
         ]),
-        ("band",),
     ],
 )
 
