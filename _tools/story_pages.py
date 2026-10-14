@@ -80,7 +80,7 @@ SOURCES = {
     "h500": {
         "ux_ctrl.jpg": {"pdf": J(H500_REP, "h2.pdf"), "page": 4, "rect": (40, 76, 960, 476), "scale": 2},
         "ux_wheel.jpg": {"pdf": J(H500_REP, "h8.pdf"), "page": 1, "rect": (40, 76, 960, 476), "scale": 2},
-        "concepts.jpg": {"pdf": J(H500_REP, "h2.pdf"), "page": 41, "rect": (20, 88, 940, 494), "scale": 2},
+        "concepts_wheel.jpg": {"pdf": J(H500_REP, "h2.pdf"), "page": 41, "rect": (20, 88, 712, 494), "scale": 2.4},
         "ctrl_pers.jpg": J(LS, "_시안", "assets", "h500", "ctrl_pers.jpg"),
         "wheel_chair_side.jpg": J(LS, "_시안", "assets", "h500", "wheel_chair_side.jpg"),
         "mock_ctrl3.jpg": J(LS, "H500", "H500_Mockup_Controller_03.jpg"),
@@ -443,58 +443,30 @@ PAGES["h500"] = dict(
            "The wheel puts the drive unit inside the wheel itself; having confirmed that wheelchair users also want colour "
            "choice, it was developed as a colour-customisable concept."),
     sections=[
-        ("dark", [
-            ("img", {"f": "gs_cafe.jpg", "r": "natural"}),
-            ("row", "CONTROLLER",
-             "기존 일자형 컨트롤러에서 가시성을 높일 수 있도록 디스플레이와 조작부의 각도를 세웠습니다. 탈착·좌우 반전이 가능한 "
-             "팜레스트로 손을 받친 채 조작하고, 레드 전원 버튼을 중앙에, 방향 버튼을 주위에 모아 기능별로 묶었습니다.",
-             "The display and controls were angled up from the conventional flat layout for better visibility. A detachable, "
-             "reversible palm rest supports the hand, and the red power button sits at the centre with the direction "
-             "buttons grouped around it by function."),
-            ("dots", ["mock_ctrl1.jpg", "ctrl_mockup.jpg", "wheel_white_mockup.jpg"]),
-            ("row", "WHEEL",
-             "인휠모터를 허브에 담아 휠 하나로 구동부를 완결했습니다. 스포크 인서트는 원하는 컬러로 커스텀할 수 있도록 확장성을 "
-             "고려했고, 손으로 수동 주행할 때를 고려해 핸드림의 두께와 휠과의 간격을 설정했습니다.",
-             "The in-wheel motor sits in the hub, so one wheel completes the drive unit. Spoke inserts were designed to be "
-             "swapped for any colour, and the hand-rim thickness and its gap from the wheel were set for manual propulsion."),
-            ("img", {"f": "wheel_rim_hand.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
-        ]),
-        ("text", "Research",
-         "노인 휠체어 사용 만족도 연구와 사용자·보호자 관점의 불편을 정리하고, 기존 컨트롤러와 휠을 직접 써 보며 과제를 뽑았습니다. "
-         "만족도 항목 중 '디자인·외형' 불만족 비중이 가장 높아, 목표를 '의료 보조기기가 아니라 사용자가 편안함과 자신감을 느끼는 "
-         "디자인'으로 잡았습니다.",
-         "Research on older wheelchair users and hands-on review of the existing controller and wheel set the tasks."),
+        # ── 01 CONTROLLER ─────────────────────────────────────────────
+        ("chapter", "01", "Controller",
+         "손 힘이 약한 사용자도 놓치지 않고 정확하게 조작하는 컨트롤러"),
+        ("text", "Problem",
+         "노인 휠체어 사용 만족도 연구와 기존 컨트롤러 사용 검토에서 세 가지 문제를 찾았습니다.",
+         "Three problems were found in research on older users and a review of the existing controller."),
         ("issues", [
-            ("Controller Size", "기존 컨트롤러가 커서 팔걸이 주변에서 걸리적거리고 불편함",
-             "길이와 폭을 모두 크게 줄이는 방향으로 디자인"),
-            ("Mis-press", "손 힘이 약한 사용자가 버튼을 잘못 누르거나 화면이 손에 가려짐",
-             "스크린 → 버튼 → 조이스틱 순으로 배치하고, 버튼 최소 14mm에 간격을 넉넉히 확보"),
-            ("Hand Rim Gap", "손잡이와 휠 사이가 13mm라 손가락이 들어가지 않아 수동 주행이 어려움",
-             "간격을 20mm로 조정하고, 돌출된 모터는 손잡이 안쪽으로 배치"),
-            ("Stigma", "'환자용'으로 보이는 외형이 사용자의 자존감을 떨어뜨림",
-             "무채색 베이스에 포인트 컬러를 더하는 컬러 커스텀 구조"),
+            ("Size", "기존 컨트롤러가 커서 팔걸이 주변에서 걸리적거림",
+             "길이와 폭을 모두 줄인 형상"),
+            ("Mis-press", "버튼을 잘못 누르거나, 누르는 손에 화면이 가려짐",
+             "화면 → 버튼 → 조이스틱 순 배치, 버튼 최소 14mm · 간격 확보"),
+            ("Weak Grip", "손 힘이 약하면 조이스틱을 놓치거나 손이 쉽게 지침",
+             "손을 받친 채 조작하는 팜레스트"),
         ]),
-        ("text", "UX Strategy",
-         "과제를 컨트롤러와 휠의 디자인 요소로 옮겼습니다. 컨트롤러는 크기 축소·안전한 버튼 배치·속도 버튼 측면 배치·팜레스트 추가, "
-         "휠은 모터 위치·손잡이 간격·퀵 버튼 분리를 기준으로 삼았습니다.",
-         "Tasks were translated into design criteria for the controller and the wheel."),
-        ("single", {"f": "ux_ctrl.jpg", "r": "natural"}, "UX STRATEGY · 컨트롤러 — 크기 축소 · 버튼 배치 · 속도 버튼 · 팜레스트"),
-        ("single", {"f": "ux_wheel.jpg", "r": "natural"}, "UX STRATEGY · 휠 — 모터 안쪽 배치 · 손잡이 간격 13 → 20mm · 퀵 버튼 분리"),
-        ("text", "Concept",
-         "휠은 스포크휠·스포크가드 장착형·스포크매그휠 세 유형으로 각 2안씩, 컨트롤러는 여러 형상으로 전개해 비교했습니다. 최종으로는 "
-         "작은 금형 하나로 스포크 세 개를 덮고 그 파트만 바꿔 컬러를 바꿀 수 있는 3-스포크 매그휠을 골랐습니다.",
-         "Three wheel types and several controller forms were explored; a 3-spoke mag wheel with swappable inserts was chosen."),
-        ("single", {"f": "concepts.jpg", "r": "natural"}, "CONCEPT · 스포크휠 · 스포크가드 장착형 · 스포크매그휠 · 컨트롤러"),
-        ("text", "Palm Rest",
-         "팜레스트는 탈착할 수 있고 좌우를 바꿔 달 수 있어 왼손잡이도 사용할 수 있습니다. 조이스틱은 기성품을 사용해 원가를 "
-         "줄였습니다.",
-         "The palm rest detaches and can be mounted on either side, so left-handed users can use it too. An off-the-shelf "
-         "joystick keeps the cost down."),
-        ("text", "Button Grouping &amp; Display",
-         "레드 전원 버튼을 중심으로 라이트·비상등·경적 버튼을 기능별로 묶고, 표시부를 버튼 위에 두어 누르는 손에 가려지지 않게 "
-         "했습니다. 버튼이 8개라 자주 쓰는 속도 조절 버튼은 밝은 명도로, 긴급 버튼은 밝은 색으로 구분해 바로 찾게 했습니다.",
-         "Light, hazard and horn buttons are grouped by function around the central red power button, and the display "
-         "sits above the buttons so the pressing hand never hides it."),
+        ("text", "Strategy",
+         "문제를 형상 기준으로 옮겼습니다. 크기 축소, 안전한 버튼 배치, 자주 쓰는 속도 버튼은 측면 스위치로, 그리고 팜레스트 추가입니다.",
+         "The problems became form criteria: smaller size, safe button layout, a side speed switch and a palm rest."),
+        ("single", {"f": "ux_ctrl.jpg", "r": "natural"}, "DESIGN STRATEGY · 크기 축소 · 버튼 배치 · 속도 버튼 · 팜레스트"),
+        ("text", "Final Design",
+         "디스플레이와 조작부의 각도를 세워 기존 일자형보다 화면이 잘 보이게 했습니다. 레드 전원 버튼을 가운데에 두고 라이트·비상등·경적을 "
+         "기능별로 묶었고, 자주 쓰는 속도 버튼은 밝은 명도로, 긴급 버튼은 밝은 색으로 구분했습니다. 팜레스트는 탈착·좌우 반전이 되어 "
+         "왼손잡이도 쓸 수 있고, 조이스틱은 기성품을 써서 원가를 줄였습니다.",
+         "Angled display and controls, buttons grouped around the red power key, a detachable reversible palm rest and an "
+         "off-the-shelf joystick."),
         ("tri", [{"f": "ctrl_pers.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
                   "cap": "<b>Perspective</b>레드 전원 버튼 중심 · 라이트·비상등·경적"},
                  {"f": "ctrl_top.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
@@ -502,23 +474,44 @@ PAGES["h500"] = dict(
                  {"f": "ctrl_side.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
                   "cap": "<b>Side</b>기성품 조이스틱으로 원가 절감"}]),
         ("text", "Mock-up",
-         "3D 프린팅 목업으로 직접 쥐고 조작하며 형상과 버튼 배치를 다듬었습니다.",
+         "3D 프린팅 목업을 직접 쥐고 조작하며 손 크기에 맞는 형상과 버튼 배치를 다듬었습니다.",
          "3D-printed mock-ups were held and operated to refine the form and button layout."),
-        ("text", "In-wheel Motor Wheel",
-         "수전동휠체어의 구동부를 휠 안에 담은 인휠모터 휠입니다. 3-스포크의 스포크 인서트를 원하는 컬러로 커스텀할 수 있도록 "
-         "확장성을 고려해 디자인했습니다.",
-         "An in-wheel motor wheel that places the wheelchair's drive unit inside the wheel. The inserts of its three "
-         "spokes were designed to be customised in any colour."),
-        ("square", "gs_wheel_side.jpg"),  # 휠체어 렌더 원본은 모두 발판이 잘려 있어 휠 측면 컷 사용
-        ("text", "Hand Rim",
-         "손으로 수동 주행할 때를 고려해 메탈 핸드림의 두께와 휠과의 간격을 설정했습니다.",
-         "The thickness of the metal hand rim and its gap from the wheel were set for manual propulsion."),
+        ("pair", [{"f": "ctrl_mockup.jpg", "pos": "50% 50%"}, {"f": "mock_ctrl1.jpg", "pos": "40% 50%"}]),
+
+        # ── 02 IN-WHEEL MOTOR WHEEL ───────────────────────────────────
+        ("chapter", "02", "In-wheel Motor Wheel",
+         "구동부를 휠 하나에 담고, 컬러를 골라 '환자용'처럼 보이지 않게 한 휠"),
+        ("text", "Problem",
+         "기존 전동 휠을 직접 써 보고, 휠체어 사용자의 외형 만족도를 함께 봤습니다.",
+         "The existing powered wheel was reviewed alongside users' satisfaction with appearance."),
+        ("issues", [
+            ("Hand Rim Gap", "손잡이와 휠 사이가 13mm라 손가락이 들어가지 않아 수동 주행이 어려움",
+             "간격 20mm로 조정"),
+            ("Motor", "모터가 손잡이 바깥으로 돌출돼 부딪히면 파손 위험",
+             "모터를 손잡이 안쪽, 허브에 배치"),
+            ("Stigma", "만족도 항목 중 '디자인·외형' 불만족이 가장 높음",
+             "무채색 바탕에 포인트 컬러를 바꿔 다는 구조"),
+        ]),
+        ("text", "Strategy",
+         "모터 위치, 손잡이 간격, 탈착 버튼 조작을 형상 기준으로 삼았습니다.",
+         "Motor position, hand-rim gap and quick-release access set the criteria."),
+        ("single", {"f": "ux_wheel.jpg", "r": "natural"}, "DESIGN STRATEGY · 모터 안쪽 배치 · 손잡이 간격 13 → 20mm · 탈착 버튼"),
+        ("text", "Concept",
+         "스포크휠·스포크가드 장착형·스포크매그휠 세 유형을 2안씩 비교했습니다. 작은 금형 하나로 스포크 세 개를 모두 덮고, "
+         "그 파트만 바꿔 컬러를 바꿀 수 있는 3-스포크 매그휠을 골랐습니다.",
+         "Three wheel types were compared; a 3-spoke mag wheel whose inserts come from one small mould was chosen."),
+        ("single", {"f": "concepts_wheel.jpg", "r": "natural"}, "CONCEPT · 스포크휠 · 스포크가드 장착형 · 스포크매그휠"),
+        ("text", "Final Design",
+         "인휠모터를 허브에 담아 휠 하나로 구동부를 완결했습니다. 스포크 인서트는 원하는 컬러로 바꿔 달 수 있고, 메탈 핸드림은 "
+         "손으로 밀 때를 고려해 두께와 휠과의 간격을 정했습니다.",
+         "The motor sits in the hub; spoke inserts swap colour; the metal hand rim is sized for manual pushing."),
+        ("bleed", {"f": "wheel_cover_src.jpg", "fit": "contain", "bg": "auto", "pad": "4% 0"}, "natural"),
+        ("bleed", "wheel_rim_hand.jpg", "natural"),
         ("dark", [
-            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "wheel_color_chips.jpg"]),  # 3열 한 줄 (5장이면 빈 칸이 생김)
+            ("grid", ["mock_wheel1.jpg", "wheel_cmf_mockup.jpg", "wheel_color_chips.jpg"]),
             ("row", "MOCK-UP &amp; CMF",
              "스포크 인서트 컬러와 핸드림 블랙 / 실버 마감을 실물 목업으로 비교하고, 컬러칩 5종으로 최종 컬러를 확인했습니다.",
-             "Spoke-insert colours and black / silver hand-rim finishes were compared on physical mock-ups, and the final "
-             "colours were checked against five colour chips."),
+             "Insert colours and black / silver hand-rim finishes were compared on physical mock-ups and five colour chips."),
             ("roles", ["컨트롤러 디자인", "UX 디자인 (팜레스트 형상·버튼 배치·오조작 방지·표시부 가독성)", "3D 프린팅 목업 검증",
                        "휠 · 시장·트렌드·경쟁 제품 리서치", "스케치", "3D 모델링", "CMF 디자인", "디자인 목업"]),
         ]),

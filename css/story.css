@@ -1071,3 +1071,12 @@ img.st-contain { box-sizing: border-box; }
 }
 .lb__close { position: fixed; top: 12px; right: 12px; width: 44px; height: 44px; border: 0; border-radius: 50%;
   background: rgba(255,255,255,.14); color: #fff; font-size: 26px; line-height: 44px; cursor: pointer; }
+
+/* 챕터 머리 (한 페이지에 제품이 둘일 때, 2026-10-14 H500) */
+.st-chapter { padding: clamp(72px, 9vw, 140px) var(--pad-x) clamp(24px, 3vw, 40px);
+  border-top: 1px solid rgba(0,0,0,.12); display: grid; grid-template-columns: 120px 1fr; column-gap: clamp(16px, 2vw, 32px); align-items: end; }
+.st-chapter__no { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; color: var(--mute); align-self: start; padding-top: 10px; }
+.st-chapter__t { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; margin: 0;
+  font-size: clamp(40px, 6vw, 88px); line-height: .95; letter-spacing: -0.02em; }
+.st-chapter__line { grid-column: 2; margin: 18px 0 0; font-family: 'Pretendard', 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: var(--ink); }
+@media (max-width: 800px) { .st-chapter { grid-template-columns: 1fr; } .st-chapter__line { grid-column: 1; } }

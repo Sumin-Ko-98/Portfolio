@@ -254,6 +254,14 @@ def section(d, s):
     {kor_eng(kor, eng, "wd-textrow__kor", "wd-textrow__eng")}
   </div>
 </section>"""
+    if k == "chapter":
+        # ("chapter", 번호, 제목, 한 줄 설명) — 한 페이지에 제품이 둘일 때 구간을 나누는 큰 머리
+        _, no, title, line = s
+        return f"""<section class="st-chapter reveal">
+  <span class="st-chapter__no">{no}</span>
+  <h2 class="st-chapter__t">{title}</h2>
+  <p class="st-chapter__line">{line}</p>
+</section>"""
     if k == "issues":
         # ("issues", [(제목, 문제, 해결), ...]) — 리서치 Pain → Solution 카드
         cards = "\n".join(
