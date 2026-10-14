@@ -537,7 +537,6 @@ PAGES["odm-cmf"] = dict(
             ("roles", ["CMF 디자인", "금형 수정·신규 커버 디자인", "도장 목업 제작 감리", "디자인 사양서·CMF 가이드 전달",
                        "샘플 검수", "마케팅 이미지 소스 지원"]),
         ]),
-        ("band",),
     ],
 )
 
@@ -942,16 +941,15 @@ PAGES["seuv"] = dict(
         ("split",
          ("Rear Entertainment", "후석 보조 모니터를 인치별로 실차에서 비교 검증했습니다.",
           "Rear auxiliary monitors were compared by screen size in a real vehicle."),
-         ("OTT Display", "고정형과 팝업형 OTT 디스플레이를 제안했습니다.",
-          "Fixed and pop-up OTT displays were proposed.")),
-        ("single", "s_ott.jpg", "<b>OTT Display</b>고정형 디스플레이"),
+         ("Pop-up OTT Display", "팝업형 OTT 디스플레이를 제안했습니다. 아래는 고정형입니다.",
+          "A pop-up OTT display was proposed; the fixed type is below.")),
+        ("single", "s_ott.jpg", "<b>Fixed OTT Display</b>고정형 OTT 디스플레이"),
         ("dark", [
             ("row", "PROCESS",
              "항목마다 PoC 목업을 만들어 마크로밀엠브레인의 사용성 테스트에 썼습니다.",
              "A PoC mock-up was built for each item and used in Macromill Embrain's usability tests."),
             ("roles", UX_ROLE),
         ]),
-        ("band",),
     ],
 )
 
@@ -1001,11 +999,7 @@ PAGES["ev-sedan"] = dict(
          ("Cup Holder", "센터콘솔 하단 트레이 폴딩 컵홀더 아이템을 제안했습니다.", "A folding cup holder in the tray under the centre console."),
          ("Trunk Luggage Box", "트렁크 러기지박스의 컵홀더와 공간 분할 아이템을 도출하고 검증했습니다.", "Cup-holder and space-dividing items for a trunk luggage box, developed and verified.")),
         ("dark", [
-            ("row", "USABILITY TEST",
-             "폼보드 PoC는 마크로밀엠브레인의 실사용자 사용성 테스트에 쓰였습니다.",
-             "The foam-board PoCs were used in Macromill Embrain's usability tests with real users."),
             ("roles", UX_ROLE),
         ]),
-        ("band",),
     ],
 )
