@@ -786,6 +786,14 @@ PAGES["flever"] = dict(
          "focuses on the family, with multi-profiles for each member and content built on generational differences in how "
          "people communicate."),
         ("pair", [{"f": "bh_set.jpg", "r": "natural"}, "bh_grey.jpg"]),
+        # 면접관 리뷰(2026-10-14): 스케치·형태 탐색은 문제 다음, 디자인 섹션 앞 (원래 페이지 맨 끝 PROCESS 패널에 있었음)
+        ("text", "Ideation",
+         "아이디어 스케치로 화면과 거치대의 결합 방식을 넓게 펼친 뒤, 원형·사각 화면과 거치 방식을 바꿔 가며 형태를 비교해 사각 화면과 "
+         "큐브형 스피커의 조합을 골랐습니다.",
+         "Idea sketches explored how the screen and stand combine; round and square screens and mounting types were then "
+         "compared in 3D, leading to a square screen on a cube speaker."),
+        ("single", {"f": "bh_sketch_c.jpg", "r": "natural"}, "<b>Idea Sketch</b>화면 · 거치대 결합 방식 아이디어 스케치 (손스케치, 대비 보정)"),
+        ("single", {"f": "bh_ideation.jpg", "r": "natural"}, "<b>Form Exploration</b>원형 / 사각 화면 × 거치 방식 비교 (3D)"),
         ("text", "UXUI",
          "가족 구성원마다 프로필을 나누는 멀티프로필, 단순한 메뉴 바, 크게 보이는 레이아웃으로 아이부터 어르신까지 쉽게 쓰도록 "
          "구성했습니다.",
@@ -816,7 +824,6 @@ PAGES["flever"] = dict(
          "USB-C. With the display attached it serves as the stand, and a multi-angle hinge sets the angle and height. "
          "Attaching the screen pairs it over Bluetooth and charges it wirelessly, and the perforated shell can be swapped "
          "for another colour or shape."),
-        ("square", "bh_speaker.jpg"),
         ("pair", [{"f": "bh_hinge_side.jpg", "cap": "<b>Hinge</b>다각도 힌지로 각도·높이 조절"},
                   {"f": "bh_usbc.jpg", "cap": "<b>USB-C</b>포터블 스피커 충전"}]),
         ("dark", [
@@ -827,10 +834,7 @@ PAGES["flever"] = dict(
              "Research (problems, background, users, target users, market and field research), concept (design concept, "
              "differentiated value, storytelling) and design (inspiration, mood board, strategy, sketching, 3D modelling, UXUI, "
              "visualising)."),
-            ("img", {"f": "bh_ideation.jpg", "r": "natural"}),
-            ("img", {"f": "bh_sketch.jpg", "r": "natural"}),
         ]),
-        ("band",),
     ],
 )
 
