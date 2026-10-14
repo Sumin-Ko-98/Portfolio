@@ -570,12 +570,12 @@ PAGES["wade"] = dict(
         ("dark", [
             ("img", "scene_print.jpg"),
             ("row", "PROBLEM",
-             "사람에게는 어딘가에 낙서를 하고 흔적을 남기려는 욕구가 있습니다. 그러나 공공장소에서는 남은 흔적을 다시 지워야 하기 때문에 "
-             "이 욕구를 해소할 방법이 거의 없습니다. 로봇으로 그림을 출력하는 방식도 재료가 바닥에 남으면 같은 문제가 반복됩니다. "
-             "WADE는 출력 재료를 물로 바꿔서 이 문제를 해결했습니다.",
-             "People have an urge to scribble and leave marks. In public spaces, however, there is almost no way to act on "
-             "it, because any mark left behind has to be removed. Robotic drawing systems face the same issue when the "
-             "printing material stays on the ground. WADE addresses this by using water as the printing material."),
+             "긴 대기줄 옆 바닥에 관람객이 직접 그린 그림을 출력해 기다리는 시간을 볼거리로 만들고자 했습니다. 사람에게는 어딘가에 "
+             "그림을 그리고 흔적을 남기려는 욕구가 있어 참여를 이끌기 좋지만, 공공장소에서는 남은 흔적을 다시 지워야 합니다. "
+             "로봇이 페인트나 분필로 출력하면 같은 문제가 반복되므로, WADE는 출력 재료를 물로 바꿔 마르면 사라지게 했습니다.",
+             "The goal was to print visitors' own drawings on the ground beside long queues, turning waiting time into something "
+             "to watch. People like to leave marks, which drives participation, but marks in public spaces have to be removed. "
+             "Printing with paint or chalk would repeat that problem, so WADE prints with water that simply dries away."),
             ("dots", [{"f": "kid_draw.jpg", "pos": "62% 45%"}, "result_heart.jpg", {"f": "studio.jpg", "pos": "50% 22%"}]),
             ("row", "APPROACH",
              "구현 방식은 워터펌프와 솔레노이드 밸브를 조합한 적정기술입니다. 별도 출력 장비 없이 압력탱크로 물을 밀어내고 밸브의 개폐만 "
@@ -651,7 +651,6 @@ PAGES["wade"] = dict(
             ("roles", ["리서치", "컨셉 수립", "디자인 스케치", "내부 부품 배치 기반 구조 설계", "3D 모델링·렌더링", "3D 프린팅",
                        "도장", "워킹 프로토타입 제작", "특허 서류 및 도면 제작"]),
         ]),
-        ("band",),
     ],
 )
 
