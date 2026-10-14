@@ -224,12 +224,6 @@ PAGES["threespin"] = dict(
              "ROBO-SPIN structure carries straight into a triangular silhouette, and corners finished with varied radii "
              "give it a form language distinct from round robot vacuums."),
             ("dots", ["padchange_gs.jpg", "shelf_gs.jpg", "macro2.jpg"]),
-            ("row", "PROTECTION",
-             "이전 모델은 센서창이 하우징과 같은 면에 있어 가구에 직접 부딪혔고, 센서창과 가구에 스크래치가 생긴다는 VOC가 "
-             "접수됐습니다. 상·하단 하우징을 센서창보다 바깥으로 내밀어 단차를 주어, 부딪혀도 하우징이 먼저 닿게 했습니다.",
-             "On the previous model the sensor window sat flush with the housing and hit furniture directly, and customers "
-             "reported scratches on both. The upper and lower housings now step out beyond the sensor window, so the "
-             "housing touches first."),
             ("img", {"f": "kitchen.jpg", "pos": "50% 78%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "bedroom.jpg", "r": "natural"}),
@@ -238,44 +232,45 @@ PAGES["threespin"] = dict(
          "다른 인상을 만듭니다.",
          "A black sensor-window line wraps the body through 360 degrees and leads the eye horizontally, while corners "
          "finished with varied radii set it apart from round robot vacuums."),
-        ("square", {"f": "main_pers.jpg", "fit": "contain", "bg": "auto", "pad": "7%"}),
+        ("square", {"f": "main_pers.jpg", "fit": "contain", "bg": "auto", "pad": "3% 7%", "r": "natural"}),
         ("tri", ["front_sq.jpg",
                  "side_sq.jpg", "topview.jpg"]),
         ("text", "Low Proportion",
-         "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 디자인 확정 뒤 상면의 "
-         "IR 센서를 측후면으로 옮기는 설계 변경이 생겨 360° 센서창 라인이 무너질 상황이었습니다. 센서 감지 각도(FOV)와 최소 손잡이 "
-         "깊이를 먼저 기구팀과 확인하고, 그 조건 안에서 손잡이·상면 곡률·센서창 비율을 다시 조정해 실물 목업으로 검증했습니다. "
-         "센서 기능과 이 라인을 모두 지킨 형상으로 양산했습니다.",
+         "상단부 두께를 최소화하고 측면 라인이 바닥으로 흘러내리도록 처리해 바닥에 밀착된 인상을 줍니다. 쓰리스핀 시리즈에서 가장 낮은 "
+         "83mm입니다.",
          "The top is kept as thin as possible and the side line flows down to the floor, so the robot looks pressed to "
-         "the ground. After the design freeze, the IR sensor had to move from the top to the rear side, which threatened the "
-         "360° sensor-window line. The sensor's field of view and the minimum handle depth were confirmed with the mechanical "
-         "team first; within those limits the handle, top curvature and sensor-window proportions were re-balanced and checked "
-         "on full-scale mock-ups, so both the sensor and the line reached mass production."),
+         "the ground. At 83 mm it is the lowest in the Threespin series."),
         ("bleed", {"f": "side_view.jpg", "fit": "contain", "bg": "auto", "pad": "3% 7%"}, "natural"),
         ("text", "Design Change",
-         "초기 시안 뒤 내부 설계를 반영해 두 차례 수정했습니다. 1차에서는 물통·파워 버튼 배치에 맞춰 형상을 고치고, 전방 IR 센서와 "
+         "초기 시안 뒤 내부 설계를 반영해 두 차례 수정했습니다. <b>1차</b>에서는 물통·파워 버튼 배치에 맞춰 형상을 고치고, 전방 IR 센서와 "
          "낙하 감지 ToF 센서의 FOV에서 3mm 이상 떨어지도록 외곽 돌출 형상을 없애 심리스한 파팅라인으로 바꾸며 전체 높이를 90mm에서 "
-         "83mm로 낮췄습니다. 2차에서는 기구 설계를 다시 검토해, 센서창을 보호하는 상·하판 형상처럼 최초 디자인의 핵심 요소를 되살렸습니다.",
+         "83mm로 낮췄습니다. <b>2차</b>에서는 기구 설계를 다시 검토해, 센서창을 보호하는 상·하판 형상처럼 최초 디자인의 핵심 요소를 되살렸습니다. "
+         "<b>디자인 확정 뒤</b>에는 상면의 IR 센서를 측후면으로 옮기는 설계 변경이 생겨 360° 센서창 라인이 무너질 상황이었습니다. 센서 감지 "
+         "각도(FOV)와 최소 손잡이 깊이를 먼저 기구팀과 확인하고, 그 조건 안에서 손잡이·상면 곡률·센서창 비율을 다시 조정해 실물 목업으로 "
+         "검증했습니다. 센서 기능과 이 라인을 모두 지킨 형상으로 양산했습니다.",
          "Two rounds of changes absorbed the internal design: sensor FOV clearance, a seamless parting line and a "
-         "90 → 83 mm height, then the key elements of the first design were restored."),
+         "90 → 83 mm height, then the key elements of the first design were restored. After the design freeze the IR sensor "
+         "moved from the top to the rear side; the FOV and minimum handle depth were confirmed with the mechanical team, and "
+         "the handle, top curvature and sensor-window proportions were re-balanced on full-scale mock-ups."),
         ("single", {"f": "fl_front.jpg", "r": "natural"}, "BEFORE / AFTER · 전체 높이 90mm → 83mm · 전면 센서부 위치·센서창 높이 변경"),
         ("single", {"f": "fl_fov.jpg", "r": "natural"}, "SENSOR FOV · 전방 IR·낙하 감지 ToF 센서 간섭 → 외곽 돌출 삭제, 심리스 파팅라인"),
         ("text", "Sensor Protection",
-         "센서창 보호 단차와 함께, 크래들에 거치할 때도 센서창이 크래들에 직접 닿는 면을 없애 스크래치를 막았습니다. "
-         "위 왼쪽이 이전 모델, 오른쪽이 TS450입니다.",
-         "Besides the protective step, the cradle was shaped so that no surface touches the sensor window when the robot "
-         "is docked. Left: previous model. Right: TS450."),
+         "이전 모델은 센서창이 하우징과 같은 면에 있어 가구에 직접 부딪혔고, 센서창과 가구에 스크래치가 생긴다는 VOC가 접수됐습니다. "
+         "상·하단 하우징을 센서창보다 바깥으로 내밀어 부딪혀도 하우징이 먼저 닿게 하고, 크래들에 거치할 때도 센서창이 크래들에 직접 "
+         "닿는 면을 없앴습니다.",
+         "On the previous model the sensor window sat flush with the housing and hit furniture, leaving scratches. The upper "
+         "and lower housings now step out beyond the window so the housing touches first, and the cradle no longer touches "
+         "the window when docked."),
         ("pair", [{"f": "sensor_before_pdf.jpg", "r": "natural", "cap": "<b>Before</b>자사 이전 모델 · 센서창과 하우징이 같은 면"},
                   {"f": "sensor_after_pdf.jpg", "cap": "<b>After</b>TS450 · 상·하단 하우징이 센서창보다 돌출"}]),
         ("single", "sensor_cradle_pdf.jpg", "<b>Cradle</b>거치 시 센서창이 크래들에 닿지 않는 구조"),
         ("duo", ["robospin.jpg", {"f": "ui.jpg", "pos": "62% 50%"}]),
         ("split",
-         ("ROBO-SPIN", "구동 바퀴 없이 세 개의 회전 패드만으로 이동과 청소를 동시에 수행합니다. 본체 무게가 세 패드에 실려 바닥을 눌러 닦습니다.",
-          "With no drive wheels, three rotating pads both move the robot and clean; the body's weight presses the pads to the floor."),
-         ("Simple UI", "시작·정지와 물 공급량 버튼 2개, 작동 상태를 알리는 라이트 라인, 음성 안내만으로 매뉴얼 없이 조작합니다.",
-          "Two buttons for start/stop and water flow, a light line for status and voice guidance: no manual needed.")),
-        ("text", "Mop Pads", "세 개의 회전 패드는 손쉽게 탈착·세탁할 수 있고, 세탁해 반복 사용할 수 있습니다.",
-         "The three rotating pads detach easily and can be washed and reused."),
+         ("ROBO-SPIN", "자사 ROBO-SPIN 구조 — 세 회전 패드의 배치가 삼각형 외형의 출발점입니다.",
+          "Everybot's ROBO-SPIN structure: the layout of the three pads set the triangular form."),
+         ("Simple UI", "VOC의 인디케이터 문제를 풀어, 시작·정지와 물 공급량 버튼 2개와 상태를 알리는 라이트 라인을 한곳에 모았습니다. "
+          "음성 안내까지 더해 매뉴얼 없이 조작합니다.",
+          "Answering the indicator VOC, the two buttons and the status light line sit in one place, with voice guidance.")),
         ("bleed", "mop_pads.jpg", "macro"),
         ("text", "Storage &amp; CMF",
          "본체를 세워 결합하는 수직형 거치대로 보관 면적을 줄였습니다. 거치대도 본체와 같은 곡면·컬러·마감으로 통일해 보관 중에도 "
@@ -288,7 +283,7 @@ PAGES["threespin"] = dict(
          "제안했습니다. 물통이 증착 마감이라 레진은 밝은 색만 쓸 수 있어 어두운 색은 도장으로 풀고, 자사·업체 보유 레진을 활용해 납기를 "
          "지키는 조건 안에서 정리했습니다.",
          "Four follow-up colourways were proposed for painted mock-ups within resin and lead-time constraints."),
-        ("single", {"f": "cmf_var.jpg", "r": "natural"}, "CMF VARIATION · Original 대비 A~D 4안"),
+        ("single", {"f": "cmf_var.jpg", "r": "natural"}, "CMF VARIATION · A White &amp; Dark Gray · B Warm Gray Tone on Tone · C White &amp; Beige · D Beige &amp; Dark Beige"),
         ("dark", [
             ("grid", ["mockup_1201.jpg", "photo_1206.jpg", "mockup_5465.jpg", "photo_5363.jpg", "photo_5982.jpg", "mockup_5981.jpg"]),
             ("row", "MOCK-UP",
@@ -297,7 +292,7 @@ PAGES["threespin"] = dict(
              "Full-scale design mock-ups were built to review proportion, the sensor-window line and a range of CMF options. "
              "At the trial-injection stage, quality issues such as flow marks were inspected and mass-production follow-up "
              "included partial mould changes."),
-            ("facts", [("83mm", "쓰리스핀 시리즈 최저 높이"), ("3", "ROBO-SPIN 회전 패드"), ("2", "조작 버튼")]),
+            ("facts", [("90→83mm", "설계 반영 후 전체 높이"), ("340/500", "iF 최종 심사 점수 · 수상 기준 275"), ("상위 0.75%", "iF 출품작 10,003개 중 Gold")]),
             ("row", "OUTCOME",
              "iF 디자인 어워드 2026에서 출품작 10,003개 중 상위 0.75%에게 주는 Gold를 받았습니다. 최종 심사 점수는 340/500점"
              "(수상 기준 275점)이고, 심사위원단은 “눈에 띄지 않으면서도 언제나 제 역할을 해내는 제품”이라고 평가했습니다. "
