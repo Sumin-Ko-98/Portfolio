@@ -20,8 +20,13 @@ ORDER = ["threespin", "ts700", "h500", "wade", "odm-cmf", "mobilink", "flever", 
 
 TS700_REP = r"\\192.168.40.10\영업마케팅그룹-디자인팀\01_제품디자인\TS700\01_Reports"  # 사내 NAS
 
+TS450_REP = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Claude-Portfolio\7db404ae-bb79-4ec9-881e-1227bc58643c\scratchpad\ts450rep"  # NAS TS450\01_Reports·08_Mock Up 의 pptx 를 PDF 로 변환한 사본(임시). 에셋은 이미 레포에 있음
+
 SOURCES = {
     "ts450": {
+        "fl_front.jpg": {"pdf": J(TS450_REP, "250716.pdf"), "page": 4, "rect": (40, 160, 920, 375), "scale": 2.2},
+        "fl_fov.jpg": {"pdf": J(TS450_REP, "250716.pdf"), "page": 9, "rect": (0, 0, 960, 540), "scale": 2},
+        "cmf_var.jpg": {"pdf": J(TS450_REP, "cmf251106.pdf"), "page": 14, "rect": (0, 0, 960, 540), "scale": 2},
         "cover_src.jpg": J(LS, "_시안", "assets", "ts450", "cover_src.jpg"),
         "main_pers.jpg": J(LS, "TS450", "TS450_Main_Pers.png"),
         "side_02.jpg": J(LS, "TS450", "TS450_Side_02.png"),
@@ -214,6 +219,17 @@ PAGES["threespin"] = dict(
             ("img", {"f": "kitchen.jpg", "pos": "50% 78%"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "bedroom.jpg", "r": "natural"}),
+        ("text", "VOC",
+         "이전 모델(TS400 등)의 사용자 피드백과 파손 사례를 분석해 디자인으로 풀 과제를 정했습니다.",
+         "Feedback and failure cases from previous models defined the design tasks."),
+        ("issues", [
+            ("Rear Handle", "뒤쪽 손잡이로 들 때 손이 큰 사용자는 손가락 관절이 회전판에 닿음(TS400 피드백)",
+             "회전판과 손잡이 사이의 높이·깊이를 다시 잡아 그립감 개선"),
+            ("Indicator", "LED가 상·하단으로 흩어져 있어 상태를 한눈에 알아보기 어려움",
+             "LED와 조작부를 한곳에 모아 인디케이터를 단순화"),
+            ("Water Tank Latch", "물통과 본체 사이 단차 때문에 덜 끼운 상태를 몰라, 래치 작동 없이 강제로 빼다 파손되는 사례 다수",
+             "단차 없는 매립형으로 바꿔 '평평하게 맞아야 장착 완료'라는 어포던스 제공"),
+        ]),
         ("text", "Triangle Form",
          "본체를 360도로 두르는 블랙 센서창 라인이 시선을 가로로 이끕니다. 다양한 R값으로 다듬은 모서리가 원형 로봇청소기와 "
          "다른 인상을 만듭니다.",
@@ -233,6 +249,14 @@ PAGES["threespin"] = dict(
          "team first; within those limits the handle, top curvature and sensor-window proportions were re-balanced and checked "
          "on full-scale mock-ups, so both the sensor and the line reached mass production."),
         ("bleed", {"f": "side_view.jpg", "fit": "contain", "bg": "auto", "pad": "3% 7%"}, "natural"),
+        ("text", "Design Change",
+         "초기 시안 뒤 내부 설계를 반영해 두 차례 수정했습니다. 1차에서는 물통·파워 버튼 배치에 맞춰 형상을 고치고, 전방 IR 센서와 "
+         "낙하 감지 ToF 센서의 FOV에서 3mm 이상 떨어지도록 외곽 돌출 형상을 없애 심리스한 파팅라인으로 바꾸며 전체 높이를 90mm에서 "
+         "83mm로 낮췄습니다. 2차에서는 기구 설계를 다시 검토해, 센서창을 보호하는 상·하판 형상처럼 최초 디자인의 핵심 요소를 되살렸습니다.",
+         "Two rounds of changes absorbed the internal design: sensor FOV clearance, a seamless parting line and a "
+         "90 → 83 mm height, then the key elements of the first design were restored."),
+        ("single", {"f": "fl_front.jpg", "r": "natural"}, "BEFORE / AFTER · 전체 높이 90mm → 83mm · 전면 센서부 위치·센서창 높이 변경"),
+        ("single", {"f": "fl_fov.jpg", "r": "natural"}, "SENSOR FOV · 전방 IR·낙하 감지 ToF 센서 간섭 → 외곽 돌출 삭제, 심리스 파팅라인"),
         ("text", "Sensor Protection",
          "센서창 보호 단차와 함께, 크래들에 거치할 때도 센서창이 크래들에 직접 닿는 면을 없애 스크래치를 막았습니다. "
          "위 왼쪽이 이전 모델, 오른쪽이 TS450입니다.",
@@ -256,6 +280,12 @@ PAGES["threespin"] = dict(
          "A vertical cradle that holds the robot upright reduces the storage footprint. The cradle shares the body's "
          "curves, colour and finish, so the two read as one object even in storage."),
         ("bleed", "cradle_shelf.jpg", "natural"),
+        ("text", "CMF Variation",
+         "출시 뒤 후속 컬러 4안(White & Dark Gray · Warm Gray Tone on Tone · White & Beige · Beige & Dark Beige)을 도장 목업용으로 "
+         "제안했습니다. 물통이 증착 마감이라 레진은 밝은 색만 쓸 수 있어 어두운 색은 도장으로 풀고, 자사·업체 보유 레진을 활용해 납기를 "
+         "지키는 조건 안에서 정리했습니다.",
+         "Four follow-up colourways were proposed for painted mock-ups within resin and lead-time constraints."),
+        ("single", {"f": "cmf_var.jpg", "r": "natural"}, "CMF VARIATION · Original 대비 A~D 4안"),
         ("dark", [
             ("grid", ["mockup_1201.jpg", "photo_1206.jpg", "mockup_5465.jpg", "photo_5363.jpg", "photo_5982.jpg", "mockup_5981.jpg"]),
             ("row", "MOCK-UP",

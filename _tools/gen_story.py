@@ -262,7 +262,7 @@ def section(d, s):
     <p class="st-issue__k">Pain</p><p class="st-issue__v">{pain}</p>
     <p class="st-issue__k st-issue__k--sol">Solution</p><p class="st-issue__v">{sol}</p>
   </article>''' for t, pain, sol in s[1])
-        return f'<section class="st-issues">\n{cards}\n</section>'
+        return f'<section class="st-issues" style="--n:{len(s[1])}">\n{cards}\n</section>'
     if k == "split":
         cols = []
         for side, (label, kor, eng) in zip(("left", "right"), s[1:]):

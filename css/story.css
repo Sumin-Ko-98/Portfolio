@@ -1039,7 +1039,7 @@ img.st-contain { box-sizing: border-box; }
 
 /* 리서치 Pain → Solution 카드 (TS700 Research, 2026-10-14) */
 .st-issues {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr));
   gap: clamp(12px, 1.6vw, 24px);
   padding: 0 var(--pad-x) clamp(48px, 6vw, 88px);
 }
