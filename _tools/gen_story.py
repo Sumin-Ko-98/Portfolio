@@ -254,6 +254,15 @@ def section(d, s):
     {kor_eng(kor, eng, "wd-textrow__kor", "wd-textrow__eng")}
   </div>
 </section>"""
+    if k == "issues":
+        # ("issues", [(제목, 문제, 해결), ...]) — 리서치 Pain → Solution 카드
+        cards = "\n".join(
+            f'''  <article class="st-issue reveal">
+    <h3 class="st-issue__t">{t}</h3>
+    <p class="st-issue__k">Pain</p><p class="st-issue__v">{pain}</p>
+    <p class="st-issue__k st-issue__k--sol">Solution</p><p class="st-issue__v">{sol}</p>
+  </article>''' for t, pain, sol in s[1])
+        return f'<section class="st-issues">\n{cards}\n</section>'
     if k == "split":
         cols = []
         for side, (label, kor, eng) in zip(("left", "right"), s[1:]):

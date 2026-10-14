@@ -18,6 +18,8 @@ ROT_CW = 90  # EXIF 6 — pymupdf insert_image rotate=90 이 맞음(270은 뒤�
 # PDF 순서: TS450 → TS700 → H500 → WADE → CMF, 이어서 대학원 작업과 UX
 ORDER = ["threespin", "ts700", "h500", "wade", "odm-cmf", "mobilink", "flever", "inclusive", "seuv", "ev-sedan"]
 
+TS700_REP = r"\\192.168.40.10\영업마케팅그룹-디자인팀\01_제품디자인\TS700\01_Reports"  # 사내 NAS
+
 SOURCES = {
     "ts450": {
         "cover_src.jpg": J(LS, "_시안", "assets", "ts450", "cover_src.jpg"),
@@ -46,6 +48,11 @@ SOURCES = {
         "photo_5982.jpg": J(HEIC, "TS450_Photo_5982.jpg"),
     },
     "ts700": {
+        # 사내 보고서(본인 작업, 2026-10-14 사용자 확인) 크롭
+        "concepts6.jpg": {"pdf": J(TS700_REP, "260219_TS700_제품디자인 2차 보고_디자인 스케치_v1.pdf"), "page": 31, "rect": (72, 150, 1848, 1003), "scale": 1},
+        "models4.jpg": {"pdf": J(TS700_REP, "260417_TS700_제품디자인 진행사항 보고_v1.pdf"), "page": 1, "rect": (0, 0, 1920, 1080), "scale": 1},
+        "refine_tank.jpg": {"pdf": J(TS700_REP, "260417_TS700_제품디자인 진행사항 보고_v1.pdf"), "page": 6, "rect": (60, 268, 1860, 792), "scale": 1},
+        "refine_cover.jpg": {"pdf": J(TS700_REP, "260417_TS700_제품디자인 진행사항 보고_v1.pdf"), "page": 12, "rect": (150, 245, 1770, 740), "scale": 1.2},
         "home2.jpg": J(LS, "TS700", "261002_TS700_Home2_v1.png"),
         "cover_src.jpg": J(LS, "_시안", "assets", "ts700", "cover_src.jpg"),
         "hero_gs.jpg": J(LS, "TS700", "genspark", "gs_ts700_hero_01.png"),
@@ -311,6 +318,28 @@ PAGES["ts700"] = dict(
             ("img", {"f": "home2.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
         ("scene", {"f": "hero_gs.jpg", "r": "natural"}),
+        ("text", "Research",
+         "기존 쓰리스핀 사용자 VOC와 전 세대 디자인을 분석해 방향을 정했습니다. 디자인 트렌드는 2030에서 4060으로 퍼지므로 "
+         "4050 주부만 겨냥하기보다 2030 감성으로 전 세대를 이끄는 '디자인 리딩' 전략을 세우고, 1인 가구·소형 평수를 위한 "
+         "공간 절약형 슬림 디자인을 전면에 두었습니다. 사용 불편은 원인과 해결안까지 정리해 디자인 과제로 넘겼습니다.",
+         "User VOC and every previous Threespin generation were analysed first."),
+        ("issues", [
+            ("Cradle", "거치할 때 크래들이 밀리고, 바닥에 밀착되지 않아 덜컹거림",
+             "미끄럼 방지 실리콘의 접지 면적을 넓히고 측면 지지 구조를 보강, 4발 구조를 3발로 바꿔 수평 확보"),
+            ("Power Button", "측면 로커 스위치는 ON/OFF 상태가 헷갈리고, 열린 상태의 외관이 어색함",
+             "푸시 버튼으로 바꾸고 버튼 LED로 상태를 표시 · 수출용 물리 버튼 조건은 유지"),
+            ("Display", "스팀 기능이 더해지면 원형·라인 LED만으로는 상태를 다 표시할 수 없음",
+             "꺼지면 보이지 않는 히든 LED로 숫자·기호까지 표시해 심리스한 상판 유지"),
+            ("Mop Pad", "오염된 걸레를 손으로 쥐고 떼어 내야 하는 불쾌한 경험",
+             "패드 라벨을 바깥으로 박음질해 라벨을 잡고 뜯어내도록 유도"),
+        ]),
+        ("text", "Concept",
+         "Heritage·Trendy·Innovative 세 방향과 네 가지 스타일링 키워드(자연 모티브 오브제, 오브제 가전, 미니멀리즘 지오메트릭, "
+         "하이테크 미니멀리즘)로 6개 컨셉을 스케치·렌더링했습니다. 기구·HW팀과 마케팅·상품기획팀 검토, 마케팅팀 선호도 조사를 거쳐 "
+         "4개 안(Frame · Layer · Yeti · Sandwich)을 3D로 디벨롭했고, 최종으로 The Frame을 선정했습니다.",
+         "Six concepts were narrowed to four 3D models and then to The Frame."),
+        ("single", {"f": "concepts6.jpg", "r": "natural"}, "6 CONCEPTS · 1차 스케치·렌더 시안 (C1 Accent ~ C5-2 Contrast)"),
+        ("single", {"f": "models4.jpg", "r": "natural"}, "4 MODELS · 유관 부서 검토 후 3D 디벨롭 → 최종 The Frame"),
         ("text", "Slim Look",
          "사용자가 서서 내려다보는 시선 각도에서는 챔퍼로 덜어낸 측면과 어두운 하단이 잘 보이지 않습니다. 그래서 실제 전고보다 "
          "얇은 바디로 인지됩니다.",
@@ -326,6 +355,13 @@ PAGES["ts700"] = dict(
          "The housing was rebuilt in three parts (bottom, middle and top), so the lower module can be reached without "
          "dismantling the whole top."),
         ("bleed", {"f": "three_part_body.jpg", "fit": "contain", "bg": "auto", "pad": "2% 8%"}, "natural"),
+        ("text", "Refinement",
+         "최종안 선정 뒤 기구 조건에 맞춰 여섯 가지를 다듬었습니다. 물통 용량을 확보하려 상판 위 플로팅 물통을 매립형으로 바꾸고, "
+         "손잡이 공간을 위해 회전판 커버 두께를 12.12mm에서 8.20mm로 줄였습니다. 히든 도트 LED 간소화, 후면부 형상, "
+         "전면 센서 간섭을 피하는 패턴도 함께 수정했습니다.",
+         "After selection, six refinements followed the mechanical constraints."),
+        ("single", {"f": "refine_tank.jpg", "r": "natural"}, "BEFORE / AFTER · 물통 플로팅 → 매립형"),
+        ("single", {"f": "refine_cover.jpg", "r": "natural"}, "BEFORE / AFTER · 회전판 커버 12.12mm → 8.20mm"),
         ("text", "Product Details",
          "물통은 래치 방식으로 탈착하고, 사용하지 않을 때는 거치대에 세워 보관합니다.",
          "The water tank detaches with a latch, and the robot stands upright on its cradle when not in use."),

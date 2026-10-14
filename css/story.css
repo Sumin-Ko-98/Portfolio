@@ -1036,3 +1036,26 @@ img.st-contain { box-sizing: border-box; }
 .wd-intro__eng,
 .wd-dark-row__eng,
 .wd-textrow__eng { display: none !important; }
+
+/* 리서치 Pain → Solution 카드 (TS700 Research, 2026-10-14) */
+.st-issues {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 24px);
+  padding: 0 var(--pad-x) clamp(48px, 6vw, 88px);
+}
+.st-issue {
+  background: #fff; border: 1px solid rgba(0,0,0,.08); border-radius: 6px;
+  padding: clamp(18px, 2vw, 28px); display: flex; flex-direction: column; gap: 6px;
+}
+.st-issue__t {
+  font-family: var(--f-display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(15px, 1.2vw, 18px); line-height: 1.1; margin: 0 0 10px;
+}
+.st-issue__k {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mute); margin: 8px 0 0;
+}
+.st-issue__k--sol { color: #2f6bff; }
+.st-issue__v { font-family: 'Pretendard', 'Inter', system-ui, sans-serif; font-size: 14px; line-height: 1.65; color: var(--ink); margin: 0; }
+@media (max-width: 1100px) { .st-issues { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .st-issues { grid-template-columns: 1fr; } }
