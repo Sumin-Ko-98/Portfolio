@@ -894,7 +894,6 @@ PAGES["inclusive"] = dict(
              "In an agile process, items were built quickly and checked again and again on full-scale mock-ups."),
             ("roles", ["선행 연구", "UX 아이템 발굴", "프로토타이핑", "UX 리서치 및 검증"]),
         ]),
-        ("band",),
     ],
 )
 
