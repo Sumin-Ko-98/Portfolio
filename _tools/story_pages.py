@@ -22,6 +22,8 @@ TS700_REP = r"\\192.168.40.10\영업마케팅그룹-디자인팀\01_제품디자
 
 TS450_REP = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Claude-Portfolio\7db404ae-bb79-4ec9-881e-1227bc58643c\scratchpad\ts450rep"  # NAS TS450\01_Reports·08_Mock Up 의 pptx 를 PDF 로 변환한 사본(임시). 에셋은 이미 레포에 있음
 
+H500_REP = r"C:\Users\Hkyum\AppData\Local\Temp\claude\C--Claude-Portfolio\7db404ae-bb79-4ec9-881e-1227bc58643c\scratchpad\h500rep"  # NAS H500\01_Reports 보고서 사본(임시, pptx는 PDF 변환). 에셋은 이미 레포에 있음
+
 SOURCES = {
     "ts450": {
         "fl_front.jpg": {"pdf": J(TS450_REP, "250716.pdf"), "page": 4, "rect": (40, 160, 920, 375), "scale": 2.2},
@@ -76,6 +78,9 @@ SOURCES = {
         "photo_0188.jpg": J(HEIC, "TS700_Photo_0188.jpg"),
     },
     "h500": {
+        "ux_ctrl.jpg": {"pdf": J(H500_REP, "h2.pdf"), "page": 4, "rect": (40, 76, 960, 476), "scale": 2},
+        "ux_wheel.jpg": {"pdf": J(H500_REP, "h8.pdf"), "page": 1, "rect": (40, 76, 960, 476), "scale": 2},
+        "concepts.jpg": {"pdf": J(H500_REP, "h2.pdf"), "page": 41, "rect": (20, 88, 940, 494), "scale": 2},
         "ctrl_pers.jpg": J(LS, "_시안", "assets", "h500", "ctrl_pers.jpg"),
         "wheel_chair_side.jpg": J(LS, "_시안", "assets", "h500", "wheel_chair_side.jpg"),
         "mock_ctrl3.jpg": J(LS, "H500", "H500_Mockup_Controller_03.jpg"),
@@ -454,6 +459,32 @@ PAGES["h500"] = dict(
              "swapped for any colour, and the hand-rim thickness and its gap from the wheel were set for manual propulsion."),
             ("img", {"f": "wheel_rim_hand.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
+        ("text", "Research",
+         "노인 휠체어 사용 만족도 연구와 사용자·보호자 관점의 불편을 정리하고, 기존 컨트롤러와 휠을 직접 써 보며 과제를 뽑았습니다. "
+         "만족도 항목 중 '디자인·외형' 불만족 비중이 가장 높아, 목표를 '의료 보조기기가 아니라 사용자가 편안함과 자신감을 느끼는 "
+         "디자인'으로 잡았습니다.",
+         "Research on older wheelchair users and hands-on review of the existing controller and wheel set the tasks."),
+        ("issues", [
+            ("Controller Size", "기존 컨트롤러가 커서 팔걸이 주변에서 걸리적거리고 불편함",
+             "길이와 폭을 모두 크게 줄이는 방향으로 디자인"),
+            ("Mis-press", "손 힘이 약한 사용자가 버튼을 잘못 누르거나 화면이 손에 가려짐",
+             "스크린 → 버튼 → 조이스틱 순으로 배치하고, 버튼 최소 14mm에 간격을 넉넉히 확보"),
+            ("Hand Rim Gap", "손잡이와 휠 사이가 13mm라 손가락이 들어가지 않아 수동 주행이 어려움",
+             "간격을 20mm로 조정하고, 돌출된 모터는 손잡이 안쪽으로 배치"),
+            ("Stigma", "'환자용'으로 보이는 외형이 사용자의 자존감을 떨어뜨림",
+             "무채색 베이스에 포인트 컬러를 더하는 컬러 커스텀 구조"),
+        ]),
+        ("text", "UX Strategy",
+         "과제를 컨트롤러와 휠의 디자인 요소로 옮겼습니다. 컨트롤러는 크기 축소·안전한 버튼 배치·속도 버튼 측면 배치·팜레스트 추가, "
+         "휠은 모터 위치·손잡이 간격·퀵 버튼 분리를 기준으로 삼았습니다.",
+         "Tasks were translated into design criteria for the controller and the wheel."),
+        ("single", {"f": "ux_ctrl.jpg", "r": "natural"}, "UX STRATEGY · 컨트롤러 — 크기 축소 · 버튼 배치 · 속도 버튼 · 팜레스트"),
+        ("single", {"f": "ux_wheel.jpg", "r": "natural"}, "UX STRATEGY · 휠 — 모터 안쪽 배치 · 손잡이 간격 13 → 20mm · 퀵 버튼 분리"),
+        ("text", "Concept",
+         "휠은 스포크휠·스포크가드 장착형·스포크매그휠 세 유형으로 각 2안씩, 컨트롤러는 여러 형상으로 전개해 비교했습니다. 최종으로는 "
+         "작은 금형 하나로 스포크 세 개를 덮고 그 파트만 바꿔 컬러를 바꿀 수 있는 3-스포크 매그휠을 골랐습니다.",
+         "Three wheel types and several controller forms were explored; a 3-spoke mag wheel with swappable inserts was chosen."),
+        ("single", {"f": "concepts.jpg", "r": "natural"}, "CONCEPT · 스포크휠 · 스포크가드 장착형 · 스포크매그휠 · 컨트롤러"),
         ("text", "Palm Rest",
          "팜레스트는 탈착할 수 있고 좌우를 바꿔 달 수 있어 왼손잡이도 사용할 수 있습니다. 조이스틱은 기성품을 사용해 원가를 "
          "줄였습니다.",
@@ -461,7 +492,7 @@ PAGES["h500"] = dict(
          "joystick keeps the cost down."),
         ("text", "Button Grouping &amp; Display",
          "레드 전원 버튼을 중심으로 라이트·비상등·경적 버튼을 기능별로 묶고, 표시부를 버튼 위에 두어 누르는 손에 가려지지 않게 "
-         "했습니다.",
+         "했습니다. 버튼이 8개라 자주 쓰는 속도 조절 버튼은 밝은 명도로, 긴급 버튼은 밝은 색으로 구분해 바로 찾게 했습니다.",
          "Light, hazard and horn buttons are grouped by function around the central red power button, and the display "
          "sits above the buttons so the pressing hand never hides it."),
         ("tri", [{"f": "ctrl_pers.jpg", "fit": "contain", "bg": "auto", "pad": "10%",
