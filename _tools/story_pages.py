@@ -319,7 +319,7 @@ PAGES["ts700"] = dict(
           ("Role", "UX · UI·음성 · CMF · 디자인 목업 · 양산 지원"), ("Status", "양산 지원 진행 중")],
     intro=([("01", "Slim Look", "대형 챔퍼 · 다크 하단", "높아진 전고를 슬림하게"),
             ("02", "3-Part Body", "바텀 · 미들 · 탑", "하단 모듈 서비스성 개선"),
-            ("03", "Steam Module", "바닥면 중앙 스팀 모듈", "세워 보관하는 거치대")],
+            ("03", "UI · Voice", "라이팅 UI · 음성 안내", "효과음 · TTS 제작")],
            "높아진 전고는 슬림하게, 하우징은 고치기 쉽게",
            "Slimmer to the eye, easier to service",
            "바닥면 중앙에 스팀 모듈을 탑재하면서 전고가 높아졌고, 기존 하우징 구조로는 A/S가 어려웠습니다. "
@@ -336,7 +336,7 @@ PAGES["ts700"] = dict(
              "In the robot vacuum market a lower height is read as higher value, but the steam module made the robot much "
              "taller. Existing models also used a two-part housing, a deep bottom and a shallow top, so reaching the lower "
              "module for service meant taking the whole upper module apart."),
-            ("dots", [{"f": "mop_exploded.jpg", "pos": "50% 60%"}, {"f": "hand_cradle.jpg", "pos": "55% 50%"}, "steam_macro2.jpg"]),
+            ("dots", [{"f": "mop_exploded.jpg", "pos": "50% 60%"}, {"f": "hand_cradle.jpg", "pos": "55% 50%"}]),  # 스팀 매크로 AI 컷은 첫 큰 사진과 겹쳐 제외
             ("row", "APPROACH",
              "바텀 하우징 엣지에 대형 챔퍼를, 바텀 파트에 다크 톤 CMF를 적용해 하단부가 시각적으로 후퇴하도록 했습니다. "
              "그리고 바디를 바텀·미들·탑 3분할로 재구성해, 상단 전체를 해체하지 않고도 하단 모듈에 접근할 수 있게 했습니다.",
@@ -345,10 +345,6 @@ PAGES["ts700"] = dict(
              "dismantling the entire top."),
             ("img", {"f": "home2.jpg", "r": "natural"}, ' style="margin-top: clamp(48px, 6vw, 88px); margin-bottom: 0;"'),
         ]),
-        ("text", "Concept",
-         "여러 방향의 컨셉을 스케치·렌더링하고 유관 부서 검토를 거쳐 4개 안을 3D로 디벨롭한 뒤, 최종으로 The Frame을 골랐습니다.",
-         "Four concepts were developed in 3D and The Frame was chosen."),
-        ("single", {"f": "models4.jpg", "r": "natural"}, "4 MODELS → 최종 The Frame"),
         ("text", "Slim Look",
          "사용자가 서서 내려다보는 시선 각도에서는 챔퍼로 덜어낸 측면과 어두운 하단이 잘 보이지 않습니다. 그래서 실제 전고보다 "
          "얇은 바디로 인지됩니다.",
@@ -363,7 +359,7 @@ PAGES["ts700"] = dict(
          "서비스성을 개선했습니다.",
          "The housing was rebuilt in three parts (bottom, middle and top), so the lower module can be reached without "
          "dismantling the whole top."),
-        ("bleed", {"f": "three_part_body.jpg", "fit": "contain", "bg": "auto", "pad": "2% 8%"}, "natural"),
+        ("single", {"f": "three_part_body_ann.jpg", "r": "natural"}, "3-PART BODY · 탑 · 미들 · 바텀 (최종 렌더 위에 파트 구분 표시)"),
         ("text", "Details",
          "물통은 래치 방식으로 탈착하고, 사용하지 않을 때는 거치대에 세워 보관합니다. 동작 사양에 맞춰 라이팅 UI와 음성 안내를 "
          "설계하고 효과음·TTS를 제작했으며, 컬러 목업을 검토해 CMF와 실크를 확정했습니다.",
