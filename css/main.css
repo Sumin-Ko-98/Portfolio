@@ -442,7 +442,7 @@ p[lang="en"].secondary,
 .bilingual > [lang="en"] { order: 1; }
 
 /* ---------- 카드 수상 리본 (홈 · Work, 2026-10-14) ----------
-   카드 위쪽 가장자리에 매달린 책갈피형 태그. 수상 = 금색, Finalist = 은색 */
+   카드 위쪽 가장자리에 매달린 책갈피형 태그. 수상 = 검정, Finalist = 회색 */
 .card__ribbons {
   position: absolute; top: 0; right: 16px; z-index: 2;
   display: flex; gap: 6px; pointer-events: none;
@@ -458,8 +458,8 @@ p[lang="en"].secondary,
   width: 32px !important; height: 32px !important; padding: 4px; box-sizing: border-box;
   border-radius: 50%; background: #fff; object-fit: contain !important; transform: none !important;
 }
-.ribbon--win { background: linear-gradient(180deg, #c3a06a 0%, #a8844c 100%); }
-.ribbon--fin { background: linear-gradient(180deg, #86868c 0%, #636368 100%); }
+.ribbon--win { background: #0b0b0f; }  /* 사이트 잉크색 — 흰 원 속 컬러 로고가 가장 또렷 */
+.ribbon--fin { background: #7a7a80; }
 @media (max-width: 600px) {
   .card__ribbons { right: 12px; }
   .ribbon { width: 40px; gap: 5px; }
